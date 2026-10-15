@@ -1,0 +1,9 @@
+node_modules/
+data/
+.env
+.env.*
+npm-debug.log*
+
+# Local settings and unused GitHub Pages workflow
+.vscode/
+.github/

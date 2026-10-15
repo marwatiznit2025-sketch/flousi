@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#f3f7f1">
+    <meta name="description" content="فلوسي: منظّم ميزانية بسيط لتتبع الدخل والمصاريف والتوفير.">
+    <link rel="icon" type="image/svg+xml" href="logo.svg">
+    <link rel="manifest" href="manifest.webmanifest">
+    <link rel="apple-touch-icon" href="logo.svg">
+    <title>فلوسي — منظّم الميزانية</title>
+    <link rel="stylesheet" href="style.css">
+    <script>window.FLOUSI_API_URL = "";</script>
+    <script defer src="app.js"></script>
+</head>
+<body>
+    <section class="intro-screen" id="introScreen" aria-label="مرحبا بك ففلوسي">
+        <div class="intro-content" id="welcomePanel">
+            <img class="intro-mark" src="logo.svg" alt="" aria-hidden="true">
+            <h1 class="intro-title" id="introTitle">مرحبا بك ففلوسي</h1>
+            <p class="intro-caption" id="introCaption">فلوسك واضحة، وراسك مرتاح</p>
+            <div class="intro-actions">
+                <button class="intro-start" id="startExperience" type="button">بدا التجربة　♫</button>
+            </div>
+        </div>
+        <form class="login-card" id="loginForm" hidden>
+            <div class="login-brand">
+                <img src="logo.svg" alt="" aria-hidden="true">
+                <div><strong>فلوسي</strong><span id="loginBrandCaption">فلوسك واضحة، وراسك مرتاح</span></div>
+            </div>
+            <h1 class="login-title" id="loginTitle">مرحبا بعودتك</h1>
+            <p class="login-caption" id="loginCaption">دخل للحساب ديالك باش تتابع فلوسك.</p>
+            <label class="login-field" for="loginEmail"><span id="loginEmailLabel">البريد الإلكتروني</span>
+                <input id="loginEmail" type="email" autocomplete="email" inputmode="email" dir="ltr" placeholder="name@example.com" required>
+            </label>
+            <div class="login-field">
+                <label for="loginPassword"><span id="loginPasswordLabel">كلمة المرور</span></label>
+                <div class="login-password-wrap">
+                    <input id="loginPassword" type="password" autocomplete="current-password" maxlength="128" required>
+                    <button class="password-toggle" id="togglePassword" type="button" aria-label="إظهار كلمة المرور">إظهار</button>
+                </div>
+            </div>
+            <p class="login-notice" id="loginNotice">سجّل الدخول أو أنشئ حساباً لمزامنة بياناتك مع خادم Flousi.</p>
+            <p class="login-feedback" id="loginFeedback" role="status" hidden></p>
+            <button class="primary-button login-submit" id="loginSubmit" type="submit">دخول</button>
+            <button class="login-guest" id="toggleAccountMode" type="button">إنشاء حساب جديد</button>
+            <button class="login-guest" id="continueAsGuest" type="button">كمل بلا حساب</button>
+            <button class="login-back" id="backToWelcome" type="button">رجع للبداية</button>
+        </form>
+    </section>
+    <main class="app-shell" id="appShell" hidden>
+        <header class="topbar">
+            <div class="brand" aria-label="فلوسي">
+                <img class="brand-mark" src="logo.svg" alt="" aria-hidden="true">
+                <div>
+                    <p class="brand-name">فلوسي</p>
+                    <p class="brand-caption">فلوسك واضحة، وراسك مرتاح</p>
+                </div>
+            </div>
+            <div class="top-actions">
+                <div class="month-switcher" id="monthSwitcher" aria-label="اختيار الشهر">
+                    <button id="previousMonth" type="button" aria-label="الشهر السابق">›</button>
+                    <span id="monthLabel"></span>
+                    <button id="nextMonth" type="button" aria-label="الشهر التالي">‹</button>
+                </div>
+                <div class="header-buttons">
+                    <button class="settings-button" id="openSettings" type="button">
+                        <span class="settings-button-label" id="settingsButtonLabel">⚙ الإعدادات</span>
+                        <span class="mobile-avatar" aria-hidden="true">F</span>
+                    </button>
+                    <button class="primary-button" id="openTransaction" type="button"><span aria-hidden="true">＋</span> <span id="openTransactionText">زيد عملية</span></button>
+                </div>
+            </div>
+        </header>
+
+        <section id="homeSection" aria-labelledby="welcomeTitle">
+            <p class="mobile-welcome" id="mobileWelcome">مرحبا بيك</p>
+            <h1 class="welcome" id="welcomeTitle">السلام! هادي نظرة على فلوسك</h1>
+            <p class="subtitle" id="welcomeSubtitle">تبع الدخل والمصاريف ديالك وخطط للشهر براحة.</p>
+
+            <div class="summary-grid">
+                <article class="card balance-card">
+                    <svg class="balance-sparkline" viewBox="0 0 280 100" aria-hidden="true" focusable="false">
+                        <path d="M2 81 C32 78 36 63 62 68 S99 51 124 57 S161 62 184 39 S224 42 245 23 S267 20 280 12"></path>
+                    </svg>
+                    <div class="balance-main">
+                        <div class="card-heading"><span data-summary="balance">الرصيد الصافي</span></div>
+                        <p class="amount" id="balanceAmount">0 <small>د.م.</small></p>
+                    </div>
+                    <div class="balance-stats">
+                        <div class="balance-stat">
+                            <span class="balance-stat-icon" aria-hidden="true">↓</span>
+                            <div><span class="balance-stat-label" data-summary="income">مجموع الدخل</span><p class="amount positive" id="incomeAmount">0 <small>د.م.</small></p></div>
+                        </div>
+                        <div class="balance-stat">
+                            <span class="balance-stat-icon" aria-hidden="true">↑</span>
+                            <div><span class="balance-stat-label" data-summary="expenses">مجموع المصاريف</span><p class="amount negative" id="expenseAmount">0 <small>د.م.</small></p></div>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section class="card budget-card" aria-labelledby="budgetTitle">
+            <div>
+                <h2 class="budget-title" id="budgetTitle">ميزانية المصاريف الشهرية</h2>
+                <p class="budget-caption" id="budgetCaption">حدد ميزانيتك باش تبقى متحكم فمصاريفك.</p>
+            </div>
+            <div class="budget-numbers"><strong id="budgetSpent">0 د.م.</strong> / <span id="budgetTotal">ما تحدداتش</span></div>
+            <div class="budget-progress" id="budgetProgress" role="progressbar" aria-label="نسبة الميزانية المستعملة" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+                <span id="budgetBar"></span>
+            </div>
+            <div class="budget-footer">
+                <span id="budgetRemaining">بدا بتحديد ميزانيتك الشهرية.</span>
+                <button class="text-button" id="editBudget" type="button">حدد الميزانية</button>
+            </div>
+        </section>
+
+        <aside class="money-tip" aria-labelledby="moneyTipTitle">
+            <span class="money-tip-icon" aria-hidden="true">💡</span>
+            <div>
+                <h2 id="moneyTipTitle">نصيحة ليك</h2>
+                <p id="moneyTipText" aria-live="polite">سجّل عملياتك باش نعطيوك نصيحة على حساب مصاريفك.</p>
+            </div>
+        </aside>
+
+        <section class="daily-challenge" aria-labelledby="dailyChallengeTitle">
+            <div class="challenge-heading">
+                <span class="challenge-coin" aria-hidden="true">🪙</span>
+                <div>
+                    <h2 id="dailyChallengeTitle">تحدّي التوفير ديال اليوم</h2>
+                    <p id="dailyChallengeCaption">جرّب تحط هاد المبلغ على جنب اليوم.</p>
+                </div>
+            </div>
+            <p class="challenge-amount"><span id="dailyChallengeAmount">10</span> <small id="dailyChallengeCurrency">د.م.</small></p>
+            <p class="challenge-streak" id="dailyChallengeStreak" aria-live="polite">🔥 0 أيام متتابعة</p>
+            <button class="challenge-complete" id="completeDailyChallenge" type="button">درت التحدّي اليوم!</button>
+        </section>
+
+        <section class="card trend-card" id="trendSection" aria-labelledby="trendTitle">
+            <div class="analytics-heading">
+                <h2 id="trendTitle">الإحصائيات</h2>
+                <div class="period-switch" id="trendPeriodSwitch" role="group" aria-label="الفترة الزمنية">
+                    <button type="button" data-period="week" aria-pressed="false">أسبوع</button>
+                    <button type="button" data-period="month" class="active" aria-pressed="true">شهر</button>
+                    <button type="button" data-period="year" aria-pressed="false">عام</button>
+                </div>
+            </div>
+            <section class="analytics-block" aria-labelledby="categoryChartTitle">
+                <div class="analytics-subheading">
+                    <h3 id="categoryChartTitle">المصاريف حسب الصنف</h3>
+                    <span class="analytics-total" id="categoryTotal"></span>
+                </div>
+                <div class="donut-layout">
+                    <div class="spending-donut" id="spendingDonut" role="img" aria-label="المصاريف حسب الصنف">
+                        <div class="donut-center"><strong id="donutAmount">0</strong><span id="donutCurrency">د.م.</span></div>
+                    </div>
+                    <div class="category-legend" id="categoryLegend"></div>
+                </div>
+                <p class="chart-empty" id="categoryChartEmpty" hidden>سجّل مصاريفك باش يبان التوزيع حسب الصنف.</p>
+            </section>
+            <section class="analytics-block comparison-block" aria-labelledby="comparisonTitle">
+                <div class="analytics-subheading">
+                    <h3 id="comparisonTitle">الدخل مقابل المصاريف</h3>
+                    <span class="analytics-range" id="trendSubtitle">آخر 6 شهور</span>
+                </div>
+                <div class="trend-legend">
+                    <span><i class="legend-dot"></i><span id="trendIncomeLabel">الدخل</span></span>
+                    <span><i class="legend-dot expenses"></i><span id="trendExpensesLabel">المصاريف</span></span>
+                </div>
+                <div class="trend-chart-wrap" id="trendChart" role="img" aria-label="مقارنة الدخل والمصاريف"></div>
+                <div class="savings-insight" id="savingsInsight" aria-live="polite">
+                    <span class="insight-arrow" aria-hidden="true">↗</span>
+                    <span id="savingsInsightText"></span>
+                </div>
+            </section>
+        </section>
+
+        <section class="card goals-card" id="goalsSection" aria-labelledby="goalsTitle">
+            <div class="section-header">
+                <div>
+                    <h2 id="goalsTitle">أهداف التوفير</h2>
+                    <p id="goalsSubtitle">تبع التقدم ديالك نحو أهدافك</p>
+                </div>
+                <button class="primary-button" id="addGoal" type="button">＋ <span id="addGoalText">زيد هدف</span></button>
+            </div>
+            <div class="goal-list" id="goalList"></div>
+            <p class="goal-empty" id="goalEmpty">ما عندك حتى هدف ديال التوفير. زيد هدفك الأول!</p>
+        </section>
+
+        <div class="content-grid">
+            <section class="card transactions-card" id="transactionsSection" aria-labelledby="transactionsTitle">
+                <div class="section-header">
+                    <div>
+                        <h2 id="transactionsTitle">آخر العمليات</h2>
+                        <p id="transactionCount">0 عمليات هاد الشهر</p>
+                    </div>
+                    <select class="select-filter" id="typeFilter" aria-label="تصفية العمليات">
+                        <option value="all">كل العمليات</option>
+                        <option value="expense">المصاريف</option>
+                        <option value="income">الدخل</option>
+                    </select>
+                </div>
+                <div class="transaction-list" id="transactionList"></div>
+            </section>
+
+            <section class="card categories-card" aria-labelledby="categoriesTitle">
+                <div class="section-header">
+                    <div>
+                        <h2 id="categoriesTitle">فين مشاو مصاريفك؟</h2>
+                        <p id="categorySubtitle">التوزيع حسب الصنف</p>
+                    </div>
+                </div>
+                <div class="category-list" id="categoryList"></div>
+            </section>
+        </div>
+        <p class="privacy-note"><span aria-hidden="true">🔒</span><span id="privacyText">بياناتك كتبقى غير فهاد الجهاز.</span></p>
+        <nav class="mobile-nav" aria-label="التنقل الرئيسي">
+            <a class="mobile-nav-link" href="#homeSection" aria-current="page">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m3 10 9-7 9 7v10a1 1 0 0 1-1 1h-5v-7H9v7H4a1 1 0 0 1-1-1z"></path></svg>
+                <span id="navHome">الرئيسية</span>
+            </a>
+            <a class="mobile-nav-link" href="#transactionsSection">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"></path></svg>
+                <span id="navTransactions">العمليات</span>
+            </a>
+            <a class="mobile-nav-link" href="#trendSection">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19V5m0 14h17M7 15l4-4 3 2 6-7"></path></svg>
+                <span id="navTrends">التطور</span>
+            </a>
+            <a class="mobile-nav-link" href="#goalsSection">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><circle cx="12" cy="12" r="4"></circle><path d="m12 12 6-6"></path></svg>
+                <span id="navGoals">الأهداف</span>
+            </a>
+        </nav>
+    </main>
+
+    <div class="modal-backdrop" id="transactionModal" role="dialog" aria-modal="true" aria-labelledby="transactionModalTitle" hidden>
+        <form class="modal" id="transactionForm">
+            <div class="modal-header">
+                <h2 id="transactionModalTitle">زيد عملية جديدة</h2>
+                <button class="close-button" type="button" data-close="transactionModal" aria-label="سد">×</button>
+            </div>
+            <div class="type-switch" id="transactionTypeSwitch" role="group" aria-label="نوع العملية">
+                <button type="button" class="active" data-type="expense">مصروف</button>
+                <button type="button" data-type="income">دخل</button>
+            </div>
+            <input type="hidden" id="transactionType" value="expense">
+            <label class="field"><span id="descriptionLabel">الوصف</span>
+                <input id="description" type="text" maxlength="60" placeholder="مثال: قهوة، خلصة الشهر..." required>
+            </label>
+            <label class="field"><span id="amountLabel">المبلغ بالدرهم</span>
+                <input id="amount" type="number" min="0.01" max="999999999" step="0.01" placeholder="0.00" required>
+            </label>
+            <label class="field" id="categoryField"><span id="categoryLabel">الصنف</span>
+                <select id="category" required>
+                    <option value="الماكلة">الماكلة</option>
+                    <option value="الدار">الدار</option>
+                    <option value="النقل">النقل</option>
+                    <option value="الصحة">الصحة</option>
+                    <option value="التسوق">التسوق</option>
+                    <option value="الفواتير">الفواتير</option>
+                    <option value="الترفيه">الترفيه</option>
+                    <option value="أخرى">أخرى</option>
+                </select>
+            </label>
+            <label class="field"><span id="dateLabel">التاريخ</span>
+                <input id="date" type="date" required>
+            </label>
+            <button class="primary-button modal-submit" id="transactionSubmit" type="submit">حفظ العملية</button>
+        </form>
+    </div>
+
+    <div class="modal-backdrop" id="budgetModal" role="dialog" aria-modal="true" aria-labelledby="budgetModalTitle" hidden>
+        <form class="modal" id="budgetForm">
+            <div class="modal-header">
+                <h2 id="budgetModalTitle">الميزانية الشهرية</h2>
+                <button class="close-button" type="button" data-close="budgetModal" aria-label="سد">×</button>
+            </div>
+            <p class="budget-dialog-copy" id="budgetDialogCopy">دخل شحال باغي تصرف كحد أقصى فهاد الشهر.</p>
+            <label class="field"><span id="budgetInputLabel">الميزانية بالدرهم</span>
+                <input id="budgetInput" type="number" min="0" max="999999999" step="0.01" placeholder="مثال: 3000" required>
+            </label>
+            <button class="primary-button modal-submit" id="budgetSubmit" type="submit">حفظ الميزانية</button>
+        </form>
+    </div>
+
+    <div class="modal-backdrop" id="settingsModal" role="dialog" aria-modal="true" aria-labelledby="settingsTitle" hidden>
+        <section class="modal">
+            <div class="modal-header">
+                <h2 id="settingsTitle">إعدادات التطبيق</h2>
+                <button class="close-button" type="button" data-close="settingsModal" aria-label="سد">×</button>
+            </div>
+            <label class="field" for="languageSelect"><span id="languageLabel">لغة التطبيق</span>
+                <select id="languageSelect">
+                    <option value="ar">العربية / الدارجة</option>
+                    <option value="fr">Français</option>
+                    <option value="en">English</option>
+                </select>
+            </label>
+            <label class="sound-setting" for="soundToggle">
+                <input id="soundToggle" type="checkbox">
+                <span id="soundLabel">تشغيل أصوات التطبيق</span>
+            </label>
+            <div class="data-transfer">
+                <p id="dataTransferHelp">صدّر بياناتك من النسخة المحلية، ثم استوردها وادمجها مع حسابك.</p>
+                <div class="data-transfer-actions">
+                    <button class="text-button" id="exportDataButton" type="button">تصدير البيانات</button>
+                    <button class="text-button" id="importDataButton" type="button">استيراد ودمج البيانات</button>
+                    <input id="importDataFile" type="file" accept=".json,application/json" hidden>
+                </div>
+            </div>
+            <div class="account-settings">
+                <p id="accountStatus" aria-live="polite">تستعمل Flousi بلا حساب.</p>
+                <button class="primary-button modal-submit" id="manageAccount" type="button">تسجيل الدخول والمزامنة</button>
+            </div>
+            <button class="primary-button modal-submit" id="testSound" type="button">جرّب الصوت</button>
+        </section>
+    </div>
+
+    <div class="modal-backdrop" id="goalModal" role="dialog" aria-modal="true" aria-labelledby="goalModalTitle" hidden>
+        <form class="modal" id="goalForm">
+            <div class="modal-header">
+                <h2 id="goalModalTitle">هدف توفير جديد</h2>
+                <button class="close-button" type="button" data-close="goalModal" aria-label="سد">×</button>
+            </div>
+            <label class="field"><span id="goalNameLabel">اسم الهدف</span>
+                <input id="goalName" type="text" maxlength="50" placeholder="مثال: عطلة، حاسوب..." required>
+            </label>
+            <label class="field"><span id="goalTargetLabel">المبلغ اللي باغي تجمع</span>
+                <input id="goalTarget" type="number" min="0.01" max="999999999" step="0.01" placeholder="مثال: 10000" required>
+            </label>
+            <button class="primary-button modal-submit" id="goalSubmit" type="submit">حفظ الهدف</button>
+        </form>
+    </div>
+
+    <div class="modal-backdrop" id="contributionModal" role="dialog" aria-modal="true" aria-labelledby="contributionTitle" hidden>
+        <form class="modal" id="contributionForm">
+            <div class="modal-header">
+                <h2 id="contributionTitle">زيد للتوفير</h2>
+                <button class="close-button" type="button" data-close="contributionModal" aria-label="سد">×</button>
+            </div>
+            <p class="budget-dialog-copy" id="contributionGoalName"></p>
+            <label class="field"><span id="contributionAmountLabel">المبلغ اللي وفرتي</span>
+                <input id="contributionAmount" type="number" min="0.01" max="999999999" step="0.01" placeholder="0.00" required>
+            </label>
+            <button class="primary-button modal-submit" id="contributionSubmit" type="submit">حفظ التوفير</button>
+        </form>
+    </div>
+</body>
+</html>

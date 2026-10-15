@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" fill="none">
+  <defs>
+    <linearGradient id="background" x1="20" y1="16" x2="145" y2="150" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#21865b"/>
+      <stop offset="1" stop-color="#125d3d"/>
+    </linearGradient>
+    <linearGradient id="coin" x1="94" y1="26" x2="139" y2="72" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#ffe8a3"/>
+      <stop offset="1" stop-color="#f4bd55"/>
+    </linearGradient>
+    <filter id="shadow" x="18" y="37" width="131" height="106" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse">
+      <feDropShadow dx="0" dy="7" stdDeviation="7" flood-color="#0b472e" flood-opacity=".24"/>
+    </filter>
+  </defs>
+  <rect width="160" height="160" rx="38" fill="url(#background)"/>
+  <path d="M0 107c25-22 45-25 69-10 22 14 49 11 91-19v82H0v-53Z" fill="#fff" fill-opacity=".055"/>
+  <g filter="url(#shadow)">
+    <path d="M35 58V49c0-8 6-14 14-14h49c8 0 14 6 14 14v9H35Z" fill="#D9EFE1"/>
+    <path d="M31 58h94c9 0 16 7 16 16v38c0 9-7 16-16 16H35c-9 0-16-7-16-16V70c0-7 5-12 12-12Z" fill="#fff"/>
+    <path d="M31 58h94c9 0 16 7 16 16v5H42c-9 0-16 7-16 16v17c0 6 3 11 8 14-9-1-15-8-15-17V70c0-7 5-12 12-12Z" fill="#F3FAF5"/>
+    <path d="M108 79h33v31h-33c-9 0-16-7-16-16s7-15 16-15Z" fill="#18734C"/>
+    <circle cx="108" cy="94.5" r="3.5" fill="#FFE7A1"/>
+  </g>
+  <circle cx="113" cy="48" r="25" fill="url(#coin)" stroke="#fff" stroke-width="5"/>
+  <circle cx="113" cy="48" r="17.5" stroke="#D99D39" stroke-opacity=".75" stroke-width="1.5"/>
+  <path d="M116 37h-6.5a4.5 4.5 0 0 0 0 9h5a4.5 4.5 0 0 1 0 9H106m6-22v29" stroke="#94621B" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.8"/>
+</svg>
