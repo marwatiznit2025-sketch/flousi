@@ -69,6 +69,7 @@
                     saveTransaction: "حفظ العملية", budgetModal: "الميزانية الشهرية", budgetCopy: "دخل شحال باغي تصرف كحد أقصى فهاد الشهر.",
                     budgetInput: "الميزانية بالدرهم", budgetPlaceholder: "مثال: 3000", saveBudget: "حفظ الميزانية",
                     settingsTitle: "إعدادات التطبيق", language: "لغة التطبيق", sound: "تشغيل أصوات التطبيق", testSound: "جرّب الصوت",
+                    switchToDarkMode: "ليلي", switchToLightMode: "نهاري",
                     exportData: "تصدير البيانات", importData: "استيراد ودمج البيانات",
                     dataTransferHelp: "صدّر بياناتك من النسخة المحلية، ثم استوردها وادمجها مع حسابك.",
                     importDataInvalid: "ملف البيانات غير صالح أو فيه بيانات غير مدعومة.",
@@ -143,6 +144,7 @@
                     saveTransaction: "Enregistrer l’opération", budgetModal: "Budget mensuel", budgetCopy: "Saisissez le montant maximal à dépenser ce mois-ci.",
                     budgetInput: "Budget en dirhams", budgetPlaceholder: "Ex. : 3000", saveBudget: "Enregistrer le budget",
                     settingsTitle: "Paramètres de l’application", language: "Langue de l’application", sound: "Activer les sons de l’application", testSound: "Tester le son",
+                    switchToDarkMode: "Sombre", switchToLightMode: "Clair",
                     exportData: "Exporter les données", importData: "Importer et fusionner les données",
                     dataTransferHelp: "Exportez les données locales, puis importez-les pour les fusionner avec votre compte.",
                     importDataInvalid: "Le fichier de données est invalide ou contient des données non prises en charge.",
@@ -217,6 +219,7 @@
                     saveTransaction: "Save transaction", budgetModal: "Monthly budget", budgetCopy: "Enter the maximum amount you want to spend this month.",
                     budgetInput: "Budget in dirhams", budgetPlaceholder: "e.g. 3000", saveBudget: "Save budget",
                     settingsTitle: "App settings", language: "App language", sound: "Enable app sounds", testSound: "Test sound",
+                    switchToDarkMode: "Dark", switchToLightMode: "Light",
                     exportData: "Export data", importData: "Import and merge data",
                     dataTransferHelp: "Export your local data, then import it to merge it with your account.",
                     importDataInvalid: "The data file is invalid or contains unsupported data.",
@@ -263,11 +266,12 @@
                     const saved = JSON.parse(localStorage.getItem(SETTINGS_KEY) || "{}");
                     return {
                         language: ["ar", "fr", "en"].includes(saved.language) ? saved.language : "ar",
+                        darkMode: saved.darkMode === true,
                         sounds: saved.sounds !== false
                     };
                 } catch (error) {
                     console.error("تعذر تحميل إعدادات التطبيق:", error);
-                    return { language: "ar", sounds: true };
+                    return { language: "ar", darkMode: false, sounds: true };
                 }
             }
 function saveSettings() {
@@ -289,6 +293,18 @@ function saveSettings() {
                     });
                 }
                 return text;
+            }
+
+            function applyTheme() {
+                const darkMode = settings.darkMode;
+                document.documentElement.dataset.theme = darkMode ? "dark" : "light";
+                document.querySelector('meta[name="theme-color"]').content = darkMode ? "#121b16" : "#f3f7f1";
+                const toggle = document.getElementById("toggleTheme");
+                const label = t(darkMode ? "switchToLightMode" : "switchToDarkMode");
+                document.getElementById("themeToggleIcon").textContent = darkMode ? "☀" : "☾";
+                document.getElementById("themeToggleLabel").textContent = label;
+                toggle.setAttribute("aria-label", label);
+                toggle.setAttribute("aria-pressed", String(darkMode));
             }
 
             function applyLanguage() {
@@ -337,6 +353,7 @@ function saveSettings() {
                 if (loginFeedback) loginFeedback.textContent = t("loginFeedback");
                 document.querySelector(".brand-caption").textContent = t("brandCaption");
                 document.getElementById("settingsButtonLabel").textContent = t("settings");
+                applyTheme();
                 document.getElementById("monthSwitcher").setAttribute("aria-label", t("monthSelector"));
                 document.querySelector(".mobile-nav").setAttribute("aria-label", t("mainNavigation"));
                 document.getElementById("trendPeriodSwitch").setAttribute("aria-label", t("trendPeriod"));
@@ -1375,6 +1392,15 @@ function saveSettings() {
             document.getElementById("openSettings").addEventListener("click", () => {
                 openModal("settingsModal");
                 playUiSound("open");
+            });
+            document.getElementById("toggleTheme").addEventListener("click", () => {
+                const previous = settings.darkMode;
+                settings.darkMode = !previous;
+                if (saveSettings()) {
+                    applyTheme();
+                } else {
+                    settings.darkMode = previous;
+                }
             });
             document.getElementById("manageAccount").addEventListener("click", () => {
                 if (authToken) {

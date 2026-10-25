@@ -277,7 +277,9 @@ async function createServer(options = {}) {
     }
 
     async function authenticatedUser(request) {
-        const match = /^Bearer ([A-Za-z0-9._-]+)$/.exec(request.headers.authorization || "");
+        const authorization = request.headers.authorization;
+        if (typeof authorization !== "string") return null;
+        const match = /^Bearer\s+([A-Za-z0-9_-]+\.[A-Za-z0-9_-]+)$/i.exec(authorization);
         if (!match) return null;
         const parts = match[1].split(".");
         if (parts.length !== 2) return null;

@@ -2,6 +2,8 @@
 
 Flousi is an Arabic/Darija budget planner for tracking transactions, monthly budgets, and savings goals. Guest data stays in the browser. An optional REST API lets account holders sync that data across devices.
 
+Use the moon/sun button in the app header to switch between light and dark mode. The selected theme is saved in this browser.
+
 ## Run locally
 
 1. Install Node.js 18 or newer.

@@ -1,5 +1,5 @@
  :root {
-            color-scheme: light;
+     color-scheme: light;
      --ink: #1c352b;
      --muted: #718078;
      --line: #e2eae2;
@@ -46,6 +46,8 @@
         .header-buttons { display: flex; align-items: center; gap: 9px; }
         .settings-button { min-height: 44px; padding: 0 15px; border: 1px solid var(--line); border-radius: 12px; background: var(--paper); color: var(--ink); font-size: 13px; font-weight: 700; transition: border-color .2s, background .2s, transform .2s; }
         .settings-button:hover { transform: translateY(-1px); border-color: #cbd9cc; background: #f8faf6; }
+        .theme-toggle { display: inline-flex; align-items: center; gap: 7px; }
+        .theme-toggle-label { white-space: nowrap; }
         .month-switcher { display: flex; align-items: center; gap: 12px; padding: 7px; border: 1px solid var(--line); border-radius: 13px; background: var(--paper); box-shadow: 0 3px 10px rgba(36, 72, 49, .035); }
         .month-switcher button { width: 29px; height: 29px; border: 0; border-radius: 8px; background: transparent; color: var(--ink); font-size: 19px; }
         .month-switcher button:hover { background: var(--green-soft); color: var(--green-dark); }
@@ -325,6 +327,8 @@
             #monthLabel { min-width: 92px; font-size: 11px; }
             .header-buttons { display: flex; grid-column: 2; grid-row: 1; gap: 8px; }
             .header-buttons > button { width: 39px; min-width: 39px; height: 39px; min-height: 39px; flex: 0 0 39px; padding: 0; border-radius: 13px; }
+            .header-buttons > .theme-toggle { width: auto; min-width: 39px; flex: 0 1 auto; gap: 4px; padding: 0 8px; }
+            .theme-toggle-label { font-size: 11px; }
             #openSettings { overflow: hidden; border: 0; border-radius: 50%; background: #168c5b; color: white; box-shadow: none; }
             .settings-button-label { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
             .mobile-avatar { display: grid; width: 100%; height: 100%; place-items: center; font-size: 14px; font-weight: 700; }
@@ -421,3 +425,60 @@
             .app-shell > .mobile-nav { right: 12px; width: 58px; }
             .mobile-nav-link { font-size: 0; }
         }
+
+        :root[data-theme="dark"] {
+            color-scheme: dark;
+            --ink: #e5eee8;
+            --muted: #a2b2a8;
+            --line: #33463b;
+            --paper: #1c2922;
+            --canvas: #121b16;
+            --green: #68b786;
+            --green-dark: #a4d4b1;
+            --green-soft: #263d2e;
+            --red: #e58b80;
+            --red-soft: #402c29;
+            --shadow: 0 12px 32px rgba(0, 0, 0, .22);
+        }
+        :root[data-theme="dark"] body {
+            background:
+                radial-gradient(ellipse at 8% 0%, rgba(51, 85, 62, .28), transparent 34rem),
+                var(--canvas);
+        }
+        :root[data-theme="dark"] .topbar,
+        :root[data-theme="dark"] .app-shell > .mobile-nav {
+            border-color: rgba(65, 86, 72, .9);
+            background: rgba(28, 41, 34, .94);
+        }
+        :root[data-theme="dark"] .settings-button:hover { border-color: #536d5c; background: #26382d; }
+        :root[data-theme="dark"] .data-transfer { background: #202f26; }
+        :root[data-theme="dark"] .budget-progress,
+        :root[data-theme="dark"] .goal-track,
+        :root[data-theme="dark"] .category-track { background: #2b3b31; }
+        :root[data-theme="dark"] .money-tip {
+            border-color: #3c4932;
+            background: linear-gradient(110deg, #283324, #1c2922 78%);
+        }
+        :root[data-theme="dark"] .money-tip-icon { background: #3a442c; }
+        :root[data-theme="dark"] .money-tip p { color: #bbc8bd; }
+        :root[data-theme="dark"] .goal-item { background: #202f26; }
+        :root[data-theme="dark"] .daily-challenge {
+            border-color: #344a39;
+            background: linear-gradient(115deg, #25382b, #1c2922 74%);
+        }
+        :root[data-theme="dark"] .challenge-coin { background: #344633; }
+        :root[data-theme="dark"] .challenge-complete:disabled { background: #2b3d30; color: var(--green-dark); }
+        :root[data-theme="dark"] .period-switch { background: #26382e; }
+        :root[data-theme="dark"] .savings-insight { background: #263d30; color: #b5e4c1; }
+        :root[data-theme="dark"] .select-filter,
+        :root[data-theme="dark"] .login-field input,
+        :root[data-theme="dark"] .login-guest,
+        :root[data-theme="dark"] .field input,
+        :root[data-theme="dark"] .field select { background: #18241d; color: var(--ink); }
+        :root[data-theme="dark"] .login-guest:hover { background: #26382d; }
+        :root[data-theme="dark"] .type-switch button.active { background: #2c3d32; }
+        :root[data-theme="dark"] .intro-screen {
+            background: radial-gradient(ellipse at 50% 38%, #1e3023 0, #121b16 58%, #17231b 100%);
+        }
+        :root[data-theme="dark"] .login-field,
+        :root[data-theme="dark"] .field { color: #c3d0c7; }
