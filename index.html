@@ -73,6 +73,10 @@
                         <span class="settings-button-label" id="settingsButtonLabel">⚙ الإعدادات</span>
                         <span class="mobile-avatar" aria-hidden="true">F</span>
                     </button>
+                    <button class="settings-button help-button" id="openHelp" type="button" aria-label="مساعدة">
+                        <span aria-hidden="true">?</span>
+                        <span class="settings-button-label" id="helpButtonLabel">مساعدة</span>
+                    </button>
                     <button class="primary-button" id="openTransaction" type="button"><span aria-hidden="true">＋</span> <span id="openTransactionText">زيد عملية</span></button>
                 </div>
             </div>
@@ -303,6 +307,18 @@
                     <option value="en">English</option>
                 </select>
             </label>
+            <label class="field" for="currencySelect"><span id="currencyLabel">العملة</span>
+                <select id="currencySelect">
+                    <option value="MAD">MAD — Moroccan dirham</option>
+                    <option value="USD">USD — US dollar</option>
+                    <option value="EUR">EUR — Euro</option>
+                    <option value="GBP">GBP — Pound sterling</option>
+                    <option value="CAD">CAD — Canadian dollar</option>
+                    <option value="SAR">SAR — Saudi riyal</option>
+                    <option value="AED">AED — UAE dirham</option>
+                </select>
+            </label>
+            <p class="privacy-note" id="currencyHelp">تبديل العملة كيبدل الرمز فقط، وما كيحوّلش المبالغ المسجلة.</p>
             <label class="sound-setting" for="soundToggle">
                 <input id="soundToggle" type="checkbox">
                 <span id="soundLabel">تشغيل أصوات التطبيق</span>
@@ -320,6 +336,22 @@
                 <button class="primary-button modal-submit" id="manageAccount" type="button">تسجيل الدخول والمزامنة</button>
             </div>
             <button class="primary-button modal-submit" id="testSound" type="button">جرّب الصوت</button>
+        </section>
+    </div>
+
+    <div class="modal-backdrop" id="helpModal" role="dialog" aria-modal="true" aria-labelledby="helpTitle" hidden>
+        <section class="modal help-modal">
+            <div class="modal-header">
+                <h2 id="helpTitle">كيفاش تستعمل فلوسي</h2>
+                <button class="close-button" type="button" data-close="helpModal" aria-label="سد">×</button>
+            </div>
+            <p class="budget-dialog-copy" id="helpIntro">بدا بتسجيل العمليات ديالك، ومن بعد تتبع ميزانيتك وأهداف التوفير.</p>
+            <ul class="help-list">
+                <li id="helpTransactions">استعمل زر + باش تسجل المصاريف أو المداخيل، وزيد الوصف والمبلغ والتاريخ.</li>
+                <li id="helpBudgetGoals">حدد ميزانية الشهر من بطاقة الميزانية، وزيد أهداف التوفير وتبع التقدم ديالك.</li>
+                <li id="helpNavigation">بدل الشهر من السهمين، وشوف الإحصائيات والعمليات والأهداف من أقسام الصفحة أو القائمة لتحت.</li>
+                <li id="helpSettings">من الإعدادات بدل اللغة والعملة والمظهر. تقدر تستعمل التطبيق بلا حساب، أو تسجل الدخول لمزامنة البيانات بين الأجهزة.</li>
+            </ul>
         </section>
     </div>
 

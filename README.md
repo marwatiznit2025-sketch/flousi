@@ -4,6 +4,8 @@ Flousi is an Arabic/Darija budget planner for tracking transactions, monthly bud
 
 Use the moon/sun button in the app header to switch between light and dark mode. The selected theme is saved in this browser.
 
+Choose MAD, USD, EUR, GBP, CAD, SAR, or AED in **Settings → Currency** to change the currency shown by the app. This changes the displayed currency only; it does not convert saved amounts.
+
 ## Run locally
 
 1. Install Node.js 18 or newer.

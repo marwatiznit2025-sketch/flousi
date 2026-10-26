@@ -5,6 +5,7 @@
             const ACCOUNT_EMAIL_KEY = "flousi-account-email-v1";
             const GUEST_DATA_KEY = "flousi-guest-data-v1";
             const SYNCED_DATA_KEY = "flousi-synced-data-v1";
+            const SUPPORTED_CURRENCIES = ["MAD", "USD", "EUR", "GBP", "CAD", "SAR", "AED"];
             const API_BASE_URL = String(window.FLOUSI_API_URL || "").replace(/\/+$/, "");
             const translations = {
                 ar: {
@@ -65,17 +66,24 @@
                     categoriesTitle: "فين مشاو مصاريفك؟", categoriesSubtitle: "التوزيع حسب الصنف", emptyFilter: "ما كايناش عمليات بهاد التصفية.",
                     emptyTransactions: "مازال ما زدتي حتى عملية. بدا وسجل أول مصروف أو دخل.", emptyCategories: "التصنيفات غادي يبانوا ملي تسجل المصاريف.",
                     privacy: "بيانات الضيف كتبقى فهاد الجهاز، والحساب كيزامنها مع الخادم.", transactionModal: "زيد عملية جديدة", close: "سد", expense: "مصروف", incomeType: "دخل",
-                    description: "الوصف", descriptionPlaceholder: "مثال: قهوة، خلصة الشهر...", amount: "المبلغ بالدرهم", category: "الصنف", date: "التاريخ",
+                    description: "الوصف", descriptionPlaceholder: "مثال: قهوة، خلصة الشهر...", amount: "المبلغ ({currency})", category: "الصنف", date: "التاريخ",
                     saveTransaction: "حفظ العملية", budgetModal: "الميزانية الشهرية", budgetCopy: "دخل شحال باغي تصرف كحد أقصى فهاد الشهر.",
-                    budgetInput: "الميزانية بالدرهم", budgetPlaceholder: "مثال: 3000", saveBudget: "حفظ الميزانية",
-                    settingsTitle: "إعدادات التطبيق", language: "لغة التطبيق", sound: "تشغيل أصوات التطبيق", testSound: "جرّب الصوت",
+                    budgetInput: "الميزانية ({currency})", budgetPlaceholder: "مثال: 3000",
+                    settingsTitle: "إعدادات التطبيق", helpButton: "مساعدة", helpTitle: "كيفاش تستعمل فلوسي",
+                    helpIntro: "بدا بتسجيل العمليات ديالك، ومن بعد تتبع ميزانيتك وأهداف التوفير.",
+                    helpTransactions: "استعمل زر + باش تسجل المصاريف أو المداخيل، وزيد الوصف والمبلغ والتاريخ.",
+                    helpBudgetGoals: "حدد ميزانية الشهر من بطاقة الميزانية، وزيد أهداف التوفير وتبع التقدم ديالك.",
+                    helpNavigation: "بدل الشهر من السهمين، وشوف الإحصائيات والعمليات والأهداف من أقسام الصفحة أو القائمة لتحت.",
+                    helpSettings: "من الإعدادات بدل اللغة والعملة والمظهر. تقدر تستعمل التطبيق بلا حساب، أو تسجل الدخول لمزامنة البيانات بين الأجهزة.",
+                    language: "لغة التطبيق", currency: "العملة", currencyHelp: "تبديل العملة كيبدل الرمز فقط، وما كيحوّلش المبالغ المسجلة.",
+                    sound: "تشغيل أصوات التطبيق", testSound: "جرّب الصوت",
                     switchToDarkMode: "ليلي", switchToLightMode: "نهاري",
                     exportData: "تصدير البيانات", importData: "استيراد ودمج البيانات",
                     dataTransferHelp: "صدّر بياناتك من النسخة المحلية، ثم استوردها وادمجها مع حسابك.",
                     importDataInvalid: "ملف البيانات غير صالح أو فيه بيانات غير مدعومة.",
                     importDataTooLarge: "حجم ملف البيانات كبير بزاف.",
                     importDataMerged: "تدمجات البيانات محلياً. سجّل الدخول أو أنشئ حساباً باش تزامنها.",
-                    languageSaved: "تحفظات اللغة ديالك.", soundSaved: "تحفظات إعدادات الصوت.", transactionInvalid: "دخل معلومات صحيحة للعملية.",
+                    languageSaved: "تحفظات اللغة ديالك.", currencySaved: "تحفظات العملة ديالك.", soundSaved: "تحفظات إعدادات الصوت.", transactionInvalid: "دخل معلومات صحيحة للعملية.",
                     transactionSaved: "تسجلات العملية بنجاح.", budgetInvalid: "دخل ميزانية صحيحة أكبر من صفر.", budgetSaved: "تحفظات الميزانية ديالك.",
                     storageFailed: "ما قدرناش نحفظو البيانات. تأكد من مساحة التخزين.", settingsFailed: "ما قدرناش نحفظو الإعدادات.",
                     audioUnsupported: "المتصفح ديالك ما كيدعمش الصوت.", audioFailed: "ما قدرناش نشغلو الصوت. جرب مرة أخرى.",
@@ -140,17 +148,25 @@
                     categoriesTitle: "Où va votre argent ?", categoriesSubtitle: "Répartition par catégorie", emptyFilter: "Aucune opération pour ce filtre.",
                     emptyTransactions: "Aucune opération pour le moment. Ajoutez votre première dépense ou revenu.", emptyCategories: "Les catégories apparaîtront après l’ajout de dépenses.",
                     privacy: "Les données invité restent sur cet appareil ; un compte les synchronise avec le serveur.", transactionModal: "Ajouter une opération", close: "Fermer", expense: "Dépense", incomeType: "Revenu",
-                    description: "Description", descriptionPlaceholder: "Ex. : café, salaire...", amount: "Montant en dirhams", category: "Catégorie", date: "Date",
+                    description: "Description", descriptionPlaceholder: "Ex. : café, salaire...", amount: "Montant ({currency})", category: "Catégorie", date: "Date",
                     saveTransaction: "Enregistrer l’opération", budgetModal: "Budget mensuel", budgetCopy: "Saisissez le montant maximal à dépenser ce mois-ci.",
-                    budgetInput: "Budget en dirhams", budgetPlaceholder: "Ex. : 3000", saveBudget: "Enregistrer le budget",
-                    settingsTitle: "Paramètres de l’application", language: "Langue de l’application", sound: "Activer les sons de l’application", testSound: "Tester le son",
+                    budgetInput: "Budget ({currency})", budgetPlaceholder: "Ex. : 3000",
+                    settingsTitle: "Paramètres de l’application", helpButton: "Aide", helpTitle: "Comment utiliser Flousi",
+                    helpIntro: "Commencez par enregistrer vos opérations, puis suivez votre budget et vos objectifs d’épargne.",
+                    helpTransactions: "Utilisez le bouton + pour ajouter une dépense ou un revenu, avec sa description, son montant et sa date.",
+                    helpBudgetGoals: "Définissez votre budget du mois dans la carte Budget, puis créez des objectifs d’épargne et suivez leur progression.",
+                    helpNavigation: "Changez de mois avec les flèches. Consultez les statistiques, les opérations et les objectifs dans les sections ou le menu du bas.",
+                    helpSettings: "Dans les paramètres, choisissez la langue, la devise et le thème. Utilisez l’application sans compte ou connectez-vous pour synchroniser vos données entre appareils.",
+                    language: "Langue de l’application", currency: "Devise",
+                    currencyHelp: "Changer la devise modifie uniquement le code affiché ; les montants enregistrés ne sont pas convertis.",
+                    sound: "Activer les sons de l’application", testSound: "Tester le son",
                     switchToDarkMode: "Sombre", switchToLightMode: "Clair",
                     exportData: "Exporter les données", importData: "Importer et fusionner les données",
                     dataTransferHelp: "Exportez les données locales, puis importez-les pour les fusionner avec votre compte.",
                     importDataInvalid: "Le fichier de données est invalide ou contient des données non prises en charge.",
                     importDataTooLarge: "Le fichier de données est trop volumineux.",
                     importDataMerged: "Données fusionnées localement. Connectez-vous ou créez un compte pour les synchroniser.",
-                    languageSaved: "Langue enregistrée.", soundSaved: "Préférences audio enregistrées.", transactionInvalid: "Saisissez des informations valides pour l’opération.",
+                    languageSaved: "Langue enregistrée.", currencySaved: "Devise enregistrée.", soundSaved: "Préférences audio enregistrées.", transactionInvalid: "Saisissez des informations valides pour l’opération.",
                     transactionSaved: "Opération enregistrée.", budgetInvalid: "Saisissez un budget valide supérieur à zéro.", budgetSaved: "Budget enregistré.",
                     storageFailed: "Impossible d’enregistrer les données. Vérifiez l’espace de stockage.", settingsFailed: "Impossible d’enregistrer les paramètres.",
                     audioUnsupported: "Votre navigateur ne prend pas en charge l’audio.", audioFailed: "Impossible de lire le son. Réessayez.",
@@ -215,17 +231,25 @@
                     categoriesTitle: "Where does your money go?", categoriesSubtitle: "Spending by category", emptyFilter: "No transactions match this filter.",
                     emptyTransactions: "No transactions yet. Add your first expense or income.", emptyCategories: "Categories will appear when you add expenses.",
                     privacy: "Guest data stays on this device; an account syncs it with the server.", transactionModal: "Add a transaction", close: "Close", expense: "Expense", incomeType: "Income",
-                    description: "Description", descriptionPlaceholder: "e.g. coffee, salary...", amount: "Amount in dirhams", category: "Category", date: "Date",
+                    description: "Description", descriptionPlaceholder: "e.g. coffee, salary...", amount: "Amount ({currency})", category: "Category", date: "Date",
                     saveTransaction: "Save transaction", budgetModal: "Monthly budget", budgetCopy: "Enter the maximum amount you want to spend this month.",
-                    budgetInput: "Budget in dirhams", budgetPlaceholder: "e.g. 3000", saveBudget: "Save budget",
-                    settingsTitle: "App settings", language: "App language", sound: "Enable app sounds", testSound: "Test sound",
+                    budgetInput: "Budget ({currency})", budgetPlaceholder: "e.g. 3000",
+                    settingsTitle: "App settings", helpButton: "Help", helpTitle: "How to use Flousi",
+                    helpIntro: "Start by recording your transactions, then keep track of your budget and savings goals.",
+                    helpTransactions: "Use the + button to add an expense or income, including its description, amount, and date.",
+                    helpBudgetGoals: "Set your monthly budget in the Budget card, then create savings goals and track your progress.",
+                    helpNavigation: "Change months with the arrows. View trends, transactions, and goals in the page sections or bottom navigation.",
+                    helpSettings: "In Settings, choose your language, currency, and theme. Use the app without an account or sign in to sync your data across devices.",
+                    language: "App language", currency: "Currency",
+                    currencyHelp: "Changing the currency updates the displayed code only; saved amounts are not converted.",
+                    sound: "Enable app sounds", testSound: "Test sound",
                     switchToDarkMode: "Dark", switchToLightMode: "Light",
                     exportData: "Export data", importData: "Import and merge data",
                     dataTransferHelp: "Export your local data, then import it to merge it with your account.",
                     importDataInvalid: "The data file is invalid or contains unsupported data.",
                     importDataTooLarge: "The data file is too large.",
                     importDataMerged: "Data merged locally. Sign in or create an account to sync it.",
-                    languageSaved: "Language saved.", soundSaved: "Sound preferences saved.", transactionInvalid: "Enter valid transaction details.",
+                    languageSaved: "Language saved.", currencySaved: "Currency saved.", soundSaved: "Sound preferences saved.", transactionInvalid: "Enter valid transaction details.",
                     transactionSaved: "Transaction saved.", budgetInvalid: "Enter a valid budget greater than zero.", budgetSaved: "Budget saved.",
                     storageFailed: "Could not save your data. Check available storage.", settingsFailed: "Could not save settings.",
                     audioUnsupported: "Your browser does not support audio.", audioFailed: "Could not play the sound. Please try again.",
@@ -266,12 +290,13 @@
                     const saved = JSON.parse(localStorage.getItem(SETTINGS_KEY) || "{}");
                     return {
                         language: ["ar", "fr", "en"].includes(saved.language) ? saved.language : "ar",
+                        currency: SUPPORTED_CURRENCIES.includes(saved.currency) ? saved.currency : "MAD",
                         darkMode: saved.darkMode === true,
                         sounds: saved.sounds !== false
                     };
                 } catch (error) {
                     console.error("تعذر تحميل إعدادات التطبيق:", error);
-                    return { language: "ar", darkMode: false, sounds: true };
+                    return { language: "ar", currency: "MAD", darkMode: false, sounds: true };
                 }
             }
 function saveSettings() {
@@ -321,6 +346,9 @@ function saveSettings() {
                     "loginNotice": "loginNotice", "loginSubmit": "loginSubmit", "toggleAccountMode": "switchToRegister",
                     "continueAsGuest": "continueAsGuest", "backToWelcome": "backToWelcome",
                     "welcomeTitle": "welcome", "welcomeSubtitle": "subtitle", "budgetTitle": "budgetTitle", "transactionsTitle": "transactions",
+                    "helpButtonLabel": "helpButton", "helpTitle": "helpTitle", "helpIntro": "helpIntro",
+                    "helpTransactions": "helpTransactions", "helpBudgetGoals": "helpBudgetGoals",
+                    "helpNavigation": "helpNavigation", "helpSettings": "helpSettings",
                     "navHome": "navHome", "navTransactions": "navTransactions", "navTrends": "navTrends", "navGoals": "navGoals",
                     "mobileWelcome": "mobileWelcome",
                     "moneyTipTitle": "moneyTipTitle",
@@ -334,7 +362,7 @@ function saveSettings() {
                     "categoriesTitle": "categoriesTitle", "categorySubtitle": "categoriesSubtitle", "privacyText": "privacy", "transactionModalTitle": "transactionModal",
                     "descriptionLabel": "description", "amountLabel": "amount", "categoryLabel": "category", "dateLabel": "date",
                     "budgetModalTitle": "budgetModal", "budgetDialogCopy": "budgetCopy", "budgetInputLabel": "budgetInput",
-                    "settingsTitle": "settingsTitle", "languageLabel": "language", "soundLabel": "sound", "testSound": "testSound",
+                    "settingsTitle": "settingsTitle", "languageLabel": "language", "currencyLabel": "currency", "soundLabel": "sound", "testSound": "testSound",
                     "exportDataButton": "exportData", "importDataButton": "importData", "dataTransferHelp": "dataTransferHelp",
                     "openTransactionText": "addTransaction", "transactionSubmit": "saveTransaction", "budgetSubmit": "saveBudget"
                 };
@@ -342,6 +370,9 @@ function saveSettings() {
                     const element = document.getElementById(id);
                     if (element) element.textContent = t(key);
                 });
+                document.getElementById("amountLabel").textContent = t("amount", { currency: settings.currency });
+                document.getElementById("budgetInputLabel").textContent = t("budgetInput", { currency: settings.currency });
+                document.getElementById("currencyHelp").textContent = t("currencyHelp");
                 const loginPassword = document.getElementById("loginPassword");
                 const passwordToggle = document.getElementById("togglePassword");
                 if (loginPassword && passwordToggle) {
@@ -353,6 +384,8 @@ function saveSettings() {
                 if (loginFeedback) loginFeedback.textContent = t("loginFeedback");
                 document.querySelector(".brand-caption").textContent = t("brandCaption");
                 document.getElementById("settingsButtonLabel").textContent = t("settings");
+                document.getElementById("openHelp").setAttribute("aria-label", t("helpButton"));
+                document.querySelectorAll(".close-button").forEach(button => button.setAttribute("aria-label", t("close")));
                 applyTheme();
                 document.getElementById("monthSwitcher").setAttribute("aria-label", t("monthSelector"));
                 document.querySelector(".mobile-nav").setAttribute("aria-label", t("mainNavigation"));
@@ -392,6 +425,7 @@ function saveSettings() {
                 }
                 document.getElementById("soundToggle").checked = settings.sounds;
                 document.getElementById("languageSelect").value = language;
+                document.getElementById("currencySelect").value = settings.currency;
                 document.getElementById("trendChart").setAttribute("aria-label", t("trendTitle") + " — " + t("trendSubtitle"));
                 updateAccountMode();
                 updateAccountSettings();
@@ -753,7 +787,7 @@ function saveSettings() {
             }
 
             function currencyUnit() {
-                return language === "ar" ? "د.م." : "MAD";
+                return settings.currency === "MAD" && language === "ar" ? "د.م." : settings.currency;
             }
 
             function localDateValue(date) {
@@ -1393,6 +1427,11 @@ function saveSettings() {
                 openModal("settingsModal");
                 playUiSound("open");
             });
+            document.getElementById("openHelp").addEventListener("click", () => {
+                openModal("helpModal");
+                document.querySelector("#helpModal .close-button").focus();
+                playUiSound("open");
+            });
             document.getElementById("toggleTheme").addEventListener("click", () => {
                 const previous = settings.darkMode;
                 settings.darkMode = !previous;
@@ -1421,6 +1460,17 @@ function saveSettings() {
                 } else {
                     applyLanguage();
                     showToast(t("languageSaved"));
+                }
+            });
+            document.getElementById("currencySelect").addEventListener("change", event => {
+                const previous = settings.currency;
+                settings.currency = event.target.value;
+                if (!SUPPORTED_CURRENCIES.includes(settings.currency) || !saveSettings()) {
+                    settings.currency = previous;
+                    event.target.value = previous;
+                } else {
+                    applyLanguage();
+                    showToast(t("currencySaved"));
                 }
             });
             document.getElementById("soundToggle").addEventListener("change", event => {
