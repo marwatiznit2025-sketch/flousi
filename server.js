@@ -9,6 +9,7 @@ const { promisify } = require("node:util");
 const scrypt = promisify(crypto.scrypt);
 const TOKEN_LIFETIME_SECONDS = 30 * 24 * 60 * 60;
 const MAX_BODY_BYTES = 10 * 1024 * 1024;
+const SUPPORTED_CURRENCIES = new Set(["MAD", "USD", "EUR", "GBP", "CAD", "SAR", "AED"]);
 const STATIC_FILES = new Map([
     ["/", ["index.html", "text/html; charset=utf-8"]],
     ["/index.html", ["index.html", "text/html; charset=utf-8"]],
@@ -131,6 +132,40 @@ function normalizeEmail(value) {
     return email.length <= 254 && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) ? email : null;
 }
 
+function validChallenge(value) {
+    if (!isPlainObject(value) ||
+        typeof value.id !== "string" || !/^[A-Za-z0-9_-]{16}$/.test(value.id) ||
+        typeof value.title !== "string" || !value.title.trim() || value.title.length > 60 ||
+        !Number.isFinite(value.target) || value.target <= 0 || value.target > 999999999 ||
+        !SUPPORTED_CURRENCIES.has(value.currency) ||
+        !validDate(value.deadline) ||
+        !Array.isArray(value.participants) || value.participants.length < 1 || value.participants.length > 50) return false;
+    const emails = new Set();
+    return value.participants.every(participant => {
+        const email = normalizeEmail(participant && participant.email);
+        if (!email || typeof participant.name !== "string" || !participant.name.trim() || participant.name.length > 40 ||
+            !Number.isFinite(participant.progress) || participant.progress < 0 || participant.progress > value.target ||
+            emails.has(email)) return false;
+        emails.add(email);
+        return true;
+    });
+}
+
+function publicChallenge(challenge, email) {
+    return {
+        id: challenge.id,
+        title: challenge.title,
+        target: Number(challenge.target),
+        currency: challenge.currency,
+        deadline: challenge.deadline,
+        participants: challenge.participants.map(participant => ({
+            name: participant.name,
+            progress: Number(participant.progress),
+            isYou: participant.email === email
+        }))
+    };
+}
+
 async function createServer(options = {}) {
     const dataDir = options.dataDir || process.env.FLOUSI_DATA_DIR || path.join(__dirname, "data");
     const storePath = path.join(dataDir, "store.json");
@@ -177,6 +212,16 @@ async function createServer(options = {}) {
                     data JSONB NOT NULL
                 )
             `);
+            await pool.query(`
+                CREATE TABLE IF NOT EXISTS flousi_challenges (
+                    id TEXT PRIMARY KEY,
+                    title TEXT NOT NULL,
+                    target NUMERIC NOT NULL,
+                    currency TEXT NOT NULL,
+                    deadline DATE NOT NULL,
+                    participants JSONB NOT NULL
+                )
+            `);
         } catch (error) {
             if (ownsPool) {
                 try {
@@ -200,6 +245,11 @@ async function createServer(options = {}) {
         }
         if (!isPlainObject(store) || !isPlainObject(store.users)) {
             throw new Error("Flousi account storage is invalid; refusing to overwrite it.");
+        }
+        if (store.challenges === undefined) store.challenges = {};
+        if (!isPlainObject(store.challenges) ||
+            !Object.values(store.challenges).every(validChallenge)) {
+            throw new Error("Flousi challenge storage is invalid; refusing to overwrite it.");
         }
     }
 
@@ -265,6 +315,155 @@ async function createServer(options = {}) {
             [email, JSON.stringify(data)]
         );
         return result.rowCount === 1;
+    }
+
+    async function withPgTransaction(operation) {
+        const client = await pool.connect();
+        try {
+            await client.query("BEGIN");
+            const result = await operation(client);
+            await client.query("COMMIT");
+            return result;
+        } catch (error) {
+            try {
+                await client.query("ROLLBACK");
+            } catch (rollbackError) {
+                console.error("Could not roll back a challenge transaction:", rollbackError);
+            }
+            throw error;
+        } finally {
+            client.release();
+        }
+    }
+
+    async function getChallenges(email) {
+        if (!pool) {
+            return Object.values(store.challenges)
+                .filter(challenge => challenge.participants.some(participant => participant.email === email))
+                .map(challenge => publicChallenge(challenge, email));
+        }
+        const result = await pool.query(
+            `SELECT id, title, target, currency, deadline, participants
+             FROM flousi_challenges
+             WHERE participants @> $1::jsonb`,
+            [JSON.stringify([{ email }])]
+        );
+        return result.rows.map(row => publicChallenge({
+            id: row.id,
+            title: row.title,
+            target: Number(row.target),
+            currency: row.currency,
+            deadline: typeof row.deadline === "string" ? row.deadline.slice(0, 10) : row.deadline.toISOString().slice(0, 10),
+            participants: row.participants
+        }, email));
+    }
+
+    async function createChallenge(challenge) {
+        if (!pool) {
+            store.challenges[challenge.id] = challenge;
+            try {
+                await persistStore();
+            } catch (error) {
+                delete store.challenges[challenge.id];
+                throw error;
+            }
+            return;
+        }
+        await withPgTransaction(async client => {
+            await client.query(
+                `INSERT INTO flousi_challenges (id, title, target, currency, deadline, participants)
+                 VALUES ($1, $2, $3, $4, $5, $6::jsonb)`,
+                [challenge.id, challenge.title, challenge.target, challenge.currency, challenge.deadline, JSON.stringify(challenge.participants)]
+            );
+        });
+    }
+
+    async function joinChallenge(id, email, name) {
+        if (!pool) {
+            const challenge = store.challenges[id];
+            if (!challenge) return null;
+            if (!challenge.participants.some(participant => participant.email === email)) {
+                if (challenge.participants.length >= 50) return false;
+                challenge.participants.push({ email, name, progress: 0 });
+                try {
+                    await persistStore();
+                } catch (error) {
+                    challenge.participants = challenge.participants.filter(participant => participant.email !== email);
+                    throw error;
+                }
+            }
+            return publicChallenge(challenge, email);
+        }
+        return withPgTransaction(async client => {
+            const result = await client.query(
+                `SELECT id, title, target, currency, deadline, participants
+                 FROM flousi_challenges WHERE id = $1 FOR UPDATE`,
+                [id]
+            );
+            const row = result.rows[0];
+            if (!row) return null;
+            const participants = row.participants;
+            if (!participants.some(participant => participant.email === email)) {
+                if (participants.length >= 50) return false;
+                participants.push({ email, name, progress: 0 });
+                await client.query(
+                    "UPDATE flousi_challenges SET participants = $2::jsonb WHERE id = $1",
+                    [id, JSON.stringify(participants)]
+                );
+            }
+            return publicChallenge({
+                id: row.id,
+                title: row.title,
+                target: Number(row.target),
+                currency: row.currency,
+                deadline: typeof row.deadline === "string" ? row.deadline.slice(0, 10) : row.deadline.toISOString().slice(0, 10),
+                participants
+            }, email);
+        });
+    }
+
+    async function updateChallengeProgress(id, email, progress) {
+        if (!pool) {
+            const challenge = store.challenges[id];
+            const participant = challenge && challenge.participants.find(item => item.email === email);
+            if (!participant) return null;
+            if (progress > challenge.target) return false;
+            const previousProgress = participant.progress;
+            participant.progress = progress;
+            try {
+                await persistStore();
+            } catch (error) {
+                participant.progress = previousProgress;
+                throw error;
+            }
+            return publicChallenge(challenge, email);
+        }
+        return withPgTransaction(async client => {
+            const result = await client.query(
+                `SELECT id, title, target, currency, deadline, participants
+                 FROM flousi_challenges WHERE id = $1 FOR UPDATE`,
+                [id]
+            );
+            const row = result.rows[0];
+            if (!row) return null;
+            const participants = row.participants;
+            const participant = participants.find(item => item.email === email);
+            if (!participant) return null;
+            if (progress > Number(row.target)) return false;
+            participant.progress = progress;
+            await client.query(
+                "UPDATE flousi_challenges SET participants = $2::jsonb WHERE id = $1",
+                [id, JSON.stringify(participants)]
+            );
+            return publicChallenge({
+                id: row.id,
+                title: row.title,
+                target: Number(row.target),
+                currency: row.currency,
+                deadline: typeof row.deadline === "string" ? row.deadline.slice(0, 10) : row.deadline.toISOString().slice(0, 10),
+                participants
+            }, email);
+        });
     }
 
     function createToken(email) {
@@ -402,6 +601,94 @@ async function createServer(options = {}) {
                 }
                 sendJson(response, 200, { data });
                 return;
+            }
+
+            if (pathname === "/api/challenges" && (request.method === "GET" || request.method === "POST")) {
+                const user = await authenticatedUser(request);
+                if (!user) {
+                    sendJson(response, 401, { error: "Authentication is required.", code: "UNAUTHORIZED" });
+                    return;
+                }
+                if (request.method === "GET") {
+                    sendJson(response, 200, { challenges: await getChallenges(user.email) });
+                    return;
+                }
+                const body = await readJson(request);
+                if (!isPlainObject(body)) {
+                    sendJson(response, 400, { error: "Challenge details are invalid.", code: "INVALID_CHALLENGE" });
+                    return;
+                }
+                const title = typeof body.title === "string" ? body.title.trim() : "";
+                const name = typeof body.name === "string" ? body.name.trim() : "";
+                const today = new Date().toISOString().slice(0, 10);
+                if (!title || title.length > 60 || !name || name.length > 40 ||
+                    !Number.isFinite(body.target) || body.target <= 0 || body.target > 999999999 ||
+                    !SUPPORTED_CURRENCIES.has(body.currency) ||
+                    !validDate(body.deadline) || body.deadline <= today) {
+                    sendJson(response, 400, { error: "Challenge details are invalid.", code: "INVALID_CHALLENGE" });
+                    return;
+                }
+                const challenge = {
+                    id: crypto.randomBytes(12).toString("base64url"),
+                    title,
+                    target: body.target,
+                    currency: body.currency,
+                    deadline: body.deadline,
+                    participants: [{ email: user.email, name, progress: 0 }]
+                };
+                await createChallenge(challenge);
+                sendJson(response, 201, { challenge: publicChallenge(challenge, user.email) });
+                return;
+            }
+
+            const challengeMatch = /^\/api\/challenges\/([A-Za-z0-9_-]{16})(?:\/(join|progress))?$/.exec(pathname);
+            if (challengeMatch && ["POST", "PUT"].includes(request.method)) {
+                const user = await authenticatedUser(request);
+                if (!user) {
+                    sendJson(response, 401, { error: "Authentication is required.", code: "UNAUTHORIZED" });
+                    return;
+                }
+                const [, id, action] = challengeMatch;
+                const body = await readJson(request);
+                if (!isPlainObject(body)) {
+                    sendJson(response, 400, { error: "Challenge details are invalid.", code: "INVALID_CHALLENGE" });
+                    return;
+                }
+                if (action === "join" && request.method === "POST") {
+                    const name = typeof body.name === "string" ? body.name.trim() : "";
+                    if (!name || name.length > 40) {
+                        sendJson(response, 400, { error: "A display name is required.", code: "INVALID_CHALLENGE" });
+                        return;
+                    }
+                    const challenge = await joinChallenge(id, user.email, name);
+                    if (challenge === false) {
+                        sendJson(response, 409, { error: "This challenge is full.", code: "CHALLENGE_FULL" });
+                        return;
+                    }
+                    if (!challenge) {
+                        sendJson(response, 404, { error: "Challenge not found.", code: "NOT_FOUND" });
+                        return;
+                    }
+                    sendJson(response, 200, { challenge });
+                    return;
+                }
+                if (action === "progress" && request.method === "PUT") {
+                    if (!Number.isFinite(body.progress) || body.progress < 0 || body.progress > 999999999) {
+                        sendJson(response, 400, { error: "Progress amount is invalid.", code: "INVALID_CHALLENGE" });
+                        return;
+                    }
+                    const challenge = await updateChallengeProgress(id, user.email, body.progress);
+                    if (challenge === false) {
+                        sendJson(response, 400, { error: "Progress cannot exceed the challenge target.", code: "INVALID_CHALLENGE" });
+                        return;
+                    }
+                    if (!challenge) {
+                        sendJson(response, 404, { error: "Challenge not found.", code: "NOT_FOUND" });
+                        return;
+                    }
+                    sendJson(response, 200, { challenge });
+                    return;
+                }
             }
 
             if (pathname.startsWith("/api/")) {

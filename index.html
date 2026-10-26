@@ -146,6 +146,21 @@
             <button class="challenge-complete" id="completeDailyChallenge" type="button">درت التحدّي اليوم!</button>
         </section>
 
+        <section class="card social-challenges-card" aria-labelledby="socialChallengesTitle">
+            <div class="section-header">
+                <div>
+                    <h2 id="socialChallengesTitle">تحديات مع صحابك</h2>
+                    <p id="socialChallengesDescription">ديرو تحدي توفير وتبعو التقدم ديالكم مجموعين.</p>
+                </div>
+                <div class="social-challenge-actions">
+                    <button class="text-button" id="joinChallengeButton" type="button">دخل بتحدي</button>
+                    <button class="primary-button" id="createChallengeButton" type="button">＋ <span id="createChallengeText">صايب تحدي</span></button>
+                </div>
+            </div>
+            <div class="social-challenge-list" id="socialChallengeList"></div>
+            <p class="goal-empty" id="socialChallengeEmpty">سجّل الدخول وصايب تحدي أو دخل بالكود اللي شاركو معاك صاحبك.</p>
+        </section>
+
         <section class="card trend-card" id="trendSection" aria-labelledby="trendTitle">
             <div class="analytics-heading">
                 <h2 id="trendTitle">الإحصائيات</h2>
@@ -353,6 +368,55 @@
                 <li id="helpSettings">من الإعدادات بدل اللغة والعملة والمظهر. تقدر تستعمل التطبيق بلا حساب، أو تسجل الدخول لمزامنة البيانات بين الأجهزة.</li>
             </ul>
         </section>
+    </div>
+
+    <div class="modal-backdrop" id="createChallengeModal" role="dialog" aria-modal="true" aria-labelledby="createChallengeTitle" hidden>
+        <form class="modal" id="createChallengeForm">
+            <div class="modal-header">
+                <h2 id="createChallengeTitle">صايب تحدي توفير</h2>
+                <button class="close-button" type="button" data-close="createChallengeModal" aria-label="سد">×</button>
+            </div>
+            <label class="field"><span id="challengeTitleLabel">اسم التحدي</span>
+                <input id="challengeTitleInput" type="text" maxlength="60" placeholder="مثال: نوفروا للعطلة" required>
+            </label>
+            <label class="field"><span id="challengeTargetLabel">هدف التوفير</span>
+                <input id="challengeTargetInput" type="number" min="0.01" max="999999999" step="0.01" placeholder="مثال: 5000" required>
+            </label>
+            <label class="field"><span id="challengeCurrencyLabel">العملة</span>
+                <select id="challengeCurrencyInput">
+                    <option value="MAD">MAD</option>
+                    <option value="USD">USD</option>
+                    <option value="EUR">EUR</option>
+                    <option value="GBP">GBP</option>
+                    <option value="CAD">CAD</option>
+                    <option value="SAR">SAR</option>
+                    <option value="AED">AED</option>
+                </select>
+            </label>
+            <label class="field"><span id="challengeDeadlineLabel">آخر أجل</span>
+                <input id="challengeDeadlineInput" type="date" required>
+            </label>
+            <label class="field"><span id="challengeDisplayNameLabel">الاسم اللي غادي يبان لصحابك</span>
+                <input id="challengeDisplayNameInput" type="text" maxlength="40" placeholder="مثال: سلمى" required>
+            </label>
+            <button class="primary-button modal-submit" id="createChallengeSubmit" type="submit">إنشاء التحدي</button>
+        </form>
+    </div>
+
+    <div class="modal-backdrop" id="joinChallengeModal" role="dialog" aria-modal="true" aria-labelledby="joinChallengeTitle" hidden>
+        <form class="modal" id="joinChallengeForm">
+            <div class="modal-header">
+                <h2 id="joinChallengeTitle">دخل لتحدي صاحبك</h2>
+                <button class="close-button" type="button" data-close="joinChallengeModal" aria-label="سد">×</button>
+            </div>
+            <label class="field"><span id="challengeCodeLabel">كود الدعوة</span>
+                <input id="challengeCodeInput" type="text" maxlength="16" placeholder="XXXXXXXXXXXXXXX" required>
+            </label>
+            <label class="field"><span id="joinDisplayNameLabel">الاسم اللي غادي يبان للمشاركين</span>
+                <input id="joinDisplayNameInput" type="text" maxlength="40" placeholder="مثال: سلمى" required>
+            </label>
+            <button class="primary-button modal-submit" id="joinChallengeSubmit" type="submit">انضم للتحدي</button>
+        </form>
     </div>
 
     <div class="modal-backdrop" id="goalModal" role="dialog" aria-modal="true" aria-labelledby="goalModalTitle" hidden>

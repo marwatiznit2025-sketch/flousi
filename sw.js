@@ -1,4 +1,4 @@
-const CACHE_NAME = "flousi-shell-v4";
+const CACHE_NAME = "flousi-shell-v5";
 const APP_SHELL = ["./", "./index.html", "./style.css", "./app.js", "./logo.svg", "./manifest.webmanifest"];
 
 self.addEventListener("install", event => {

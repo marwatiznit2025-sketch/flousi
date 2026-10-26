@@ -75,6 +75,23 @@
                     helpBudgetGoals: "حدد ميزانية الشهر من بطاقة الميزانية، وزيد أهداف التوفير وتبع التقدم ديالك.",
                     helpNavigation: "بدل الشهر من السهمين، وشوف الإحصائيات والعمليات والأهداف من أقسام الصفحة أو القائمة لتحت.",
                     helpSettings: "من الإعدادات بدل اللغة والعملة والمظهر. تقدر تستعمل التطبيق بلا حساب، أو تسجل الدخول لمزامنة البيانات بين الأجهزة.",
+                    socialChallengesTitle: "تحديات مع صحابك", socialChallengesDescription: "ديرو تحدي توفير وتبعو التقدم ديالكم مجموعين.",
+                    createChallenge: "صايب تحدي", joinChallenge: "دخل بتحدي", challengeEmpty: "سجّل الدخول وصايب تحدي أو دخل بالكود اللي شاركو معاك صاحبك.",
+                    challengeEmptySignedIn: "ما عندك حتى تحدي دابا. صايب تحدي أو دخل بكود صاحبك.", challengeYou: "(نتا)",
+                    challengeCreateTitle: "صايب تحدي توفير", challengeTitle: "اسم التحدي", challengeTitlePlaceholder: "مثال: نوفروا للعطلة",
+                    challengeTarget: "هدف التوفير", challengeTargetPlaceholder: "مثال: 5000", challengeCurrency: "العملة",
+                    challengeDeadline: "آخر أجل", challengeDisplayName: "الاسم اللي غادي يبان لصحابك", challengeDisplayNamePlaceholder: "مثال: سلمى",
+                    challengeCreateSubmit: "إنشاء التحدي", challengeJoinTitle: "دخل لتحدي صاحبك", challengeCode: "كود الدعوة",
+                    challengeCodePlaceholder: "لصق كود الدعوة هنا", challengeJoinSubmit: "انضم للتحدي",
+                    challengeUpdate: "حدّث التقدم", challengeProgress: "المبلغ اللي وفرتي", challengeInvite: "نسخ رابط الدعوة",
+                    challengeParticipants: "المشاركين", challengeCreated: "تخلق التحدي. شارك الرابط مع صحابك!",
+                    challengeJoined: "دخلتي للتحدي!", challengeProgressSaved: "تحدّث التقدم ديالك.",
+                    challengeCopied: "تنسخ رابط الدعوة.", challengeCopyFailed: "ما قدرناش ننسخو الرابط. حاول مرة أخرى.",
+                    challengeLoginRequired: "خاصك تسجل الدخول باش تشارك فتحديات الأصدقاء.",
+                    challengeLoadError: "ما قدرناش نحملو تحدياتك. تأكد من الاتصال وحاول مرة أخرى.",
+                    challengeFull: "هاد التحدي وصل للحد الأقصى ديال المشاركين.",
+                    challengeInvalid: "دخل معلومات صحيحة للتحدي.", challengeMissingName: "دخل الاسم اللي غادي يبان للمشاركين.",
+                    challengeNotFound: "ما لقيناش هاد التحدي. تأكد من رابط الدعوة.",
                     language: "لغة التطبيق", currency: "العملة", currencyHelp: "تبديل العملة كيبدل الرمز فقط، وما كيحوّلش المبالغ المسجلة.",
                     sound: "تشغيل أصوات التطبيق", testSound: "جرّب الصوت",
                     switchToDarkMode: "ليلي", switchToLightMode: "نهاري",
@@ -157,6 +174,23 @@
                     helpBudgetGoals: "Définissez votre budget du mois dans la carte Budget, puis créez des objectifs d’épargne et suivez leur progression.",
                     helpNavigation: "Changez de mois avec les flèches. Consultez les statistiques, les opérations et les objectifs dans les sections ou le menu du bas.",
                     helpSettings: "Dans les paramètres, choisissez la langue, la devise et le thème. Utilisez l’application sans compte ou connectez-vous pour synchroniser vos données entre appareils.",
+                    socialChallengesTitle: "Défis entre amis", socialChallengesDescription: "Lancez un défi d’épargne et suivez vos progrès ensemble.",
+                    createChallenge: "Créer un défi", joinChallenge: "Rejoindre", challengeEmpty: "Connectez-vous pour créer un défi ou rejoindre celui d’un ami avec son code.",
+                    challengeEmptySignedIn: "Vous n’avez pas encore de défi. Créez-en un ou rejoignez celui d’un ami.", challengeYou: "(vous)",
+                    challengeCreateTitle: "Créer un défi d’épargne", challengeTitle: "Nom du défi", challengeTitlePlaceholder: "Ex. : épargne pour les vacances",
+                    challengeTarget: "Objectif d’épargne", challengeTargetPlaceholder: "Ex. : 5000", challengeCurrency: "Devise",
+                    challengeDeadline: "Date limite", challengeDisplayName: "Nom visible par vos amis", challengeDisplayNamePlaceholder: "Ex. : Salma",
+                    challengeCreateSubmit: "Créer le défi", challengeJoinTitle: "Rejoindre le défi d’un ami", challengeCode: "Code d’invitation",
+                    challengeCodePlaceholder: "Collez le code d’invitation", challengeJoinSubmit: "Rejoindre le défi",
+                    challengeUpdate: "Mettre à jour", challengeProgress: "Montant épargné", challengeInvite: "Copier le lien d’invitation",
+                    challengeParticipants: "Participants", challengeCreated: "Défi créé. Partagez le lien avec vos amis !",
+                    challengeJoined: "Vous avez rejoint le défi !", challengeProgressSaved: "Votre progression a été mise à jour.",
+                    challengeCopied: "Lien d’invitation copié.", challengeCopyFailed: "Impossible de copier le lien. Réessayez.",
+                    challengeLoginRequired: "Connectez-vous pour participer aux défis entre amis.",
+                    challengeLoadError: "Impossible de charger vos défis. Vérifiez la connexion et réessayez.",
+                    challengeFull: "Ce défi a atteint le nombre maximal de participants.",
+                    challengeInvalid: "Saisissez des informations de défi valides.", challengeMissingName: "Saisissez le nom qui sera visible par les participants.",
+                    challengeNotFound: "Défi introuvable. Vérifiez le lien d’invitation.",
                     language: "Langue de l’application", currency: "Devise",
                     currencyHelp: "Changer la devise modifie uniquement le code affiché ; les montants enregistrés ne sont pas convertis.",
                     sound: "Activer les sons de l’application", testSound: "Tester le son",
@@ -240,6 +274,23 @@
                     helpBudgetGoals: "Set your monthly budget in the Budget card, then create savings goals and track your progress.",
                     helpNavigation: "Change months with the arrows. View trends, transactions, and goals in the page sections or bottom navigation.",
                     helpSettings: "In Settings, choose your language, currency, and theme. Use the app without an account or sign in to sync your data across devices.",
+                    socialChallengesTitle: "Challenges with friends", socialChallengesDescription: "Set a savings challenge and track progress together.",
+                    createChallenge: "Create challenge", joinChallenge: "Join challenge", challengeEmpty: "Sign in to create a challenge or join a friend with their invite code.",
+                    challengeEmptySignedIn: "You don’t have any challenges yet. Create one or join a friend’s.", challengeYou: "(you)",
+                    challengeCreateTitle: "Create a savings challenge", challengeTitle: "Challenge name", challengeTitlePlaceholder: "e.g. Save for a trip",
+                    challengeTarget: "Savings target", challengeTargetPlaceholder: "e.g. 5000", challengeCurrency: "Currency",
+                    challengeDeadline: "Deadline", challengeDisplayName: "Name your friends will see", challengeDisplayNamePlaceholder: "e.g. Sam",
+                    challengeCreateSubmit: "Create challenge", challengeJoinTitle: "Join a friend’s challenge", challengeCode: "Invite code",
+                    challengeCodePlaceholder: "Paste the invite code", challengeJoinSubmit: "Join challenge",
+                    challengeUpdate: "Update progress", challengeProgress: "Amount saved", challengeInvite: "Copy invite link",
+                    challengeParticipants: "Participants", challengeCreated: "Challenge created. Share the link with your friends!",
+                    challengeJoined: "You joined the challenge!", challengeProgressSaved: "Your progress has been updated.",
+                    challengeCopied: "Invite link copied.", challengeCopyFailed: "Could not copy the link. Please try again.",
+                    challengeLoginRequired: "Sign in to take part in challenges with friends.",
+                    challengeLoadError: "Could not load your challenges. Check your connection and try again.",
+                    challengeFull: "This challenge has reached its participant limit.",
+                    challengeInvalid: "Enter valid challenge details.", challengeMissingName: "Enter the name other participants will see.",
+                    challengeNotFound: "Challenge not found. Check the invitation link.",
                     language: "App language", currency: "Currency",
                     currencyHelp: "Changing the currency updates the displayed code only; saved amounts are not converted.",
                     sound: "Enable app sounds", testSound: "Test sound",
@@ -277,6 +328,10 @@
             let data = loadData();
             let authToken = localStorage.getItem(AUTH_KEY) || "";
             let accountEmail = localStorage.getItem(ACCOUNT_EMAIL_KEY) || "";
+            let socialChallenges = [];
+            let pendingInviteId = new URLSearchParams(window.location.search).get("challenge");
+            if (!/^[A-Za-z0-9_-]{16}$/.test(pendingInviteId || "")) pendingInviteId = "";
+            let invitePrompted = false;
             let accountMode = "login";
             let syncRevision = 0;
             let syncedRevision = 0;
@@ -349,6 +404,14 @@ function saveSettings() {
                     "helpButtonLabel": "helpButton", "helpTitle": "helpTitle", "helpIntro": "helpIntro",
                     "helpTransactions": "helpTransactions", "helpBudgetGoals": "helpBudgetGoals",
                     "helpNavigation": "helpNavigation", "helpSettings": "helpSettings",
+                    "socialChallengesTitle": "socialChallengesTitle", "socialChallengesDescription": "socialChallengesDescription",
+                    "joinChallengeButton": "joinChallenge", "createChallengeText": "createChallenge", "socialChallengeEmpty": "challengeEmpty",
+                    "createChallengeTitle": "challengeCreateTitle", "challengeTitleLabel": "challengeTitle",
+                    "challengeTargetLabel": "challengeTarget", "challengeCurrencyLabel": "challengeCurrency",
+                    "challengeDeadlineLabel": "challengeDeadline", "challengeDisplayNameLabel": "challengeDisplayName",
+                    "createChallengeSubmit": "challengeCreateSubmit", "joinChallengeTitle": "challengeJoinTitle",
+                    "challengeCodeLabel": "challengeCode", "joinDisplayNameLabel": "challengeDisplayName",
+                    "joinChallengeSubmit": "challengeJoinSubmit",
                     "navHome": "navHome", "navTransactions": "navTransactions", "navTrends": "navTrends", "navGoals": "navGoals",
                     "mobileWelcome": "mobileWelcome",
                     "moneyTipTitle": "moneyTipTitle",
@@ -372,6 +435,11 @@ function saveSettings() {
                 });
                 document.getElementById("amountLabel").textContent = t("amount", { currency: settings.currency });
                 document.getElementById("budgetInputLabel").textContent = t("budgetInput", { currency: settings.currency });
+                document.getElementById("challengeTitleInput").placeholder = t("challengeTitlePlaceholder");
+                document.getElementById("challengeTargetInput").placeholder = t("challengeTargetPlaceholder");
+                document.getElementById("challengeDisplayNameInput").placeholder = t("challengeDisplayNamePlaceholder");
+                document.getElementById("joinDisplayNameInput").placeholder = t("challengeDisplayNamePlaceholder");
+                document.getElementById("challengeCodeInput").placeholder = t("challengeCodePlaceholder");
                 document.getElementById("currencyHelp").textContent = t("currencyHelp");
                 const loginPassword = document.getElementById("loginPassword");
                 const passwordToggle = document.getElementById("togglePassword");
@@ -397,6 +465,8 @@ function saveSettings() {
                 });
                 document.getElementById("transactionTypeSwitch").setAttribute("aria-label", t("transactionType"));
                 document.getElementById("budgetProgress").setAttribute("aria-label", t("budgetProgress"));
+                document.getElementById("socialChallengeList").setAttribute("aria-label", t("socialChallengesTitle"));
+                renderSocialChallenges();
                 document.querySelector("[data-summary='balance']").textContent = t("balance");
                 document.querySelector("[data-summary='income']").textContent = t("income");
                 document.querySelector("[data-summary='expenses']").textContent = t("expenses");
@@ -611,6 +681,7 @@ function saveSettings() {
                     feedback.hidden = true;
                     document.getElementById("loginPassword").value = "";
                     finishIntro();
+                    loadSocialChallenges();
                     showToast(t(registering ? "accountCreated" : "accountSignedIn"));
                 } catch (error) {
                     console.error("تعذر تسجيل الدخول إلى Flousi:", error);
@@ -652,11 +723,14 @@ function saveSettings() {
                     saveData(false);
                     updateAccountSettings();
                     finishIntro();
+                    loadSocialChallenges();
                 } catch (error) {
                     console.error("تعذر استعادة حساب Flousi:", error);
                     if (error.status === 401) {
                         authToken = "";
                         accountEmail = "";
+                        socialChallenges = [];
+                        renderSocialChallenges();
                         localStorage.removeItem(AUTH_KEY);
                         localStorage.removeItem(ACCOUNT_EMAIL_KEY);
                         localStorage.removeItem(SYNCED_DATA_KEY);
@@ -724,13 +798,84 @@ function saveSettings() {
                         INVALID_EMAIL: "apiInvalidEmail",
                         INVALID_PASSWORD: "passwordTooShort",
                         EMAIL_EXISTS: "apiEmailExists",
-                        INVALID_DATA: "apiInvalidData"
+                        INVALID_DATA: "apiInvalidData",
+                        INVALID_CHALLENGE: "challengeInvalid",
+                        CHALLENGE_FULL: "challengeFull",
+                        NOT_FOUND: "challengeNotFound"
                     }[body.code];
                     const error = new Error(messageKey ? t(messageKey) : t("apiGenericError"));
                     error.status = response.status;
                     throw error;
                 }
                 return body;
+            }
+
+            async function loadSocialChallenges() {
+                if (!authToken) {
+                    socialChallenges = [];
+                    renderSocialChallenges();
+                    return;
+                }
+                try {
+                    const result = await apiRequest("/api/challenges");
+                    socialChallenges = result.challenges;
+                    renderSocialChallenges();
+                    promptPendingChallenge();
+                } catch (error) {
+                    console.error("Could not load Flousi friend challenges:", error);
+                    showToast(t("challengeLoadError"));
+                }
+            }
+
+            function promptPendingChallenge() {
+                if (!pendingInviteId || invitePrompted) return;
+                invitePrompted = true;
+                document.getElementById("challengeCodeInput").value = pendingInviteId;
+                openModal("joinChallengeModal");
+                document.getElementById("joinDisplayNameInput").focus();
+            }
+
+            function clearPendingChallengeInvite() {
+                if (!pendingInviteId) return;
+                pendingInviteId = "";
+                const url = new URL(window.location.href);
+                url.searchParams.delete("challenge");
+                window.history.replaceState(null, "", url);
+            }
+
+            function requireChallengeAccount() {
+                if (authToken) return true;
+                showLoginScreen();
+                const feedback = document.getElementById("loginFeedback");
+                feedback.textContent = t("challengeLoginRequired");
+                feedback.hidden = false;
+                return false;
+            }
+
+            function replaceSocialChallenge(challenge) {
+                const index = socialChallenges.findIndex(item => item.id === challenge.id);
+                if (index === -1) socialChallenges.push(challenge);
+                else socialChallenges[index] = challenge;
+                renderSocialChallenges();
+            }
+
+            async function copyChallengeInvite(id) {
+                const inviteUrl = new URL(window.location.href);
+                inviteUrl.searchParams.set("challenge", id);
+                let copiedToClipboard = false;
+                try {
+                    if (navigator.clipboard && window.isSecureContext) {
+                        await navigator.clipboard.writeText(inviteUrl.href);
+                        copiedToClipboard = true;
+                    }
+                } catch (error) {
+                    console.error("Could not copy the challenge invitation to the clipboard:", error);
+                }
+                if (!copiedToClipboard && window.prompt(t("challengeInvite"), inviteUrl.href) === null) {
+                    showToast(t("challengeCopyFailed"));
+                    return;
+                }
+                showToast(t("challengeCopied"));
             }
 
             function queueRemoteSync() {
@@ -799,6 +944,7 @@ function saveSettings() {
                 const intro = document.getElementById("introScreen");
                 document.getElementById("appShell").hidden = false;
                 intro.classList.add("is-leaving");
+                promptPendingChallenge();
                 introTransitionTimer = window.setTimeout(() => {
                     intro.hidden = true;
                     intro.classList.remove("is-leaving");
@@ -980,6 +1126,101 @@ function saveSettings() {
                 const button = document.getElementById("completeDailyChallenge");
                 button.disabled = completed.has(today);
                 button.textContent = t(completed.has(today) ? "dailyChallengeDone" : "dailyChallengeButton");
+            }
+
+            function formatChallengeMoney(amount, currency) {
+                return formatter.format(amount) + " " + currency;
+            }
+
+            function renderSocialChallenges() {
+                const container = document.getElementById("socialChallengeList");
+                const empty = document.getElementById("socialChallengeEmpty");
+                container.replaceChildren();
+                empty.hidden = socialChallenges.length > 0;
+                empty.textContent = t(authToken ? "challengeEmptySignedIn" : "challengeEmpty");
+                const dateFormatter = new Intl.DateTimeFormat(
+                    language === "ar" ? "ar-MA" : language === "fr" ? "fr-MA" : "en-US",
+                    { dateStyle: "medium" }
+                );
+
+                socialChallenges.forEach(challenge => {
+                    const card = document.createElement("article");
+                    card.className = "social-challenge-item";
+                    const heading = document.createElement("div");
+                    heading.className = "social-challenge-heading";
+                    const title = document.createElement("h3");
+                    title.textContent = challenge.title;
+                    const invite = document.createElement("button");
+                    invite.className = "social-challenge-share";
+                    invite.type = "button";
+                    invite.dataset.shareChallenge = challenge.id;
+                    invite.textContent = t("challengeInvite");
+                    heading.append(title, invite);
+
+                    const metadata = document.createElement("p");
+                    metadata.className = "social-challenge-meta";
+                    metadata.textContent = t("challengeTarget") + ": " +
+                        formatChallengeMoney(challenge.target, challenge.currency) + " · " +
+                        t("challengeDeadline") + ": " +
+                        dateFormatter.format(new Date(challenge.deadline + "T00:00:00"));
+
+                    const participants = document.createElement("div");
+                    participants.className = "social-challenge-participants";
+                    participants.setAttribute("aria-label", t("challengeParticipants"));
+                    [...challenge.participants]
+                        .sort((left, right) => right.progress - left.progress)
+                        .forEach(participant => {
+                            const participantItem = document.createElement("div");
+                            const row = document.createElement("div");
+                            row.className = "social-challenge-participant";
+                            const name = document.createElement("strong");
+                            name.textContent = participant.name + (participant.isYou ? " " + t("challengeYou") : "");
+                            const progress = document.createElement("span");
+                            progress.textContent = formatChallengeMoney(participant.progress, challenge.currency);
+                            row.append(name, progress);
+
+                            const track = document.createElement("div");
+                            track.className = "social-challenge-progress";
+                            track.setAttribute("role", "progressbar");
+                            track.setAttribute("aria-label", participant.name + " — " + t("challengeProgress"));
+                            track.setAttribute("aria-valuemin", "0");
+                            track.setAttribute("aria-valuemax", "100");
+                            const percent = Math.min(100, Math.round(participant.progress / challenge.target * 100));
+                            track.setAttribute("aria-valuenow", String(percent));
+                            const fill = document.createElement("span");
+                            fill.style.width = percent + "%";
+                            track.append(fill);
+                            participantItem.append(row, track);
+                            participants.append(participantItem);
+                        });
+
+                    card.append(heading, metadata, participants);
+                    const currentUser = challenge.participants.find(participant => participant.isYou);
+                    if (currentUser) {
+                        const form = document.createElement("form");
+                        form.className = "social-challenge-progress-form";
+                        form.dataset.challengeId = challenge.id;
+                        const field = document.createElement("label");
+                        field.className = "field";
+                        const label = document.createElement("span");
+                        label.textContent = t("challengeProgress");
+                        const input = document.createElement("input");
+                        input.type = "number";
+                        input.min = "0";
+                        input.max = String(challenge.target);
+                        input.step = "0.01";
+                        input.value = String(currentUser.progress);
+                        input.required = true;
+                        field.append(label, input);
+                        const submit = document.createElement("button");
+                        submit.className = "primary-button";
+                        submit.type = "submit";
+                        submit.textContent = t("challengeUpdate");
+                        form.append(field, submit);
+                        card.append(form);
+                    }
+                    container.append(card);
+                });
             }
 
             function getChallengeStreak(completed, today) {
@@ -1431,6 +1672,110 @@ function saveSettings() {
                 openModal("helpModal");
                 document.querySelector("#helpModal .close-button").focus();
                 playUiSound("open");
+            });
+            document.getElementById("createChallengeButton").addEventListener("click", () => {
+                if (!requireChallengeAccount()) return;
+                const deadline = new Date();
+                deadline.setDate(deadline.getDate() + 7);
+                document.getElementById("challengeDeadlineInput").min = localDateValue(new Date());
+                document.getElementById("challengeDeadlineInput").value = localDateValue(deadline);
+                document.getElementById("challengeCurrencyInput").value = settings.currency;
+                openModal("createChallengeModal");
+            });
+            document.getElementById("joinChallengeButton").addEventListener("click", () => {
+                if (!requireChallengeAccount()) return;
+                if (pendingInviteId) document.getElementById("challengeCodeInput").value = pendingInviteId;
+                openModal("joinChallengeModal");
+                document.getElementById(pendingInviteId ? "joinDisplayNameInput" : "challengeCodeInput").focus();
+            });
+            document.getElementById("createChallengeForm").addEventListener("submit", async event => {
+                event.preventDefault();
+                if (!requireChallengeAccount()) return;
+                const form = event.currentTarget;
+                const submit = document.getElementById("createChallengeSubmit");
+                submit.disabled = true;
+                try {
+                    const result = await apiRequest("/api/challenges", {
+                        method: "POST",
+                        body: JSON.stringify({
+                            title: document.getElementById("challengeTitleInput").value.trim(),
+                            target: Number(document.getElementById("challengeTargetInput").value),
+                            currency: document.getElementById("challengeCurrencyInput").value,
+                            deadline: document.getElementById("challengeDeadlineInput").value,
+                            name: document.getElementById("challengeDisplayNameInput").value.trim()
+                        })
+                    });
+                    replaceSocialChallenge(result.challenge);
+                    closeModal("createChallengeModal");
+                    form.reset();
+                    showToast(t("challengeCreated"));
+                } catch (error) {
+                    console.error("Could not create a Flousi friend challenge:", error);
+                    showToast(error.status ? error.message : t("apiUnavailable"));
+                } finally {
+                    submit.disabled = false;
+                }
+            });
+            document.getElementById("joinChallengeForm").addEventListener("submit", async event => {
+                event.preventDefault();
+                if (!requireChallengeAccount()) return;
+                const form = event.currentTarget;
+                const id = document.getElementById("challengeCodeInput").value.trim();
+                const name = document.getElementById("joinDisplayNameInput").value.trim();
+                if (!/^[A-Za-z0-9_-]{16}$/.test(id)) {
+                    showToast(t("challengeNotFound"));
+                    return;
+                }
+                if (!name || name.length > 40) {
+                    showToast(t("challengeMissingName"));
+                    return;
+                }
+                const submit = document.getElementById("joinChallengeSubmit");
+                submit.disabled = true;
+                try {
+                    const result = await apiRequest("/api/challenges/" + encodeURIComponent(id) + "/join", {
+                        method: "POST",
+                        body: JSON.stringify({ name })
+                    });
+                    replaceSocialChallenge(result.challenge);
+                    closeModal("joinChallengeModal");
+                    clearPendingChallengeInvite();
+                    form.reset();
+                    showToast(t("challengeJoined"));
+                } catch (error) {
+                    console.error("Could not join a Flousi friend challenge:", error);
+                    showToast(error.status ? error.message : t("apiUnavailable"));
+                } finally {
+                    submit.disabled = false;
+                }
+            });
+            document.getElementById("socialChallengeList").addEventListener("click", event => {
+                const button = event.target.closest("[data-share-challenge]");
+                if (button) copyChallengeInvite(button.dataset.shareChallenge);
+            });
+            document.getElementById("socialChallengeList").addEventListener("submit", async event => {
+                const form = event.target.closest("form[data-challenge-id]");
+                if (!form) return;
+                event.preventDefault();
+                const input = form.querySelector("input");
+                const submit = form.querySelector("button[type=submit]");
+                submit.disabled = true;
+                try {
+                    const result = await apiRequest(
+                        "/api/challenges/" + encodeURIComponent(form.dataset.challengeId) + "/progress",
+                        { method: "PUT", body: JSON.stringify({ progress: Number(input.value) }) }
+                    );
+                    replaceSocialChallenge(result.challenge);
+                    showToast(t("challengeProgressSaved"));
+                } catch (error) {
+                    console.error("Could not update Flousi friend challenge progress:", error);
+                    showToast(error.status ? error.message : t("apiUnavailable"));
+                } finally {
+                    submit.disabled = false;
+                }
+            });
+            window.addEventListener("focus", () => {
+                if (authToken) loadSocialChallenges();
             });
             document.getElementById("toggleTheme").addEventListener("click", () => {
                 const previous = settings.darkMode;

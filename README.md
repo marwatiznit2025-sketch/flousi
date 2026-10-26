@@ -6,13 +6,15 @@ Use the moon/sun button in the app header to switch between light and dark mode.
 
 Choose MAD, USD, EUR, GBP, CAD, SAR, or AED in **Settings → Currency** to change the currency shown by the app. This changes the displayed currency only; it does not convert saved amounts.
 
+Sign in to create a savings challenge with a target and deadline, then share its invitation link with friends. Friends need Flousi accounts to join. Each participant chooses a display name and updates their own progress; challenge members can see each other's progress. The challenge uses the creator's selected currency and does not convert amounts.
+
 ## Run locally
 
 1. Install Node.js 18 or newer.
 2. From this project directory, run `npm start`.
 3. Open `http://127.0.0.1:3000`.
 
-The API and web app are served from the same origin. By default, account data is stored in the ignored `data/` directory. Set `DATABASE_URL` to use PostgreSQL instead; the server creates its `flousi_users` table on startup.
+The API and web app are served from the same origin. By default, account and friend-challenge data is stored in the ignored `data/` directory. Set `DATABASE_URL` to use PostgreSQL instead; the server creates its `flousi_users` and `flousi_challenges` tables on startup.
 
 ### Deploy the app and API on Railway
 
@@ -37,7 +39,7 @@ When `DATABASE_URL` is absent, the API continues to use the local JSON store. Ex
 
 ### Move local browser data to Railway
 
-Data saved under `file://` or another local site origin is isolated by the browser and does not automatically appear on Railway. Before changing origins, open the current app, continue as a guest, then go to **Settings → Export data** and save the JSON file. Open the deployed Railway URL and import that file from **Settings → Import and merge data**. For a new account, import first and then register; for an existing account, log in first and then import so the merged data syncs to PostgreSQL. Local records replace matching transaction/goal IDs, local monthly budgets replace the same month's budget, and alerts/challenges are combined without duplicates.
+Data saved under `file://` or another local site origin is isolated by the browser and does not automatically appear on Railway. Before changing origins, open the current app, continue as a guest, then go to **Settings → Export data** and save the JSON file. Open the deployed Railway URL and import that file from **Settings → Import and merge data**. For a new account, import first and then register; for an existing account, log in first and then import so the merged data syncs to PostgreSQL. Local records replace matching transaction/goal IDs, local monthly budgets replace the same month's budget, and budget alerts and daily challenge completions are combined without duplicates. Friend challenges are stored with the online account and are not part of this guest-data export.
 
 ## REST API
 
@@ -49,6 +51,10 @@ All request and response bodies use JSON. Account routes return a bearer token; 
 | `POST` | `/api/auth/login` | Sign in with `{ "email", "password" }`. |
 | `GET` | `/api/data` | Read the signed-in account's transactions, budgets, goals, and app data. |
 | `PUT` | `/api/data` | Replace the signed-in account's app data with the submitted data document. |
+| `GET` | `/api/challenges` | List challenges the signed-in account has joined. |
+| `POST` | `/api/challenges` | Create a savings challenge with a target, currency, deadline, and display name. |
+| `POST` | `/api/challenges/:id/join` | Join a challenge using its invitation ID and a display name. |
+| `PUT` | `/api/challenges/:id/progress` | Update the signed-in participant's progress. |
 | `GET` | `/api/health` | Check that the API is running and PostgreSQL is reachable. |
 
 Account creation transfers the current browser's guest data into the new account. Signing into an existing account loads that account's data; guest data remains saved on the device and is restored when signing out. API errors use a JSON `error` message and a stable `code`.
