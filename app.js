@@ -101,7 +101,7 @@
                     importDataTooLarge: "حجم ملف البيانات كبير بزاف.",
                     importDataMerged: "تدمجات البيانات محلياً. سجّل الدخول أو أنشئ حساباً باش تزامنها.",
                     languageSaved: "تحفظات اللغة ديالك.", currencySaved: "تحفظات العملة ديالك.", soundSaved: "تحفظات إعدادات الصوت.", transactionInvalid: "دخل معلومات صحيحة للعملية.",
-                    transactionSaved: "تسجلات العملية بنجاح.", budgetInvalid: "دخل ميزانية صحيحة أكبر من صفر.", budgetSaved: "تحفظات الميزانية ديالك.",
+                    transactionSaved: "تسجلات العملية بنجاح.", quickCash: "مصروف سريع", quickSave: "سجّل المصروف", quickNotePlaceholder: "ملاحظة (اختياري)", budgetInvalid: "دخل ميزانية صحيحة أكبر من صفر.", budgetSaved: "تحفظات الميزانية ديالك.",
                     storageFailed: "ما قدرناش نحفظو البيانات. تأكد من مساحة التخزين.", settingsFailed: "ما قدرناش نحفظو الإعدادات.",
                     audioUnsupported: "المتصفح ديالك ما كيدعمش الصوت.", audioFailed: "ما قدرناش نشغلو الصوت. جرب مرة أخرى.",
                     deleteTransaction: "حذف العملية: {description}", categoryFood: "الماكلة", categoryHome: "الدار", categoryTransport: "النقل",
@@ -201,7 +201,7 @@
                     importDataTooLarge: "Le fichier de données est trop volumineux.",
                     importDataMerged: "Données fusionnées localement. Connectez-vous ou créez un compte pour les synchroniser.",
                     languageSaved: "Langue enregistrée.", currencySaved: "Devise enregistrée.", soundSaved: "Préférences audio enregistrées.", transactionInvalid: "Saisissez des informations valides pour l’opération.",
-                    transactionSaved: "Opération enregistrée.", budgetInvalid: "Saisissez un budget valide supérieur à zéro.", budgetSaved: "Budget enregistré.",
+                    transactionSaved: "Opération enregistrée.", quickCash: "Dépense rapide", quickSave: "Enregistrer la dépense", quickNotePlaceholder: "Note (facultatif)", budgetInvalid: "Saisissez un budget valide supérieur à zéro.", budgetSaved: "Budget enregistré.",
                     storageFailed: "Impossible d’enregistrer les données. Vérifiez l’espace de stockage.", settingsFailed: "Impossible d’enregistrer les paramètres.",
                     audioUnsupported: "Votre navigateur ne prend pas en charge l’audio.", audioFailed: "Impossible de lire le son. Réessayez.",
                     deleteTransaction: "Supprimer l’opération : {description}", categoryFood: "Alimentation", categoryHome: "Maison", categoryTransport: "Transport",
@@ -301,7 +301,7 @@
                     importDataTooLarge: "The data file is too large.",
                     importDataMerged: "Data merged locally. Sign in or create an account to sync it.",
                     languageSaved: "Language saved.", currencySaved: "Currency saved.", soundSaved: "Sound preferences saved.", transactionInvalid: "Enter valid transaction details.",
-                    transactionSaved: "Transaction saved.", budgetInvalid: "Enter a valid budget greater than zero.", budgetSaved: "Budget saved.",
+                    transactionSaved: "Transaction saved.", quickCash: "Quick spend", quickSave: "Save expense", quickNotePlaceholder: "Note (optional)", budgetInvalid: "Enter a valid budget greater than zero.", budgetSaved: "Budget saved.",
                     storageFailed: "Could not save your data. Check available storage.", settingsFailed: "Could not save settings.",
                     audioUnsupported: "Your browser does not support audio.", audioFailed: "Could not play the sound. Please try again.",
                     deleteTransaction: "Delete transaction: {description}", categoryFood: "Food", categoryHome: "Home", categoryTransport: "Transport",
@@ -427,7 +427,8 @@ function saveSettings() {
                     "budgetModalTitle": "budgetModal", "budgetDialogCopy": "budgetCopy", "budgetInputLabel": "budgetInput",
                     "settingsTitle": "settingsTitle", "languageLabel": "language", "currencyLabel": "currency", "soundLabel": "sound", "testSound": "testSound",
                     "exportDataButton": "exportData", "importDataButton": "importData", "dataTransferHelp": "dataTransferHelp",
-                    "openTransactionText": "addTransaction", "transactionSubmit": "saveTransaction", "budgetSubmit": "saveBudget"
+                    "openTransactionText": "addTransaction", "transactionSubmit": "saveTransaction", "budgetSubmit": "saveBudget",
+                    "quickCashTitle": "quickCash", "quickCashSubmit": "quickSave"
                 };
                 Object.entries(textById).forEach(([id, key]) => {
                     const element = document.getElementById(id);
@@ -482,6 +483,8 @@ function saveSettings() {
                 document.querySelector("#transactionForm [data-type='expense']").textContent = t("expense");
                 document.querySelector("#transactionForm [data-type='income']").textContent = t("incomeType");
                 document.querySelector("#description").placeholder = t("descriptionPlaceholder");
+                document.getElementById("quickNote").placeholder = t("quickNotePlaceholder");
+                document.querySelectorAll("[data-quick-cash-text]").forEach(element => { element.textContent = t("quickCash"); });
                 document.querySelector("#budgetInput").placeholder = t("budgetPlaceholder");
                 document.querySelector("#goalName").placeholder = t("goalNamePlaceholder");
                 document.querySelector("#goalTarget").placeholder = t("goalTargetPlaceholder");
@@ -1587,6 +1590,141 @@ function saveSettings() {
                 }
             }
 
+            function commitTransaction(transaction) {
+                const alertKey = transaction.date.slice(0, 7);
+                const previousAlerts = data.budgetAlerts.slice();
+                let triggeredBudgetAlerts = [];
+                if (transaction.type === "expense") {
+                    const oldSpent = data.transactions
+                        .filter(item => item.type === "expense" && item.date.slice(0, 7) === alertKey)
+                        .reduce((sum, item) => sum + item.amount, 0);
+                    const budget = Number(data.budgets[alertKey]) || 0;
+                    if (budget > 0) {
+                        triggeredBudgetAlerts = collectBudgetAlerts(alertKey, oldSpent / budget * 100, (oldSpent + transaction.amount) / budget * 100);
+                    }
+                }
+                data.transactions.push(transaction);
+                if (saveData()) {
+                    render();
+                    showToast(triggeredBudgetAlerts.length
+                        ? t(triggeredBudgetAlerts[triggeredBudgetAlerts.length - 1] >= 100 ? "budgetExceededAlert" : "budgetWarning")
+                        : t("transactionSaved"));
+                    playUiSound("success");
+                    return true;
+                }
+                data.transactions = data.transactions.filter(item => item.id !== transaction.id);
+                data.budgetAlerts = previousAlerts;
+                return false;
+            }
+
+            const QUICK_LAST_KEY = "flousi-quick-category-v1";
+            const quickCategoryNames = Object.keys(categories).filter(name => name !== "الدخل");
+            let quickAmount = "";
+            let quickCategory = quickCategoryNames[0];
+
+            function loadQuickCategory() {
+                try {
+                    const saved = localStorage.getItem(QUICK_LAST_KEY);
+                    return quickCategoryNames.includes(saved) ? saved : quickCategoryNames[0];
+                } catch (error) {
+                    return quickCategoryNames[0];
+                }
+            }
+
+            function rememberQuickCategory(name) {
+                try { localStorage.setItem(QUICK_LAST_KEY, name); } catch (error) { /* storage unavailable: skip */ }
+            }
+
+            function renderQuickAmount() {
+                document.getElementById("quickAmountValue").textContent = quickAmount || "0";
+            }
+
+            function renderQuickChips() {
+                document.getElementById("quickChips").replaceChildren(...quickCategoryNames.map(name => {
+                    const chip = document.createElement("button");
+                    chip.type = "button";
+                    chip.className = "quick-chip" + (name === quickCategory ? " active" : "");
+                    chip.dataset.category = name;
+                    chip.setAttribute("aria-pressed", String(name === quickCategory));
+                    chip.textContent = categories[name] + " " + t(categoryKeys[name]);
+                    return chip;
+                }));
+            }
+
+            function pressQuickKey(key) {
+                if (key === "back") {
+                    quickAmount = quickAmount.slice(0, -1);
+                } else if (key === ".") {
+                    if (!quickAmount.includes(".")) quickAmount = (quickAmount || "0") + ".";
+                } else if (/^\d$/.test(key)) {
+                    const [whole, decimals] = (quickAmount + key).split(".");
+                    if (decimals !== undefined ? decimals.length > 2 : whole.length > 9) return;
+                    quickAmount = quickAmount === "0" ? key : quickAmount + key;
+                }
+                renderQuickAmount();
+            }
+
+            function addQuickAmount(value) {
+                const total = Math.round(((Number(quickAmount) || 0) + value) * 100) / 100;
+                if (total > 999999999) return;
+                quickAmount = String(total);
+                renderQuickAmount();
+            }
+
+            document.querySelectorAll("[data-quick-cash]").forEach(button => {
+                button.addEventListener("click", () => {
+                    quickAmount = "";
+                    quickCategory = loadQuickCategory();
+                    document.getElementById("quickNote").value = "";
+                    document.getElementById("quickAmountUnit").textContent = currencyUnit();
+                    renderQuickAmount();
+                    renderQuickChips();
+                    openModal("quickCashModal");
+                    if (document.activeElement) document.activeElement.blur();
+                    playUiSound("open");
+                });
+            });
+            document.getElementById("quickCashModal").addEventListener("click", event => {
+                const button = event.target.closest("button");
+                if (!button) return;
+                if (button.dataset.key) pressQuickKey(button.dataset.key);
+                else if (button.dataset.add) addQuickAmount(Number(button.dataset.add));
+                else if (button.dataset.category) {
+                    quickCategory = button.dataset.category;
+                    renderQuickChips();
+                }
+            });
+            document.addEventListener("keydown", event => {
+                if (!document.getElementById("quickCashModal").classList.contains("open")) return;
+                if (event.target.id === "quickNote" || event.ctrlKey || event.metaKey || event.altKey) return;
+                if (/^\d$/.test(event.key) || event.key === ".") pressQuickKey(event.key);
+                else if (event.key === ",") pressQuickKey(".");
+                else if (event.key === "Backspace") pressQuickKey("back");
+                else return;
+                event.preventDefault();
+            });
+            document.getElementById("quickCashForm").addEventListener("submit", event => {
+                event.preventDefault();
+                const amount = Number(quickAmount);
+                if (!Number.isFinite(amount) || amount <= 0 || amount > 999999999) {
+                    showToast(t("transactionInvalid"));
+                    return;
+                }
+                const note = document.getElementById("quickNote").value.trim();
+                const transaction = {
+                    id: Date.now().toString(36) + Math.random().toString(36).slice(2),
+                    type: "expense",
+                    description: note || t(categoryKeys[quickCategory]),
+                    amount: Math.round(amount * 100) / 100,
+                    category: quickCategory,
+                    date: localDateValue(new Date())
+                };
+                if (commitTransaction(transaction)) {
+                    rememberQuickCategory(quickCategory);
+                    closeModal("quickCashModal");
+                }
+            });
+
             document.getElementById("openTransaction").addEventListener("click", () => {
                 document.getElementById("date").value = localDateValue(new Date());
                 openModal("transactionModal");
@@ -1931,34 +2069,13 @@ function saveSettings() {
                     category: type === "income" ? "الدخل" : document.getElementById("category").value,
                     date
                 };
-                const alertKey = date.slice(0, 7);
-                const previousAlerts = data.budgetAlerts.slice();
-                let triggeredBudgetAlerts = [];
-                if (type === "expense") {
-                    const oldSpent = data.transactions
-                        .filter(item => item.type === "expense" && item.date.slice(0, 7) === alertKey)
-                        .reduce((sum, item) => sum + item.amount, 0);
-                    const budget = Number(data.budgets[alertKey]) || 0;
-                    if (budget > 0) {
-                        triggeredBudgetAlerts = collectBudgetAlerts(alertKey, oldSpent / budget * 100, (oldSpent + transaction.amount) / budget * 100);
-                    }
-                }
-                data.transactions.push(transaction);
-                if (saveData()) {
+                if (commitTransaction(transaction)) {
                     event.target.reset();
                     document.getElementById("transactionType").value = "expense";
                     document.querySelectorAll(".type-switch button").forEach(item => item.classList.toggle("active", item.dataset.type === "expense"));
                     document.getElementById("categoryField").hidden = false;
                     document.getElementById("category").required = true;
                     closeModal("transactionModal");
-                    render();
-                    showToast(triggeredBudgetAlerts.length
-                        ? t(triggeredBudgetAlerts[triggeredBudgetAlerts.length - 1] >= 100 ? "budgetExceededAlert" : "budgetWarning")
-                        : t("transactionSaved"));
-                    playUiSound("success");
-                } else {
-                    data.transactions = data.transactions.filter(item => item.id !== transaction.id);
-                    data.budgetAlerts = previousAlerts;
                 }
             });
             document.getElementById("budgetForm").addEventListener("submit", event => {
