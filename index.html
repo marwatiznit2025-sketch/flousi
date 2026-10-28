@@ -13,6 +13,11 @@
     <link rel="stylesheet" href="style.css">
     <script>window.FLOUSI_API_URL = "";</script>
     <script defer src="app.js"></script>
+    <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://flousi-production-d6a8.up.railway.app/</loc>
+  </url>
+</urlset>
 </head>
 <body>
     <section class="intro-screen" id="introScreen" aria-label="مرحبا بك ففلوسي">
@@ -69,6 +74,22 @@
                         <span class="theme-toggle-icon" id="themeToggleIcon" aria-hidden="true">☾</span>
                         <span class="theme-toggle-label" id="themeToggleLabel"></span>
                     </button>
+                    <button class="settings-button notification-button" id="toggleNotifications" type="button" aria-expanded="false" aria-controls="notificationsPanel">
+                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 9a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9m-8 12h4"></path></svg>
+                        <span class="settings-button-label" id="notificationsButtonLabel">الإشعارات</span>
+                        <span class="notification-badge" id="notificationBadge" hidden></span>
+                    </button>
+                    <section class="notifications-panel" id="notificationsPanel" aria-labelledby="notificationsTitle" hidden>
+                        <div class="notifications-header">
+                            <h2 id="notificationsTitle">الإشعارات</h2>
+                            <div class="notifications-actions">
+                                <button class="text-button" id="markNotificationsRead" type="button">تعليم الكل كمقروء</button>
+                                <button class="text-button" id="clearNotifications" type="button">مسح الكل</button>
+                            </div>
+                        </div>
+                        <div class="notification-list" id="notificationList"></div>
+                        <p class="notification-empty" id="notificationsEmpty" hidden>ما كاين حتى إشعار جديد.</p>
+                    </section>
                     <button class="settings-button" id="openSettings" type="button">
                         <span class="settings-button-label" id="settingsButtonLabel">⚙ الإعدادات</span>
                         <span class="mobile-avatar" aria-hidden="true">F</span>
@@ -209,6 +230,41 @@
                 </div>
                 <button class="primary-button" id="addGoal" type="button">＋ <span id="addGoalText">زيد هدف</span></button>
             </div>
+            <section class="savings-tree" id="savingsTree" data-stage="0" aria-labelledby="savingsTreeTitle">
+                <div class="savings-tree-copy">
+                    <h3 id="savingsTreeTitle">شجرة التوفير ديالي</h3>
+                    <p id="savingsTreeCaption">كلما وفرت أكثر، كبرت شجرتك.</p>
+                    <p class="savings-tree-amount"><strong id="savingsTreeSaved">0</strong> <span id="savingsTreeCurrency">د.م.</span></p>
+                    <div class="savings-tree-progress" id="savingsTreeProgress" role="progressbar" aria-label="تقدم شجرة التوفير" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+                        <span id="savingsTreeProgressBar"></span>
+                    </div>
+                    <p class="savings-tree-status" id="savingsTreeStatus" aria-live="polite"></p>
+                </div>
+                <svg class="savings-tree-art" viewBox="0 0 180 170" aria-hidden="true" focusable="false">
+                    <ellipse class="tree-ground" cx="90" cy="151" rx="57" ry="8"></ellipse>
+                    <path class="tree-trunk" d="M88 146c5-23-4-37 1-59 2-9 10-17 15-24M90 105c-8-13-19-20-30-28M91 123c11-15 22-20 37-27"></path>
+                    <path class="tree-branch" d="M90 109c-1-11 0-22 1-32M71 88 60 77m57 28 11-9"></path>
+                    <g class="tree-leaves" data-growth="1">
+                        <circle cx="92" cy="65" r="13"></circle><circle cx="78" cy="77" r="12"></circle>
+                    </g>
+                    <g class="tree-leaves" data-growth="2">
+                        <circle cx="62" cy="71" r="13"></circle><circle cx="53" cy="85" r="11"></circle>
+                        <circle cx="73" cy="91" r="12"></circle>
+                    </g>
+                    <g class="tree-leaves" data-growth="3">
+                        <circle cx="111" cy="66" r="13"></circle><circle cx="125" cy="79" r="12"></circle>
+                        <circle cx="111" cy="88" r="12"></circle>
+                    </g>
+                    <g class="tree-leaves" data-growth="4">
+                        <circle cx="81" cy="51" r="12"></circle><circle cx="100" cy="48" r="13"></circle>
+                    </g>
+                    <g class="tree-leaves" data-growth="5">
+                        <circle cx="48" cy="72" r="7"></circle><circle cx="132" cy="75" r="7"></circle>
+                        <circle cx="90" cy="38" r="7"></circle>
+                    </g>
+                    <circle class="tree-seed" cx="90" cy="143" r="4"></circle>
+                </svg>
+            </section>
             <div class="goal-list" id="goalList"></div>
             <p class="goal-empty" id="goalEmpty">ما عندك حتى هدف ديال التوفير. زيد هدفك الأول!</p>
         </section>

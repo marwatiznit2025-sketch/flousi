@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://flousi-production-d6a8.up.railway.app/sitemap.xml

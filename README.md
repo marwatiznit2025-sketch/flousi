@@ -6,6 +6,8 @@ Use the moon/sun button in the app header to switch between light and dark mode.
 
 Choose MAD, USD, EUR, GBP, CAD, SAR, or AED in **Settings → Currency** to change the currency shown by the app. This changes the displayed currency only; it does not convert saved amounts.
 
+Budget-threshold and savings-goal updates appear in the notification center in the app header. Notifications are saved locally for the current guest or account on this browser and are not synced between devices.
+
 Sign in to create a savings challenge with a target and deadline, then share its invitation link with friends. Friends need Flousi accounts to join. Each participant chooses a display name and updates their own progress; challenge members can see each other's progress. The challenge uses the creator's selected currency and does not convert amounts.
 
 ## Run locally
