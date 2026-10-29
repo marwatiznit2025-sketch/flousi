@@ -17,9 +17,9 @@ const STATIC_FILES = new Map([
     ["/style.css", ["style.css", "text/css; charset=utf-8"]],
     ["/logo.svg", ["logo.svg", "image/svg+xml"]],
     ["/manifest.webmanifest", ["manifest.webmanifest", "application/manifest+json; charset=utf-8"]],
-    ["/sw.js", ["sw.js", "text/javascript; charset=utf-8"]]
+    ["/sw.js", ["sw.js", "text/javascript; charset=utf-8"]],
     ["/robots.txt", ["robots.txt", "text/plain; charset=utf-8"]],
-    ["/sitemap.xml", ["sitemap.xml", "application/xml; charset=utf-8"]]
+    ["/sitemap.xml", ["sitemap.xml", "application/xml; charset=utf-8"]],
     
 ]);
 
