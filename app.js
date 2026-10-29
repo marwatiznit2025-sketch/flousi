@@ -10,229 +10,229 @@
             const API_BASE_URL = String(window.FLOUSI_API_URL || "").replace(/\/+$/, "");
             const translations = {
                 ar: {
-                    brandCaption: "ÙÙ„ÙˆØ³Ùƒ ÙˆØ§Ø¶Ø­Ø©ØŒ ÙˆØ±Ø§Ø³Ùƒ Ù…Ø±ØªØ§Ø­", introTitle: "Ù…Ø±Ø­Ø¨Ø§ Ø¨Ùƒ ÙÙÙ„ÙˆØ³ÙŠ", introCaption: "ÙÙ„ÙˆØ³Ùƒ ÙˆØ§Ø¶Ø­Ø©ØŒ ÙˆØ±Ø§Ø³Ùƒ Ù…Ø±ØªØ§Ø­",
-                    introStart: "Ø¨Ø¯Ø§ Ø§Ù„ØªØ¬Ø±Ø¨Ø©ã€€â™«",
-                    loginTitle: "Ù…Ø±Ø­Ø¨Ø§ Ø¨Ø¹ÙˆØ¯ØªÙƒ", loginCaption: "Ø¯Ø®Ù„ Ù„Ù„Ø­Ø³Ø§Ø¨ Ø¯ÙŠØ§Ù„Ùƒ Ø¨Ø§Ø´ ØªØªØ§Ø¨Ø¹ ÙÙ„ÙˆØ³Ùƒ.", loginEmail: "Ø§Ù„Ø¨Ø±ÙŠØ¯ Ø§Ù„Ø¥Ù„ÙƒØªØ±ÙˆÙ†ÙŠ",
-                    loginPassword: "ÙƒÙ„Ù…Ø© Ø§Ù„Ù…Ø±ÙˆØ±", showPassword: "Ø¥Ø¸Ù‡Ø§Ø±", hidePassword: "Ø¥Ø®ÙØ§Ø¡",
-                    loginNotice: "Ø¯Ø®Ù„ Ù„Ù„Ø­Ø³Ø§Ø¨ Ø£Ùˆ Ø£Ù†Ø´Ø¦ Ø­Ø³Ø§Ø¨Ø§Ù‹ Ø¨Ø§Ø´ ØªØ²Ø§Ù…Ù† Ø¨ÙŠØ§Ù†Ø§ØªÙƒ Ù…Ø¹ Ø®Ø§Ø¯Ù… Flousi.",
-                    loginFeedback: "Ù…Ø§ Ù‚Ø¯Ø±Ù†Ø§Ø´ Ù†ØªØ§ØµÙ„Ùˆ Ø¨Ø§Ù„Ø®Ø§Ø¯Ù…. ØªØ£ÙƒØ¯ Ù…Ù† ØªØ´ØºÙŠÙ„Ù‡ ÙˆØ­Ø§ÙˆÙ„ Ù…Ø±Ø© Ø£Ø®Ø±Ù‰.", loginSubmit: "Ø¯Ø®ÙˆÙ„",
-                    registerTitle: "Ø£Ù†Ø´Ø¦ Ø­Ø³Ø§Ø¨ Flousi", registerCaption: "Ø£Ù†Ø´Ø¦ Ø­Ø³Ø§Ø¨Ø§Ù‹ Ø¨Ø§Ø´ ØªØ¨Ù‚Ù‰ Ø¨ÙŠØ§Ù†Ø§ØªÙƒ Ù…ØªØ²Ø§Ù…Ù†Ø© Ø¨ÙŠÙ† Ø§Ù„Ø£Ø¬Ù‡Ø²Ø©.",
-                    registerSubmit: "Ø¥Ù†Ø´Ø§Ø¡ Ø§Ù„Ø­Ø³Ø§Ø¨", switchToRegister: "Ø¥Ù†Ø´Ø§Ø¡ Ø­Ø³Ø§Ø¨ Ø¬Ø¯ÙŠØ¯", switchToLogin: "Ø¹Ù†Ø¯ÙŠ Ø­Ø³Ø§Ø¨",
-                    apiInvalidLogin: "Ø§Ù„Ø¨Ø±ÙŠØ¯ Ø§Ù„Ø¥Ù„ÙƒØªØ±ÙˆÙ†ÙŠ Ø£Ùˆ ÙƒÙ„Ù…Ø© Ø§Ù„Ù…Ø±ÙˆØ± ØºÙŠØ± ØµØ­ÙŠØ­Ø©.", apiEmailExists: "Ù‡Ø§Ø¯ Ø§Ù„Ø¨Ø±ÙŠØ¯ Ø§Ù„Ø¥Ù„ÙƒØªØ±ÙˆÙ†ÙŠ Ù…Ø³Ø¬Ù„ Ù…Ù† Ù‚Ø¨Ù„.",
-                    apiInvalidEmail: "Ø¯Ø®Ù„ Ø¨Ø±ÙŠØ¯ Ø¥Ù„ÙƒØªØ±ÙˆÙ†ÙŠ ØµØ­ÙŠØ­.",
-                    apiInvalidData: "Ø§Ù„Ø¨ÙŠØ§Ù†Ø§Øª ØºÙŠØ± ØµØ­ÙŠØ­Ø© ÙˆÙ…Ø§ ØªØ³Ø¬Ù„Ø§ØªØ´.", apiUnavailable: "Ù…Ø§ Ù‚Ø¯Ø±Ù†Ø§Ø´ Ù†ØªØ§ØµÙ„Ùˆ Ø¨Ø§Ù„Ø®Ø§Ø¯Ù…. Ø¨ÙŠØ§Ù†Ø§ØªÙƒ Ø§Ù„Ù…Ø­Ù„ÙŠØ© Ø¨Ø§Ù‚ÙŠØ© Ù…Ø­ÙÙˆØ¸Ø©.",
-                    apiGenericError: "ÙˆÙ‚Ø¹ Ù…Ø´ÙƒÙ„ Ø£Ø«Ù†Ø§Ø¡ Ø§Ù„Ø§ØªØµØ§Ù„ Ø¨Ø§Ù„Ø®Ø§Ø¯Ù…. Ø­Ø§ÙˆÙ„ Ù…Ø±Ø© Ø£Ø®Ø±Ù‰.",
-                    accountCreated: "ØªØ®Ù„Ù‚ Ø§Ù„Ø­Ø³Ø§Ø¨ ÙˆØªÙØ¹Ù‘Ù„Ø§Øª Ø§Ù„Ù…Ø²Ø§Ù…Ù†Ø©.", accountSignedIn: "Ø¯Ø®Ù„ØªÙŠ Ù„Ù„Ø­Ø³Ø§Ø¨ ÙˆØªØ­Ø¯Ù‘Ø«Ø§Øª Ø¨ÙŠØ§Ù†Ø§ØªÙƒ.",
-                    signedOut: "Ø®Ø±Ø¬ØªÙŠ Ù…Ù† Ø§Ù„Ø­Ø³Ø§Ø¨. Ø¨ÙŠØ§Ù†Ø§ØªÙƒ Ø¨Ø§Ù‚ÙŠØ© Ù…Ø­ÙÙˆØ¸Ø© ÙÙ‡Ø§Ø¯ Ø§Ù„Ø¬Ù‡Ø§Ø².",
-                    accountStatusGuest: "ØªØ³ØªØ¹Ù…Ù„ Flousi Ø¨Ù„Ø§ Ø­Ø³Ø§Ø¨.", accountEmail: "Ø§Ù„Ø­Ø³Ø§Ø¨: {email}", connectAccount: "ØªØ³Ø¬ÙŠÙ„ Ø§Ù„Ø¯Ø®ÙˆÙ„ ÙˆØ§Ù„Ù…Ø²Ø§Ù…Ù†Ø©",
-                    signOut: "ØªØ³Ø¬ÙŠÙ„ Ø§Ù„Ø®Ø±ÙˆØ¬", passwordTooShort: "ÙƒÙ„Ù…Ø© Ø§Ù„Ù…Ø±ÙˆØ± Ø®Ø§ØµÙ‡Ø§ ØªÙƒÙˆÙ† Ù…Ù† 10 Ø­Ø±ÙˆÙ Ø¹Ù„Ù‰ Ø§Ù„Ø£Ù‚Ù„.",
-                    syncFailed: "ØªØ¹Ø°Ø± Ø­ÙØ¸ Ø§Ù„ØªØºÙŠÙŠØ±Ø§Øª ÙØ§Ù„Ø­Ø³Ø§Ø¨. Ø¨Ù‚Ø§Øª Ù…Ø­ÙÙˆØ¸Ø© Ù…Ø­Ù„ÙŠØ§Ù‹Ø› ØªØ£ÙƒØ¯ Ù…Ù† Ø§Ù„Ø®Ø§Ø¯Ù… ÙˆØ­Ø§ÙˆÙ„ Ù…Ø±Ø© Ø£Ø®Ø±Ù‰.",
-                    continueAsGuest: "ÙƒÙ…Ù„ Ø¨Ù„Ø§ Ø­Ø³Ø§Ø¨", backToWelcome: "Ø±Ø¬Ø¹ Ù„Ù„Ø¨Ø¯Ø§ÙŠØ©",
-                    settings: "âš™ Ø§Ù„Ø¥Ø¹Ø¯Ø§Ø¯Ø§Øª", addTransaction: "Ø²ÙŠØ¯ Ø¹Ù…Ù„ÙŠØ©", welcome: "Ø§Ù„Ø³Ù„Ø§Ù…! Ù‡Ø§Ø¯ÙŠ Ù†Ø¸Ø±Ø© Ø¹Ù„Ù‰ ÙÙ„ÙˆØ³Ùƒ",
-                    navHome: "Ø§Ù„Ø±Ø¦ÙŠØ³ÙŠØ©", navTransactions: "Ø§Ù„Ø¹Ù…Ù„ÙŠØ§Øª", navTrends: "Ø§Ù„ØªØ·ÙˆØ±", navGoals: "Ø§Ù„Ø£Ù‡Ø¯Ø§Ù", mainNavigation: "Ø§Ù„ØªÙ†Ù‚Ù„ Ø§Ù„Ø±Ø¦ÙŠØ³ÙŠ",
-                    mobileWelcome: "Ù…Ø±Ø­Ø¨Ø§ Ø¨ÙŠÙƒ",
-                    monthSelector: "Ø§Ø®ØªÙŠØ§Ø± Ø§Ù„Ø´Ù‡Ø±", transactionType: "Ù†ÙˆØ¹ Ø§Ù„Ø¹Ù…Ù„ÙŠØ©", budgetProgress: "Ù†Ø³Ø¨Ø© Ø§Ù„Ù…ÙŠØ²Ø§Ù†ÙŠØ© Ø§Ù„Ù…Ø³ØªØ¹Ù…Ù„Ø©",
-                    trendTitle: "Ø§Ù„Ø¥Ø­ØµØ§Ø¦ÙŠØ§Øª", categoryChartTitle: "Ø§Ù„Ù…ØµØ§Ø±ÙŠÙ Ø­Ø³Ø¨ Ø§Ù„ØµÙ†Ù", comparisonTitle: "Ø§Ù„Ø¯Ø®Ù„ Ù…Ù‚Ø§Ø¨Ù„ Ø§Ù„Ù…ØµØ§Ø±ÙŠÙ",
-                    trendSubtitle: "Ø¢Ø®Ø± 6 Ø´Ù‡ÙˆØ±", trendIncome: "Ø§Ù„Ø¯Ø®Ù„", trendExpenses: "Ø§Ù„Ù…ØµØ§Ø±ÙŠÙ", trendPeriod: "Ø§Ù„ÙØªØ±Ø© Ø§Ù„Ø²Ù…Ù†ÙŠØ©",
-                    trendWeek: "Ø£Ø³Ø¨ÙˆØ¹", trendMonth: "Ø´Ù‡Ø±", trendYear: "Ø¹Ø§Ù…", trendWeekRange: "Ø¢Ø®Ø± 7 Ø£ÙŠØ§Ù…",
-                    trendMonthRange: "Ø¢Ø®Ø± 6 Ø´Ù‡ÙˆØ±", trendYearRange: "Ù‡Ø§Ø¯ Ø§Ù„Ø¹Ø§Ù…", categoryChartEmpty: "Ø³Ø¬Ù‘Ù„ Ù…ØµØ§Ø±ÙŠÙÙƒ Ø¨Ø§Ø´ ÙŠØ¨Ø§Ù† Ø§Ù„ØªÙˆØ²ÙŠØ¹ Ø­Ø³Ø¨ Ø§Ù„ØµÙ†Ù.",
-                    trendIncomeAria: "Ø§Ù„Ø¯Ø®Ù„", trendExpensesAria: "Ø§Ù„Ù…ØµØ§Ø±ÙŠÙ",
-                    savingsImproved: "ØµØ§ÙÙŠ Ø§Ù„ØªÙˆÙÙŠØ± ØªØ²Ø§Ø¯ Ø¨Ù€{amount} Ù…Ù‚Ø§Ø±Ù†Ø© Ø¨Ø§Ù„ÙØªØ±Ø© Ø§Ù„Ù„ÙŠ ÙØ§ØªØª.",
-                    savingsReduced: "ØµØ§ÙÙŠ Ø§Ù„ØªÙˆÙÙŠØ± Ù†Ù‚Øµ Ø¨Ù€{amount} Ù…Ù‚Ø§Ø±Ù†Ø© Ø¨Ø§Ù„ÙØªØ±Ø© Ø§Ù„Ù„ÙŠ ÙØ§ØªØª.",
-                    savingsSame: "ØµØ§ÙÙŠ Ø§Ù„ØªÙˆÙÙŠØ± Ø¨Ù‚Ù‰ ÙƒÙŠÙ ÙƒÙŠÙ Ù…Ù‚Ø§Ø±Ù†Ø© Ø¨Ø§Ù„ÙØªØ±Ø© Ø§Ù„Ù„ÙŠ ÙØ§ØªØª.",
-                    notificationsTitle: "Ø§Ù„Ø¥Ø´Ø¹Ø§Ø±Ø§Øª", notificationsEmpty: "Ù…Ø§ ÙƒØ§ÙŠÙ† Ø­ØªÙ‰ Ø¥Ø´Ø¹Ø§Ø± Ø¬Ø¯ÙŠØ¯.",
-                    notificationsButton: "Ø§Ù„Ø¥Ø´Ø¹Ø§Ø±Ø§Øª", markNotificationsRead: "ØªØ¹Ù„ÙŠÙ… Ø§Ù„ÙƒÙ„ ÙƒÙ…Ù‚Ø±ÙˆØ¡", clearNotifications: "Ù…Ø³Ø­ Ø§Ù„ÙƒÙ„",
-                    notificationSaveError: "Ù…Ø§ Ù‚Ø¯Ø±Ù†Ø§Ø´ Ù†Ø­ÙØ¸Ùˆ Ø§Ù„Ø¥Ø´Ø¹Ø§Ø±Ø§Øª.",
-                    budgetNotificationTitle: "ØªÙ†Ø¨ÙŠÙ‡ Ø§Ù„Ù…ÙŠØ²Ø§Ù†ÙŠØ©", savingsNotificationTitle: "ØªÙ†Ø¨ÙŠÙ‡ Ø§Ù„ØªÙˆÙÙŠØ±",
-                    notificationContribution: "Ø²Ø¯ØªÙŠ {amount} Ù„Ù‡Ø¯Ù Â«{goal}Â».", notificationGoalReached: "ÙˆØµÙ„ØªÙŠ Ù„Ù‡Ø¯Ù Â«{goal}Â» Ø¯ÙŠØ§Ù„ Ø§Ù„ØªÙˆÙÙŠØ±!",
-                    savingsTreeTitle: "Ø´Ø¬Ø±Ø© Ø§Ù„ØªÙˆÙÙŠØ± Ø¯ÙŠØ§Ù„ÙŠ", savingsTreeCaption: "ÙƒÙ„Ù…Ø§ ÙˆÙØ±Øª Ø£ÙƒØ«Ø±ØŒ ÙƒØ¨Ø±Øª Ø´Ø¬Ø±ØªÙƒ.",
-                    savingsTreeEmpty: "Ø²ÙŠØ¯ Ù‡Ø¯Ù Ø¯ÙŠØ§Ù„ Ø§Ù„ØªÙˆÙÙŠØ± Ø¨Ø§Ø´ ØªØºØ±Ø³ Ø£ÙˆÙ„ Ø¨Ø°Ø±Ø©.", savingsTreeStage0: "Ø¨Ø¯Ø§ Ø§Ù„ØªÙˆÙÙŠØ± Ø¯ÙŠØ§Ù„Ùƒ Ø¨Ø§Ø´ ØªÙƒØ¨Ø± Ø§Ù„Ø´Ø¬Ø±Ø©.",
-                    savingsTreeStage1: "Ø§Ù„Ø¨Ø°Ø±Ø© Ø¨Ø¯Ø§Øª ÙƒØªØ·Ù„Ø¹!",
-                    savingsTreeStage2: "Ø§Ù„Ø´Ø¬ÙŠØ±Ø© Ø¯ÙŠØ§Ù„Ùƒ ÙƒØªÙƒØ¨Ø±.", savingsTreeStage3: "Ø´Ø¬Ø±ØªÙƒ ÙƒØªÙ‚ÙˆÙ‰ Ù…Ø¹ ÙƒÙ„ ØªÙˆÙÙŠØ±.",
-                    savingsTreeStage4: "Ø¨Ø§Ù‚ÙŠ ØºÙŠØ± Ø´ÙˆÙŠØ© ÙˆØªÙˆØµÙ„ Ù„Ù‡Ø¯ÙÙƒ!", savingsTreeStage5: "Ø´Ø¬Ø±ØªÙƒ ÙƒØ¨Ø±Øª ÙˆÙ‡Ø¯ÙÙƒ ØªØ­Ù‚Ù‚!",
-                    savingsTreeProgress: "ØªÙ‚Ø¯Ù… Ø´Ø¬Ø±Ø© Ø§Ù„ØªÙˆÙÙŠØ±",
-                    goalsTitle: "Ø£Ù‡Ø¯Ø§Ù Ø§Ù„ØªÙˆÙÙŠØ±", goalsSubtitle: "ØªØ¨Ø¹ Ø§Ù„ØªÙ‚Ø¯Ù… Ø¯ÙŠØ§Ù„Ùƒ Ù†Ø­Ùˆ Ø£Ù‡Ø¯Ø§ÙÙƒ", addGoal: "Ø²ÙŠØ¯ Ù‡Ø¯Ù", goalEmpty: "Ù…Ø§ Ø¹Ù†Ø¯Ùƒ Ø­ØªÙ‰ Ù‡Ø¯Ù Ø¯ÙŠØ§Ù„ Ø§Ù„ØªÙˆÙÙŠØ±. Ø²ÙŠØ¯ Ù‡Ø¯ÙÙƒ Ø§Ù„Ø£ÙˆÙ„!",
-                    goalModal: "Ù‡Ø¯Ù ØªÙˆÙÙŠØ± Ø¬Ø¯ÙŠØ¯", goalName: "Ø§Ø³Ù… Ø§Ù„Ù‡Ø¯Ù", goalNamePlaceholder: "Ù…Ø«Ø§Ù„: Ø¹Ø·Ù„Ø©ØŒ Ø­Ø§Ø³ÙˆØ¨...", goalTarget: "Ø§Ù„Ù…Ø¨Ù„Øº Ø§Ù„Ù„ÙŠ Ø¨Ø§ØºÙŠ ØªØ¬Ù…Ø¹",
-                    goalTargetPlaceholder: "Ù…Ø«Ø§Ù„: 10000", saveGoal: "Ø­ÙØ¸ Ø§Ù„Ù‡Ø¯Ù", contribute: "Ø²ÙŠØ¯ Ù„Ù„ØªÙˆÙÙŠØ±", contributionAmount: "Ø§Ù„Ù…Ø¨Ù„Øº Ø§Ù„Ù„ÙŠ ÙˆÙØ±ØªÙŠ",
-                    saveContribution: "Ø­ÙØ¸ Ø§Ù„ØªÙˆÙÙŠØ±", addContribution: "Ø²ÙŠØ¯ ØªÙˆÙÙŠØ±", deleteGoal: "Ø­Ø°Ù Ø§Ù„Ù‡Ø¯Ù", goalCompleted: "ÙƒÙ…Ù„ØªÙŠ Ø§Ù„Ù‡Ø¯Ù!", goalProgress: "Ø§Ù„ØªÙ‚Ø¯Ù…",
-                    goalInvalid: "Ø¯Ø®Ù„ Ø§Ø³Ù… ÙˆÙ…Ø¨Ù„Øº ØµØ­ÙŠØ­ÙŠÙ† Ù„Ù„Ù‡Ø¯Ù.", goalSaved: "ØªØ³Ø¬Ù„ Ù‡Ø¯Ù Ø§Ù„ØªÙˆÙÙŠØ±.", goalDeleted: "ØªØ­Ø°Ù Ù‡Ø¯Ù Ø§Ù„ØªÙˆÙÙŠØ±.",
-                    contributionInvalid: "Ø¯Ø®Ù„ Ù…Ø¨Ù„Øº ØµØ­ÙŠØ­ Ù„Ù„ØªÙˆÙÙŠØ±.", contributionTooHigh: "Ø§Ù„Ù…Ø¨Ù„Øº Ø£ÙƒØ¨Ø± Ù…Ù† Ø§Ù„Ù„ÙŠ Ø¨Ø§Ù‚ÙŠ Ø¨Ø§Ø´ ØªÙƒÙ…Ù„ Ø§Ù„Ù‡Ø¯Ù.",
-                    contributionSaved: "ØªØ³Ø¬Ù„ Ø§Ù„ØªÙˆÙÙŠØ± Ø¯ÙŠØ§Ù„Ùƒ.", budgetWarning: "ØªÙ†Ø¨ÙŠÙ‡: ÙˆØµÙ„ØªÙŠ Ù„Ù€80% Ù…Ù† Ø§Ù„Ù…ÙŠØ²Ø§Ù†ÙŠØ© Ø§Ù„Ø´Ù‡Ø±ÙŠØ©.",
-                    budgetExceededAlert: "ØªÙ†Ø¨ÙŠÙ‡: ÙˆØµÙ„ØªÙŠ Ø£Ùˆ ÙØªÙŠØªÙŠ Ø§Ù„Ù…ÙŠØ²Ø§Ù†ÙŠØ© Ø§Ù„Ø´Ù‡Ø±ÙŠØ©!",
-                    moneyTipTitle: "Ù†ØµÙŠØ­Ø© Ù„ÙŠÙƒ", moneyTipStart: "Ø³Ø¬Ù‘Ù„ Ø¹Ù…Ù„ÙŠØ§ØªÙƒ Ø¨Ø§Ø´ Ù†Ø¹Ø·ÙŠÙˆÙƒ Ù†ØµÙŠØ­Ø© Ø¹Ù„Ù‰ Ø­Ø³Ø§Ø¨ Ù…ØµØ§Ø±ÙŠÙÙƒ.",
-                    moneyTipOverBudget: "ØªØ¬Ø§ÙˆØ²ØªÙŠ Ø§Ù„Ù…ÙŠØ²Ø§Ù†ÙŠØ© Ø§Ù„Ø´Ù‡Ø±ÙŠØ©. Ø±Ø§Ø¬Ø¹ Ø§Ù„Ù…ØµØ§Ø±ÙŠÙ Ø§Ù„Ø¬Ø§ÙŠØ© ÙˆØ­Ø§ÙˆÙ„ ØªØ£Ø¬Ù„ Ø§Ù„Ù„ÙŠ Ù…Ø§Ø´ÙŠ Ø¶Ø±ÙˆØ±ÙŠ.",
-                    moneyTipNearBudget: "ÙˆØµÙ„ØªÙŠ Ù„Ù€{percent}% Ù…Ù† Ø§Ù„Ù…ÙŠØ²Ø§Ù†ÙŠØ©. Ø±Ø§Ù‚Ø¨ Ø§Ù„Ù…ØµØ§Ø±ÙŠÙ Ø¯ÙŠØ§Ù„ Ø¨Ø§Ù‚ÙŠ Ø§Ù„Ø´Ù‡Ø±.",
-                    moneyTipBalance: "Ù…ØµØ§Ø±ÙŠÙÙƒ Ø£ÙƒØ«Ø± Ù…Ù† Ø§Ù„Ø¯Ø®Ù„ Ø§Ù„Ù„ÙŠ Ø³Ø¬Ù„ØªÙŠ. Ø±Ø§Ø¬Ø¹ Ø§Ù„Ø¹Ù…Ù„ÙŠØ§Øª Ø¨Ø§Ø´ ØªØ¹Ø±Ù ÙÙŠÙ† ØªÙ‚Ø¯Ø± ØªÙ†Ù‚Øµ.",
-                    moneyTipSetBudget: "Ù…Ø§Ø²Ø§Ù„ Ù…Ø§ Ø­Ø¯Ø¯ØªÙŠØ´ Ù…ÙŠØ²Ø§Ù†ÙŠØ© Ù„Ù„Ø´Ù‡Ø±. Ø­Ø¯Ø¯Ù‡Ø§ Ø¨Ø§Ø´ ØªØ¨Ù‚Ù‰ Ø¹Ø§Ø±Ù Ø´Ø­Ø§Ù„ ØªÙ‚Ø¯Ø± ØªØµØ±Ù.",
-                    moneyTipCategory: "Ø§Ù„ØµÙ†Ù Ø§Ù„Ù„ÙŠ ÙÙŠÙ‡ Ø£ÙƒØ¨Ø± Ù…ØµØ§Ø±ÙŠÙ Ù‡Ùˆ {category} Ø¨Ù€{percent}% Ù…Ù† Ù…Ø¬Ù…ÙˆØ¹ Ù…ØµØ§Ø±ÙŠÙÙƒ. Ø±Ø§Ø¬Ø¹ ÙˆØ§Ø´ ØªÙ‚Ø¯Ø± ØªÙ†Ù‚Øµ Ù…Ù†Ùˆ.",
-                    moneyTipSave: "Ø¨Ø§Ù‚ÙŠ Ø¹Ù†Ø¯Ùƒ ÙØ§Ø¦Ø¶ Ø¨ÙŠÙ† Ø§Ù„Ø¯Ø®Ù„ ÙˆØ§Ù„Ù…ØµØ§Ø±ÙŠÙ. ÙÙƒØ± ØªØ®ØµØµ Ø¬Ø²Ø¡ Ù…Ù†Ùˆ Ù„Ù‡Ø¯Ù ØªÙˆÙÙŠØ±.",
-                    dailyChallengeTitle: "ØªØ­Ø¯Ù‘ÙŠ Ø§Ù„ØªÙˆÙÙŠØ± Ø¯ÙŠØ§Ù„ Ø§Ù„ÙŠÙˆÙ…", dailyChallengeCaption: "Ø¬Ø±Ù‘Ø¨ ØªØ­Ø· Ù‡Ø§Ø¯ Ø§Ù„Ù…Ø¨Ù„Øº Ø¹Ù„Ù‰ Ø¬Ù†Ø¨ Ø§Ù„ÙŠÙˆÙ….",
-                    dailyChallengeStreak: "ðŸ”¥ {count} Ø£ÙŠØ§Ù… Ù…ØªØªØ§Ø¨Ø¹Ø©", dailyChallengeButton: "Ø¯Ø±Øª Ø§Ù„ØªØ­Ø¯Ù‘ÙŠ Ø§Ù„ÙŠÙˆÙ…!",
-                    dailyChallengeDone: "ÙˆØ§Ø¹Ø±! ÙƒÙ…Ù„ØªÙŠ ØªØ­Ø¯Ù‘ÙŠ Ø§Ù„ÙŠÙˆÙ…. Ù†ÙƒÙ…Ù„Ùˆ ØºØ¯Ø§! ðŸŽ‰",
-                    subtitle: "ØªØ¨Ø¹ Ø§Ù„Ø¯Ø®Ù„ ÙˆØ§Ù„Ù…ØµØ§Ø±ÙŠÙ Ø¯ÙŠØ§Ù„Ùƒ ÙˆØ®Ø·Ø· Ù„Ù„Ø´Ù‡Ø± Ø¨Ø±Ø§Ø­Ø©.", balance: "Ø§Ù„Ø±ØµÙŠØ¯ Ø§Ù„ØµØ§ÙÙŠ", income: "Ù…Ø¬Ù…ÙˆØ¹ Ø§Ù„Ø¯Ø®Ù„", expenses: "Ù…Ø¬Ù…ÙˆØ¹ Ø§Ù„Ù…ØµØ§Ø±ÙŠÙ",
-                    budgetTitle: "Ù…ÙŠØ²Ø§Ù†ÙŠØ© Ø§Ù„Ù…ØµØ§Ø±ÙŠÙ Ø§Ù„Ø´Ù‡Ø±ÙŠØ©", budgetDefault: "Ø­Ø¯Ø¯ Ù…ÙŠØ²Ø§Ù†ÙŠØªÙƒ Ø¨Ø§Ø´ ØªØ¨Ù‚Ù‰ Ù…ØªØ­ÙƒÙ… ÙÙ…ØµØ§Ø±ÙŠÙÙƒ.",
-                    budgetNotSet: "Ù…Ø§ ØªØ­Ø¯Ø¯Ø§ØªØ´", budgetSet: "Ø­Ø¯Ø¯ Ø§Ù„Ù…ÙŠØ²Ø§Ù†ÙŠØ©", budgetChange: "Ø¨Ø¯Ù„ Ø§Ù„Ù…ÙŠØ²Ø§Ù†ÙŠØ©",
-                    budgetUsed: "Ø§Ø³ØªØ¹Ù…Ù„ØªÙŠ {percent}% Ù…Ù† Ø§Ù„Ù…ÙŠØ²Ø§Ù†ÙŠØ© Ø¯ÙŠØ§Ù„Ùƒ.", budgetRemaining: "Ø¨Ø§Ù‚ÙŠ Ù„ÙŠÙƒ {amount}", budgetOver: "ÙØªÙŠØªÙŠ Ø§Ù„Ù…ÙŠØ²Ø§Ù†ÙŠØ© Ø¨Ù€ {amount}",
-                    startBudget: "Ø¨Ø¯Ø§ Ø¨ØªØ­Ø¯ÙŠØ¯ Ù…ÙŠØ²Ø§Ù†ÙŠØªÙƒ Ø§Ù„Ø´Ù‡Ø±ÙŠØ©.", transactions: "Ø¢Ø®Ø± Ø§Ù„Ø¹Ù…Ù„ÙŠØ§Øª", transactionCountOne: "{count} Ø¹Ù…Ù„ÙŠØ© Ù‡Ø§Ø¯ Ø§Ù„Ø´Ù‡Ø±", transactionCountMany: "{count} Ø¹Ù…Ù„ÙŠØ§Øª Ù‡Ø§Ø¯ Ø§Ù„Ø´Ù‡Ø±",
-                    filterLabel: "ØªØµÙÙŠØ© Ø§Ù„Ø¹Ù…Ù„ÙŠØ§Øª", filterAll: "ÙƒÙ„ Ø§Ù„Ø¹Ù…Ù„ÙŠØ§Øª", filterExpenses: "Ø§Ù„Ù…ØµØ§Ø±ÙŠÙ", filterIncome: "Ø§Ù„Ø¯Ø®Ù„",
-                    categoriesTitle: "ÙÙŠÙ† Ù…Ø´Ø§Ùˆ Ù…ØµØ§Ø±ÙŠÙÙƒØŸ", categoriesSubtitle: "Ø§Ù„ØªÙˆØ²ÙŠØ¹ Ø­Ø³Ø¨ Ø§Ù„ØµÙ†Ù", emptyFilter: "Ù…Ø§ ÙƒØ§ÙŠÙ†Ø§Ø´ Ø¹Ù…Ù„ÙŠØ§Øª Ø¨Ù‡Ø§Ø¯ Ø§Ù„ØªØµÙÙŠØ©.",
-                    emptyTransactions: "Ù…Ø§Ø²Ø§Ù„ Ù…Ø§ Ø²Ø¯ØªÙŠ Ø­ØªÙ‰ Ø¹Ù…Ù„ÙŠØ©. Ø¨Ø¯Ø§ ÙˆØ³Ø¬Ù„ Ø£ÙˆÙ„ Ù…ØµØ±ÙˆÙ Ø£Ùˆ Ø¯Ø®Ù„.", emptyCategories: "Ø§Ù„ØªØµÙ†ÙŠÙØ§Øª ØºØ§Ø¯ÙŠ ÙŠØ¨Ø§Ù†ÙˆØ§ Ù…Ù„ÙŠ ØªØ³Ø¬Ù„ Ø§Ù„Ù…ØµØ§Ø±ÙŠÙ.",
-                    privacy: "Ø¨ÙŠØ§Ù†Ø§Øª Ø§Ù„Ø¶ÙŠÙ ÙƒØªØ¨Ù‚Ù‰ ÙÙ‡Ø§Ø¯ Ø§Ù„Ø¬Ù‡Ø§Ø²ØŒ ÙˆØ§Ù„Ø­Ø³Ø§Ø¨ ÙƒÙŠØ²Ø§Ù…Ù†Ù‡Ø§ Ù…Ø¹ Ø§Ù„Ø®Ø§Ø¯Ù….", transactionModal: "Ø²ÙŠØ¯ Ø¹Ù…Ù„ÙŠØ© Ø¬Ø¯ÙŠØ¯Ø©", close: "Ø³Ø¯", expense: "Ù…ØµØ±ÙˆÙ", incomeType: "Ø¯Ø®Ù„",
-                    description: "Ø§Ù„ÙˆØµÙ", descriptionPlaceholder: "Ù…Ø«Ø§Ù„: Ù‚Ù‡ÙˆØ©ØŒ Ø®Ù„ØµØ© Ø§Ù„Ø´Ù‡Ø±...", amount: "Ø§Ù„Ù…Ø¨Ù„Øº ({currency})", category: "Ø§Ù„ØµÙ†Ù", date: "Ø§Ù„ØªØ§Ø±ÙŠØ®",
-                    saveTransaction: "Ø­ÙØ¸ Ø§Ù„Ø¹Ù…Ù„ÙŠØ©", budgetModal: "Ø§Ù„Ù…ÙŠØ²Ø§Ù†ÙŠØ© Ø§Ù„Ø´Ù‡Ø±ÙŠØ©", budgetCopy: "Ø¯Ø®Ù„ Ø´Ø­Ø§Ù„ Ø¨Ø§ØºÙŠ ØªØµØ±Ù ÙƒØ­Ø¯ Ø£Ù‚ØµÙ‰ ÙÙ‡Ø§Ø¯ Ø§Ù„Ø´Ù‡Ø±.",
-                    budgetInput: "Ø§Ù„Ù…ÙŠØ²Ø§Ù†ÙŠØ© ({currency})", budgetPlaceholder: "Ù…Ø«Ø§Ù„: 3000",
-                    settingsTitle: "Ø¥Ø¹Ø¯Ø§Ø¯Ø§Øª Ø§Ù„ØªØ·Ø¨ÙŠÙ‚", helpButton: "Ù…Ø³Ø§Ø¹Ø¯Ø©", helpTitle: "ÙƒÙŠÙØ§Ø´ ØªØ³ØªØ¹Ù…Ù„ ÙÙ„ÙˆØ³ÙŠ",
-                    helpIntro: "Ø¨Ø¯Ø§ Ø¨ØªØ³Ø¬ÙŠÙ„ Ø§Ù„Ø¹Ù…Ù„ÙŠØ§Øª Ø¯ÙŠØ§Ù„ÙƒØŒ ÙˆÙ…Ù† Ø¨Ø¹Ø¯ ØªØªØ¨Ø¹ Ù…ÙŠØ²Ø§Ù†ÙŠØªÙƒ ÙˆØ£Ù‡Ø¯Ø§Ù Ø§Ù„ØªÙˆÙÙŠØ±.",
-                    helpTransactions: "Ø§Ø³ØªØ¹Ù…Ù„ Ø²Ø± + Ø¨Ø§Ø´ ØªØ³Ø¬Ù„ Ø§Ù„Ù…ØµØ§Ø±ÙŠÙ Ø£Ùˆ Ø§Ù„Ù…Ø¯Ø§Ø®ÙŠÙ„ØŒ ÙˆØ²ÙŠØ¯ Ø§Ù„ÙˆØµÙ ÙˆØ§Ù„Ù…Ø¨Ù„Øº ÙˆØ§Ù„ØªØ§Ø±ÙŠØ®.",
-                    helpBudgetGoals: "Ø­Ø¯Ø¯ Ù…ÙŠØ²Ø§Ù†ÙŠØ© Ø§Ù„Ø´Ù‡Ø± Ù…Ù† Ø¨Ø·Ø§Ù‚Ø© Ø§Ù„Ù…ÙŠØ²Ø§Ù†ÙŠØ©ØŒ ÙˆØ²ÙŠØ¯ Ø£Ù‡Ø¯Ø§Ù Ø§Ù„ØªÙˆÙÙŠØ± ÙˆØªØ¨Ø¹ Ø§Ù„ØªÙ‚Ø¯Ù… Ø¯ÙŠØ§Ù„Ùƒ.",
-                    helpNavigation: "Ø¨Ø¯Ù„ Ø§Ù„Ø´Ù‡Ø± Ù…Ù† Ø§Ù„Ø³Ù‡Ù…ÙŠÙ†ØŒ ÙˆØ´ÙˆÙ Ø§Ù„Ø¥Ø­ØµØ§Ø¦ÙŠØ§Øª ÙˆØ§Ù„Ø¹Ù…Ù„ÙŠØ§Øª ÙˆØ§Ù„Ø£Ù‡Ø¯Ø§Ù Ù…Ù† Ø£Ù‚Ø³Ø§Ù… Ø§Ù„ØµÙØ­Ø© Ø£Ùˆ Ø§Ù„Ù‚Ø§Ø¦Ù…Ø© Ù„ØªØ­Øª.",
-                    helpSettings: "Ù…Ù† Ø§Ù„Ø¥Ø¹Ø¯Ø§Ø¯Ø§Øª Ø¨Ø¯Ù„ Ø§Ù„Ù„ØºØ© ÙˆØ§Ù„Ø¹Ù…Ù„Ø© ÙˆØ§Ù„Ù…Ø¸Ù‡Ø±. ØªÙ‚Ø¯Ø± ØªØ³ØªØ¹Ù…Ù„ Ø§Ù„ØªØ·Ø¨ÙŠÙ‚ Ø¨Ù„Ø§ Ø­Ø³Ø§Ø¨ØŒ Ø£Ùˆ ØªØ³Ø¬Ù„ Ø§Ù„Ø¯Ø®ÙˆÙ„ Ù„Ù…Ø²Ø§Ù…Ù†Ø© Ø§Ù„Ø¨ÙŠØ§Ù†Ø§Øª Ø¨ÙŠÙ† Ø§Ù„Ø£Ø¬Ù‡Ø²Ø©.",
-                    socialChallengesTitle: "ØªØ­Ø¯ÙŠØ§Øª Ù…Ø¹ ØµØ­Ø§Ø¨Ùƒ", socialChallengesDescription: "Ø¯ÙŠØ±Ùˆ ØªØ­Ø¯ÙŠ ØªÙˆÙÙŠØ± ÙˆØªØ¨Ø¹Ùˆ Ø§Ù„ØªÙ‚Ø¯Ù… Ø¯ÙŠØ§Ù„ÙƒÙ… Ù…Ø¬Ù…ÙˆØ¹ÙŠÙ†.",
-                    createChallenge: "ØµØ§ÙŠØ¨ ØªØ­Ø¯ÙŠ", joinChallenge: "Ø¯Ø®Ù„ Ø¨ØªØ­Ø¯ÙŠ", challengeEmpty: "Ø³Ø¬Ù‘Ù„ Ø§Ù„Ø¯Ø®ÙˆÙ„ ÙˆØµØ§ÙŠØ¨ ØªØ­Ø¯ÙŠ Ø£Ùˆ Ø¯Ø®Ù„ Ø¨Ø§Ù„ÙƒÙˆØ¯ Ø§Ù„Ù„ÙŠ Ø´Ø§Ø±ÙƒÙˆ Ù…Ø¹Ø§Ùƒ ØµØ§Ø­Ø¨Ùƒ.",
-                    challengeEmptySignedIn: "Ù…Ø§ Ø¹Ù†Ø¯Ùƒ Ø­ØªÙ‰ ØªØ­Ø¯ÙŠ Ø¯Ø§Ø¨Ø§. ØµØ§ÙŠØ¨ ØªØ­Ø¯ÙŠ Ø£Ùˆ Ø¯Ø®Ù„ Ø¨ÙƒÙˆØ¯ ØµØ§Ø­Ø¨Ùƒ.", challengeYou: "(Ù†ØªØ§)",
-                    challengeCreateTitle: "ØµØ§ÙŠØ¨ ØªØ­Ø¯ÙŠ ØªÙˆÙÙŠØ±", challengeTitle: "Ø§Ø³Ù… Ø§Ù„ØªØ­Ø¯ÙŠ", challengeTitlePlaceholder: "Ù…Ø«Ø§Ù„: Ù†ÙˆÙØ±ÙˆØ§ Ù„Ù„Ø¹Ø·Ù„Ø©",
-                    challengeTarget: "Ù‡Ø¯Ù Ø§Ù„ØªÙˆÙÙŠØ±", challengeTargetPlaceholder: "Ù…Ø«Ø§Ù„: 5000", challengeCurrency: "Ø§Ù„Ø¹Ù…Ù„Ø©",
-                    challengeDeadline: "Ø¢Ø®Ø± Ø£Ø¬Ù„", challengeDisplayName: "Ø§Ù„Ø§Ø³Ù… Ø§Ù„Ù„ÙŠ ØºØ§Ø¯ÙŠ ÙŠØ¨Ø§Ù† Ù„ØµØ­Ø§Ø¨Ùƒ", challengeDisplayNamePlaceholder: "Ù…Ø«Ø§Ù„: Ø³Ù„Ù…Ù‰",
-                    challengeCreateSubmit: "Ø¥Ù†Ø´Ø§Ø¡ Ø§Ù„ØªØ­Ø¯ÙŠ", challengeJoinTitle: "Ø¯Ø®Ù„ Ù„ØªØ­Ø¯ÙŠ ØµØ§Ø­Ø¨Ùƒ", challengeCode: "ÙƒÙˆØ¯ Ø§Ù„Ø¯Ø¹ÙˆØ©",
-                    challengeCodePlaceholder: "Ù„ØµÙ‚ ÙƒÙˆØ¯ Ø§Ù„Ø¯Ø¹ÙˆØ© Ù‡Ù†Ø§", challengeJoinSubmit: "Ø§Ù†Ø¶Ù… Ù„Ù„ØªØ­Ø¯ÙŠ",
-                    challengeUpdate: "Ø­Ø¯Ù‘Ø« Ø§Ù„ØªÙ‚Ø¯Ù…", challengeProgress: "Ø§Ù„Ù…Ø¨Ù„Øº Ø§Ù„Ù„ÙŠ ÙˆÙØ±ØªÙŠ", challengeInvite: "Ù†Ø³Ø® Ø±Ø§Ø¨Ø· Ø§Ù„Ø¯Ø¹ÙˆØ©",
-                    challengeParticipants: "Ø§Ù„Ù…Ø´Ø§Ø±ÙƒÙŠÙ†", challengeCreated: "ØªØ®Ù„Ù‚ Ø§Ù„ØªØ­Ø¯ÙŠ. Ø´Ø§Ø±Ùƒ Ø§Ù„Ø±Ø§Ø¨Ø· Ù…Ø¹ ØµØ­Ø§Ø¨Ùƒ!",
-                    challengeJoined: "Ø¯Ø®Ù„ØªÙŠ Ù„Ù„ØªØ­Ø¯ÙŠ!", challengeProgressSaved: "ØªØ­Ø¯Ù‘Ø« Ø§Ù„ØªÙ‚Ø¯Ù… Ø¯ÙŠØ§Ù„Ùƒ.",
-                    challengeCopied: "ØªÙ†Ø³Ø® Ø±Ø§Ø¨Ø· Ø§Ù„Ø¯Ø¹ÙˆØ©.", challengeCopyFailed: "Ù…Ø§ Ù‚Ø¯Ø±Ù†Ø§Ø´ Ù†Ù†Ø³Ø®Ùˆ Ø§Ù„Ø±Ø§Ø¨Ø·. Ø­Ø§ÙˆÙ„ Ù…Ø±Ø© Ø£Ø®Ø±Ù‰.",
-                    challengeLoginRequired: "Ø®Ø§ØµÙƒ ØªØ³Ø¬Ù„ Ø§Ù„Ø¯Ø®ÙˆÙ„ Ø¨Ø§Ø´ ØªØ´Ø§Ø±Ùƒ ÙØªØ­Ø¯ÙŠØ§Øª Ø§Ù„Ø£ØµØ¯Ù‚Ø§Ø¡.",
-                    challengeLoadError: "Ù…Ø§ Ù‚Ø¯Ø±Ù†Ø§Ø´ Ù†Ø­Ù…Ù„Ùˆ ØªØ­Ø¯ÙŠØ§ØªÙƒ. ØªØ£ÙƒØ¯ Ù…Ù† Ø§Ù„Ø§ØªØµØ§Ù„ ÙˆØ­Ø§ÙˆÙ„ Ù…Ø±Ø© Ø£Ø®Ø±Ù‰.",
-                    challengeFull: "Ù‡Ø§Ø¯ Ø§Ù„ØªØ­Ø¯ÙŠ ÙˆØµÙ„ Ù„Ù„Ø­Ø¯ Ø§Ù„Ø£Ù‚ØµÙ‰ Ø¯ÙŠØ§Ù„ Ø§Ù„Ù…Ø´Ø§Ø±ÙƒÙŠÙ†.",
-                    challengeInvalid: "Ø¯Ø®Ù„ Ù…Ø¹Ù„ÙˆÙ…Ø§Øª ØµØ­ÙŠØ­Ø© Ù„Ù„ØªØ­Ø¯ÙŠ.", challengeMissingName: "Ø¯Ø®Ù„ Ø§Ù„Ø§Ø³Ù… Ø§Ù„Ù„ÙŠ ØºØ§Ø¯ÙŠ ÙŠØ¨Ø§Ù† Ù„Ù„Ù…Ø´Ø§Ø±ÙƒÙŠÙ†.",
-                    challengeNotFound: "Ù…Ø§ Ù„Ù‚ÙŠÙ†Ø§Ø´ Ù‡Ø§Ø¯ Ø§Ù„ØªØ­Ø¯ÙŠ. ØªØ£ÙƒØ¯ Ù…Ù† Ø±Ø§Ø¨Ø· Ø§Ù„Ø¯Ø¹ÙˆØ©.",
-                    language: "Ù„ØºØ© Ø§Ù„ØªØ·Ø¨ÙŠÙ‚", currency: "Ø§Ù„Ø¹Ù…Ù„Ø©", currencyHelp: "ØªØ¨Ø¯ÙŠÙ„ Ø§Ù„Ø¹Ù…Ù„Ø© ÙƒÙŠØ¨Ø¯Ù„ Ø§Ù„Ø±Ù…Ø² ÙÙ‚Ø·ØŒ ÙˆÙ…Ø§ ÙƒÙŠØ­ÙˆÙ‘Ù„Ø´ Ø§Ù„Ù…Ø¨Ø§Ù„Øº Ø§Ù„Ù…Ø³Ø¬Ù„Ø©.",
-                    sound: "ØªØ´ØºÙŠÙ„ Ø£ØµÙˆØ§Øª Ø§Ù„ØªØ·Ø¨ÙŠÙ‚", testSound: "Ø¬Ø±Ù‘Ø¨ Ø§Ù„ØµÙˆØª",
-                    switchToDarkMode: "Ù„ÙŠÙ„ÙŠ", switchToLightMode: "Ù†Ù‡Ø§Ø±ÙŠ",
-                    exportData: "ØªØµØ¯ÙŠØ± Ø§Ù„Ø¨ÙŠØ§Ù†Ø§Øª", importData: "Ø§Ø³ØªÙŠØ±Ø§Ø¯ ÙˆØ¯Ù…Ø¬ Ø§Ù„Ø¨ÙŠØ§Ù†Ø§Øª",
-                    dataTransferHelp: "ØµØ¯Ù‘Ø± Ø¨ÙŠØ§Ù†Ø§ØªÙƒ Ù…Ù† Ø§Ù„Ù†Ø³Ø®Ø© Ø§Ù„Ù…Ø­Ù„ÙŠØ©ØŒ Ø«Ù… Ø§Ø³ØªÙˆØ±Ø¯Ù‡Ø§ ÙˆØ§Ø¯Ù…Ø¬Ù‡Ø§ Ù…Ø¹ Ø­Ø³Ø§Ø¨Ùƒ.",
-                    importDataInvalid: "Ù…Ù„Ù Ø§Ù„Ø¨ÙŠØ§Ù†Ø§Øª ØºÙŠØ± ØµØ§Ù„Ø­ Ø£Ùˆ ÙÙŠÙ‡ Ø¨ÙŠØ§Ù†Ø§Øª ØºÙŠØ± Ù…Ø¯Ø¹ÙˆÙ…Ø©.",
-                    importDataTooLarge: "Ø­Ø¬Ù… Ù…Ù„Ù Ø§Ù„Ø¨ÙŠØ§Ù†Ø§Øª ÙƒØ¨ÙŠØ± Ø¨Ø²Ø§Ù.",
-                    importDataMerged: "ØªØ¯Ù…Ø¬Ø§Øª Ø§Ù„Ø¨ÙŠØ§Ù†Ø§Øª Ù…Ø­Ù„ÙŠØ§Ù‹. Ø³Ø¬Ù‘Ù„ Ø§Ù„Ø¯Ø®ÙˆÙ„ Ø£Ùˆ Ø£Ù†Ø´Ø¦ Ø­Ø³Ø§Ø¨Ø§Ù‹ Ø¨Ø§Ø´ ØªØ²Ø§Ù…Ù†Ù‡Ø§.",
-                    languageSaved: "ØªØ­ÙØ¸Ø§Øª Ø§Ù„Ù„ØºØ© Ø¯ÙŠØ§Ù„Ùƒ.", currencySaved: "ØªØ­ÙØ¸Ø§Øª Ø§Ù„Ø¹Ù…Ù„Ø© Ø¯ÙŠØ§Ù„Ùƒ.", soundSaved: "ØªØ­ÙØ¸Ø§Øª Ø¥Ø¹Ø¯Ø§Ø¯Ø§Øª Ø§Ù„ØµÙˆØª.", transactionInvalid: "Ø¯Ø®Ù„ Ù…Ø¹Ù„ÙˆÙ…Ø§Øª ØµØ­ÙŠØ­Ø© Ù„Ù„Ø¹Ù…Ù„ÙŠØ©.",
-                    transactionSaved: "ØªØ³Ø¬Ù„Ø§Øª Ø§Ù„Ø¹Ù…Ù„ÙŠØ© Ø¨Ù†Ø¬Ø§Ø­.", quickCash: "Ù…ØµØ±ÙˆÙ Ø³Ø±ÙŠØ¹", quickSave: "Ø³Ø¬Ù‘Ù„ Ø§Ù„Ù…ØµØ±ÙˆÙ", quickNotePlaceholder: "Ù…Ù„Ø§Ø­Ø¸Ø© (Ø§Ø®ØªÙŠØ§Ø±ÙŠ)", budgetInvalid: "Ø¯Ø®Ù„ Ù…ÙŠØ²Ø§Ù†ÙŠØ© ØµØ­ÙŠØ­Ø© Ø£ÙƒØ¨Ø± Ù…Ù† ØµÙØ±.", budgetSaved: "ØªØ­ÙØ¸Ø§Øª Ø§Ù„Ù…ÙŠØ²Ø§Ù†ÙŠØ© Ø¯ÙŠØ§Ù„Ùƒ.",
-                    storageFailed: "Ù…Ø§ Ù‚Ø¯Ø±Ù†Ø§Ø´ Ù†Ø­ÙØ¸Ùˆ Ø§Ù„Ø¨ÙŠØ§Ù†Ø§Øª. ØªØ£ÙƒØ¯ Ù…Ù† Ù…Ø³Ø§Ø­Ø© Ø§Ù„ØªØ®Ø²ÙŠÙ†.", settingsFailed: "Ù…Ø§ Ù‚Ø¯Ø±Ù†Ø§Ø´ Ù†Ø­ÙØ¸Ùˆ Ø§Ù„Ø¥Ø¹Ø¯Ø§Ø¯Ø§Øª.",
-                    audioUnsupported: "Ø§Ù„Ù…ØªØµÙØ­ Ø¯ÙŠØ§Ù„Ùƒ Ù…Ø§ ÙƒÙŠØ¯Ø¹Ù…Ø´ Ø§Ù„ØµÙˆØª.", audioFailed: "Ù…Ø§ Ù‚Ø¯Ø±Ù†Ø§Ø´ Ù†Ø´ØºÙ„Ùˆ Ø§Ù„ØµÙˆØª. Ø¬Ø±Ø¨ Ù…Ø±Ø© Ø£Ø®Ø±Ù‰.",
-                    deleteTransaction: "Ø­Ø°Ù Ø§Ù„Ø¹Ù…Ù„ÙŠØ©: {description}", categoryFood: "Ø§Ù„Ù…Ø§ÙƒÙ„Ø©", categoryHome: "Ø§Ù„Ø¯Ø§Ø±", categoryTransport: "Ø§Ù„Ù†Ù‚Ù„",
-                    categoryHealth: "Ø§Ù„ØµØ­Ø©", categoryShopping: "Ø§Ù„ØªØ³ÙˆÙ‚", categoryBills: "Ø§Ù„ÙÙˆØ§ØªÙŠØ±", categoryFun: "Ø§Ù„ØªØ±ÙÙŠÙ‡", categoryOther: "Ø£Ø®Ø±Ù‰"
+                    brandCaption: "فلوسك واضحة، وراسك مرتاح", introTitle: "مرحبا بك ففلوسي", introCaption: "فلوسك واضحة، وراسك مرتاح",
+                    introStart: "بدا التجربة　♫",
+                    loginTitle: "مرحبا بعودتك", loginCaption: "دخل للحساب ديالك باش تتابع فلوسك.", loginEmail: "البريد الإلكتروني",
+                    loginPassword: "كلمة المرور", showPassword: "إظهار", hidePassword: "إخفاء",
+                    loginNotice: "دخل للحساب أو أنشئ حساباً باش تزامن بياناتك مع خادم Flousi.",
+                    loginFeedback: "ما قدرناش نتاصلو بالخادم. تأكد من تشغيله وحاول مرة أخرى.", loginSubmit: "دخول",
+                    registerTitle: "أنشئ حساب Flousi", registerCaption: "أنشئ حساباً باش تبقى بياناتك متزامنة بين الأجهزة.",
+                    registerSubmit: "إنشاء الحساب", switchToRegister: "إنشاء حساب جديد", switchToLogin: "عندي حساب",
+                    apiInvalidLogin: "البريد الإلكتروني أو كلمة المرور غير صحيحة.", apiEmailExists: "هاد البريد الإلكتروني مسجل من قبل.",
+                    apiInvalidEmail: "دخل بريد إلكتروني صحيح.",
+                    apiInvalidData: "البيانات غير صحيحة وما تسجلاتش.", apiUnavailable: "ما قدرناش نتاصلو بالخادم. بياناتك المحلية باقية محفوظة.",
+                    apiGenericError: "وقع مشكل أثناء الاتصال بالخادم. حاول مرة أخرى.",
+                    accountCreated: "تخلق الحساب وتفعّلات المزامنة.", accountSignedIn: "دخلتي للحساب وتحدّثات بياناتك.",
+                    signedOut: "خرجتي من الحساب. بياناتك باقية محفوظة فهاد الجهاز.",
+                    accountStatusGuest: "تستعمل Flousi بلا حساب.", accountEmail: "الحساب: {email}", connectAccount: "تسجيل الدخول والمزامنة",
+                    signOut: "تسجيل الخروج", passwordTooShort: "كلمة المرور خاصها تكون من 10 حروف على الأقل.",
+                    syncFailed: "تعذر حفظ التغييرات فالحساب. بقات محفوظة محلياً؛ تأكد من الخادم وحاول مرة أخرى.",
+                    continueAsGuest: "كمل بلا حساب", backToWelcome: "رجع للبداية",
+                    settings: "⚙ الإعدادات", addTransaction: "زيد عملية", welcome: "السلام! هادي نظرة على فلوسك",
+                    navHome: "الرئيسية", navTransactions: "العمليات", navTrends: "التطور", navGoals: "الأهداف", mainNavigation: "التنقل الرئيسي",
+                    mobileWelcome: "مرحبا بيك",
+                    monthSelector: "اختيار الشهر", transactionType: "نوع العملية", budgetProgress: "نسبة الميزانية المستعملة",
+                    trendTitle: "الإحصائيات", categoryChartTitle: "المصاريف حسب الصنف", comparisonTitle: "الدخل مقابل المصاريف",
+                    trendSubtitle: "آخر 6 شهور", trendIncome: "الدخل", trendExpenses: "المصاريف", trendPeriod: "الفترة الزمنية",
+                    trendWeek: "أسبوع", trendMonth: "شهر", trendYear: "عام", trendWeekRange: "آخر 7 أيام",
+                    trendMonthRange: "آخر 6 شهور", trendYearRange: "هاد العام", categoryChartEmpty: "سجّل مصاريفك باش يبان التوزيع حسب الصنف.",
+                    trendIncomeAria: "الدخل", trendExpensesAria: "المصاريف",
+                    savingsImproved: "صافي التوفير تزاد بـ{amount} مقارنة بالفترة اللي فاتت.",
+                    savingsReduced: "صافي التوفير نقص بـ{amount} مقارنة بالفترة اللي فاتت.",
+                    savingsSame: "صافي التوفير بقى كيف كيف مقارنة بالفترة اللي فاتت.",
+                    notificationsTitle: "الإشعارات", notificationsEmpty: "ما كاين حتى إشعار جديد.",
+                    notificationsButton: "الإشعارات", markNotificationsRead: "تعليم الكل كمقروء", clearNotifications: "مسح الكل",
+                    notificationSaveError: "ما قدرناش نحفظو الإشعارات.",
+                    budgetNotificationTitle: "تنبيه الميزانية", savingsNotificationTitle: "تنبيه التوفير",
+                    notificationContribution: "زدتي {amount} لهدف «{goal}».", notificationGoalReached: "وصلتي لهدف «{goal}» ديال التوفير!",
+                    savingsTreeTitle: "شجرة التوفير ديالي", savingsTreeCaption: "كلما وفرت أكثر، كبرت شجرتك.",
+                    savingsTreeEmpty: "زيد هدف ديال التوفير باش تغرس أول بذرة.", savingsTreeStage0: "بدا التوفير ديالك باش تكبر الشجرة.",
+                    savingsTreeStage1: "البذرة بدات كتطلع!",
+                    savingsTreeStage2: "الشجيرة ديالك كتكبر.", savingsTreeStage3: "شجرتك كتقوى مع كل توفير.",
+                    savingsTreeStage4: "باقي غير شوية وتوصل لهدفك!", savingsTreeStage5: "شجرتك كبرت وهدفك تحقق!",
+                    savingsTreeProgress: "تقدم شجرة التوفير",
+                    goalsTitle: "أهداف التوفير", goalsSubtitle: "تبع التقدم ديالك نحو أهدافك", addGoal: "زيد هدف", goalEmpty: "ما عندك حتى هدف ديال التوفير. زيد هدفك الأول!",
+                    goalModal: "هدف توفير جديد", goalName: "اسم الهدف", goalNamePlaceholder: "مثال: عطلة، حاسوب...", goalTarget: "المبلغ اللي باغي تجمع",
+                    goalTargetPlaceholder: "مثال: 10000", saveGoal: "حفظ الهدف", contribute: "زيد للتوفير", contributionAmount: "المبلغ اللي وفرتي",
+                    saveContribution: "حفظ التوفير", addContribution: "زيد توفير", deleteGoal: "حذف الهدف", goalCompleted: "كملتي الهدف!", goalProgress: "التقدم",
+                    goalInvalid: "دخل اسم ومبلغ صحيحين للهدف.", goalSaved: "تسجل هدف التوفير.", goalDeleted: "تحذف هدف التوفير.",
+                    contributionInvalid: "دخل مبلغ صحيح للتوفير.", contributionTooHigh: "المبلغ أكبر من اللي باقي باش تكمل الهدف.",
+                    contributionSaved: "تسجل التوفير ديالك.", budgetWarning: "تنبيه: وصلتي لـ80% من الميزانية الشهرية.",
+                    budgetExceededAlert: "تنبيه: وصلتي أو فتيتي الميزانية الشهرية!",
+                    moneyTipTitle: "نصيحة ليك", moneyTipStart: "سجّل عملياتك باش نعطيوك نصيحة على حساب مصاريفك.",
+                    moneyTipOverBudget: "تجاوزتي الميزانية الشهرية. راجع المصاريف الجاية وحاول تأجل اللي ماشي ضروري.",
+                    moneyTipNearBudget: "وصلتي لـ{percent}% من الميزانية. راقب المصاريف ديال باقي الشهر.",
+                    moneyTipBalance: "مصاريفك أكثر من الدخل اللي سجلتي. راجع العمليات باش تعرف فين تقدر تنقص.",
+                    moneyTipSetBudget: "مازال ما حددتيش ميزانية للشهر. حددها باش تبقى عارف شحال تقدر تصرف.",
+                    moneyTipCategory: "الصنف اللي فيه أكبر مصاريف هو {category} بـ{percent}% من مجموع مصاريفك. راجع واش تقدر تنقص منو.",
+                    moneyTipSave: "باقي عندك فائض بين الدخل والمصاريف. فكر تخصص جزء منو لهدف توفير.",
+                    dailyChallengeTitle: "تحدّي التوفير ديال اليوم", dailyChallengeCaption: "جرّب تحط هاد المبلغ على جنب اليوم.",
+                    dailyChallengeStreak: "🔥 {count} أيام متتابعة", dailyChallengeButton: "درت التحدّي اليوم!",
+                    dailyChallengeDone: "واعر! كملتي تحدّي اليوم. نكملو غدا! 🎉",
+                    subtitle: "تبع الدخل والمصاريف ديالك وخطط للشهر براحة.", balance: "الرصيد الصافي", income: "مجموع الدخل", expenses: "مجموع المصاريف",
+                    budgetTitle: "ميزانية المصاريف الشهرية", budgetDefault: "حدد ميزانيتك باش تبقى متحكم فمصاريفك.",
+                    budgetNotSet: "ما تحدداتش", budgetSet: "حدد الميزانية", budgetChange: "بدل الميزانية",
+                    budgetUsed: "استعملتي {percent}% من الميزانية ديالك.", budgetRemaining: "باقي ليك {amount}", budgetOver: "فتيتي الميزانية بـ {amount}",
+                    startBudget: "بدا بتحديد ميزانيتك الشهرية.", transactions: "آخر العمليات", transactionCountOne: "{count} عملية هاد الشهر", transactionCountMany: "{count} عمليات هاد الشهر",
+                    filterLabel: "تصفية العمليات", filterAll: "كل العمليات", filterExpenses: "المصاريف", filterIncome: "الدخل",
+                    categoriesTitle: "فين مشاو مصاريفك؟", categoriesSubtitle: "التوزيع حسب الصنف", emptyFilter: "ما كايناش عمليات بهاد التصفية.",
+                    emptyTransactions: "مازال ما زدتي حتى عملية. بدا وسجل أول مصروف أو دخل.", emptyCategories: "التصنيفات غادي يبانوا ملي تسجل المصاريف.",
+                    privacy: "بيانات الضيف كتبقى فهاد الجهاز، والحساب كيزامنها مع الخادم.", transactionModal: "زيد عملية جديدة", close: "سد", expense: "مصروف", incomeType: "دخل",
+                    description: "الوصف", descriptionPlaceholder: "مثال: قهوة، خلصة الشهر...", amount: "المبلغ ({currency})", category: "الصنف", date: "التاريخ",
+                    saveTransaction: "حفظ العملية", budgetModal: "الميزانية الشهرية", budgetCopy: "دخل شحال باغي تصرف كحد أقصى فهاد الشهر.",
+                    budgetInput: "الميزانية ({currency})", budgetPlaceholder: "مثال: 3000",
+                    settingsTitle: "إعدادات التطبيق", helpButton: "مساعدة", helpTitle: "كيفاش تستعمل فلوسي",
+                    helpIntro: "بدا بتسجيل العمليات ديالك، ومن بعد تتبع ميزانيتك وأهداف التوفير.",
+                    helpTransactions: "استعمل زر + باش تسجل المصاريف أو المداخيل، وزيد الوصف والمبلغ والتاريخ.",
+                    helpBudgetGoals: "حدد ميزانية الشهر من بطاقة الميزانية، وزيد أهداف التوفير وتبع التقدم ديالك.",
+                    helpNavigation: "بدل الشهر من السهمين، وشوف الإحصائيات والعمليات والأهداف من أقسام الصفحة أو القائمة لتحت.",
+                    helpSettings: "من الإعدادات بدل اللغة والعملة والمظهر. تقدر تستعمل التطبيق بلا حساب، أو تسجل الدخول لمزامنة البيانات بين الأجهزة.",
+                    socialChallengesTitle: "تحديات مع صحابك", socialChallengesDescription: "ديرو تحدي توفير وتبعو التقدم ديالكم مجموعين.",
+                    createChallenge: "صايب تحدي", joinChallenge: "دخل بتحدي", challengeEmpty: "سجّل الدخول وصايب تحدي أو دخل بالكود اللي شاركو معاك صاحبك.",
+                    challengeEmptySignedIn: "ما عندك حتى تحدي دابا. صايب تحدي أو دخل بكود صاحبك.", challengeYou: "(نتا)",
+                    challengeCreateTitle: "صايب تحدي توفير", challengeTitle: "اسم التحدي", challengeTitlePlaceholder: "مثال: نوفروا للعطلة",
+                    challengeTarget: "هدف التوفير", challengeTargetPlaceholder: "مثال: 5000", challengeCurrency: "العملة",
+                    challengeDeadline: "آخر أجل", challengeDisplayName: "الاسم اللي غادي يبان لصحابك", challengeDisplayNamePlaceholder: "مثال: سلمى",
+                    challengeCreateSubmit: "إنشاء التحدي", challengeJoinTitle: "دخل لتحدي صاحبك", challengeCode: "كود الدعوة",
+                    challengeCodePlaceholder: "لصق كود الدعوة هنا", challengeJoinSubmit: "انضم للتحدي",
+                    challengeUpdate: "حدّث التقدم", challengeProgress: "المبلغ اللي وفرتي", challengeInvite: "نسخ رابط الدعوة",
+                    challengeParticipants: "المشاركين", challengeCreated: "تخلق التحدي. شارك الرابط مع صحابك!",
+                    challengeJoined: "دخلتي للتحدي!", challengeProgressSaved: "تحدّث التقدم ديالك.",
+                    challengeCopied: "تنسخ رابط الدعوة.", challengeCopyFailed: "ما قدرناش ننسخو الرابط. حاول مرة أخرى.",
+                    challengeLoginRequired: "خاصك تسجل الدخول باش تشارك فتحديات الأصدقاء.",
+                    challengeLoadError: "ما قدرناش نحملو تحدياتك. تأكد من الاتصال وحاول مرة أخرى.",
+                    challengeFull: "هاد التحدي وصل للحد الأقصى ديال المشاركين.",
+                    challengeInvalid: "دخل معلومات صحيحة للتحدي.", challengeMissingName: "دخل الاسم اللي غادي يبان للمشاركين.",
+                    challengeNotFound: "ما لقيناش هاد التحدي. تأكد من رابط الدعوة.",
+                    language: "لغة التطبيق", currency: "العملة", currencyHelp: "تبديل العملة كيبدل الرمز فقط، وما كيحوّلش المبالغ المسجلة.",
+                    sound: "تشغيل أصوات التطبيق", testSound: "جرّب الصوت",
+                    switchToDarkMode: "ليلي", switchToLightMode: "نهاري",
+                    exportData: "تصدير البيانات", importData: "استيراد ودمج البيانات",
+                    dataTransferHelp: "صدّر بياناتك من النسخة المحلية، ثم استوردها وادمجها مع حسابك.",
+                    importDataInvalid: "ملف البيانات غير صالح أو فيه بيانات غير مدعومة.",
+                    importDataTooLarge: "حجم ملف البيانات كبير بزاف.",
+                    importDataMerged: "تدمجات البيانات محلياً. سجّل الدخول أو أنشئ حساباً باش تزامنها.",
+                    languageSaved: "تحفظات اللغة ديالك.", currencySaved: "تحفظات العملة ديالك.", soundSaved: "تحفظات إعدادات الصوت.", transactionInvalid: "دخل معلومات صحيحة للعملية.",
+                    transactionSaved: "تسجلات العملية بنجاح.", quickCash: "مصروف سريع", quickSave: "سجّل المصروف", quickNotePlaceholder: "ملاحظة (اختياري)", budgetInvalid: "دخل ميزانية صحيحة أكبر من صفر.", budgetSaved: "تحفظات الميزانية ديالك.",
+                    storageFailed: "ما قدرناش نحفظو البيانات. تأكد من مساحة التخزين.", settingsFailed: "ما قدرناش نحفظو الإعدادات.",
+                    audioUnsupported: "المتصفح ديالك ما كيدعمش الصوت.", audioFailed: "ما قدرناش نشغلو الصوت. جرب مرة أخرى.",
+                    deleteTransaction: "حذف العملية: {description}", categoryFood: "الماكلة", categoryHome: "الدار", categoryTransport: "النقل",
+                    categoryHealth: "الصحة", categoryShopping: "التسوق", categoryBills: "الفواتير", categoryFun: "الترفيه", categoryOther: "أخرى"
                 },
                 fr: {
-                    brandCaption: "Votre argent en toute clartÃ©, lâ€™esprit tranquille", introTitle: "Bienvenue sur Flousi", introCaption: "Votre argent en toute clartÃ©, lâ€™esprit tranquille",
-                    introStart: "Commencerã€€â™«",
+                    brandCaption: "Votre argent en toute clarté, l’esprit tranquille", introTitle: "Bienvenue sur Flousi", introCaption: "Votre argent en toute clarté, l’esprit tranquille",
+                    introStart: "Commencer　♫",
                     loginTitle: "Ravi de vous revoir", loginCaption: "Connectez-vous pour suivre vos finances.", loginEmail: "Adresse e-mail",
                     loginPassword: "Mot de passe", showPassword: "Afficher", hidePassword: "Masquer",
-                    loginNotice: "Connectez-vous ou crÃ©ez un compte pour synchroniser vos donnÃ©es avec le serveur Flousi.",
-                    loginFeedback: "Connexion au serveur impossible. VÃ©rifiez quâ€™il est dÃ©marrÃ© puis rÃ©essayez.", loginSubmit: "Se connecter",
-                    registerTitle: "CrÃ©er un compte Flousi", registerCaption: "CrÃ©ez un compte pour synchroniser vos donnÃ©es entre vos appareils.",
-                    registerSubmit: "CrÃ©er le compte", switchToRegister: "CrÃ©er un compte", switchToLogin: "Jâ€™ai dÃ©jÃ  un compte",
-                    apiInvalidLogin: "Adresse e-mail ou mot de passe incorrect.", apiEmailExists: "Cette adresse e-mail est dÃ©jÃ  utilisÃ©e.",
+                    loginNotice: "Connectez-vous ou créez un compte pour synchroniser vos données avec le serveur Flousi.",
+                    loginFeedback: "Connexion au serveur impossible. Vérifiez qu’il est démarré puis réessayez.", loginSubmit: "Se connecter",
+                    registerTitle: "Créer un compte Flousi", registerCaption: "Créez un compte pour synchroniser vos données entre vos appareils.",
+                    registerSubmit: "Créer le compte", switchToRegister: "Créer un compte", switchToLogin: "J’ai déjà un compte",
+                    apiInvalidLogin: "Adresse e-mail ou mot de passe incorrect.", apiEmailExists: "Cette adresse e-mail est déjà utilisée.",
                     apiInvalidEmail: "Saisissez une adresse e-mail valide.",
-                    apiInvalidData: "Les donnÃ©es sont invalides et nâ€™ont pas Ã©tÃ© enregistrÃ©es.", apiUnavailable: "Serveur inaccessible. Vos donnÃ©es locales sont conservÃ©es.",
-                    apiGenericError: "Une erreur est survenue lors de la connexion au serveur. RÃ©essayez.",
-                    accountCreated: "Compte crÃ©Ã© et synchronisation activÃ©e.", accountSignedIn: "Connexion rÃ©ussie et donnÃ©es actualisÃ©es.",
-                    signedOut: "Vous Ãªtes dÃ©connectÃ©. Vos donnÃ©es restent enregistrÃ©es sur cet appareil.",
+                    apiInvalidData: "Les données sont invalides et n’ont pas été enregistrées.", apiUnavailable: "Serveur inaccessible. Vos données locales sont conservées.",
+                    apiGenericError: "Une erreur est survenue lors de la connexion au serveur. Réessayez.",
+                    accountCreated: "Compte créé et synchronisation activée.", accountSignedIn: "Connexion réussie et données actualisées.",
+                    signedOut: "Vous êtes déconnecté. Vos données restent enregistrées sur cet appareil.",
                     accountStatusGuest: "Vous utilisez Flousi sans compte.", accountEmail: "Compte : {email}", connectAccount: "Connexion et synchronisation",
-                    signOut: "Se dÃ©connecter", passwordTooShort: "Le mot de passe doit comporter au moins 10 caractÃ¨res.",
-                    syncFailed: "Impossible dâ€™enregistrer les modifications du compte. Elles restent sur cet appareil ; vÃ©rifiez le serveur et rÃ©essayez.",
-                    continueAsGuest: "Continuer sans compte", backToWelcome: "Retour Ã  lâ€™accueil",
-                    settings: "âš™ ParamÃ¨tres", addTransaction: "Ajouter une opÃ©ration", welcome: "Bonjour ! Voici un aperÃ§u de vos finances",
-                    navHome: "Accueil", navTransactions: "OpÃ©rations", navTrends: "Tendances", navGoals: "Objectifs", mainNavigation: "Navigation principale",
+                    signOut: "Se déconnecter", passwordTooShort: "Le mot de passe doit comporter au moins 10 caractères.",
+                    syncFailed: "Impossible d’enregistrer les modifications du compte. Elles restent sur cet appareil ; vérifiez le serveur et réessayez.",
+                    continueAsGuest: "Continuer sans compte", backToWelcome: "Retour à l’accueil",
+                    settings: "⚙ Paramètres", addTransaction: "Ajouter une opération", welcome: "Bonjour ! Voici un aperçu de vos finances",
+                    navHome: "Accueil", navTransactions: "Opérations", navTrends: "Tendances", navGoals: "Objectifs", mainNavigation: "Navigation principale",
                     mobileWelcome: "Bonjour",
-                    monthSelector: "Choisir le mois", transactionType: "Type dâ€™opÃ©ration", budgetProgress: "Pourcentage du budget utilisÃ©",
-                    trendTitle: "Statistiques", categoryChartTitle: "DÃ©penses par catÃ©gorie", comparisonTitle: "Revenus et dÃ©penses",
-                    trendSubtitle: "6 derniers mois", trendIncome: "Revenus", trendExpenses: "DÃ©penses", trendPeriod: "PÃ©riode",
-                    trendWeek: "Semaine", trendMonth: "Mois", trendYear: "AnnÃ©e", trendWeekRange: "7 derniers jours",
-                    trendMonthRange: "6 derniers mois", trendYearRange: "Cette annÃ©e", categoryChartEmpty: "Ajoutez des dÃ©penses pour voir leur rÃ©partition par catÃ©gorie.",
-                    trendIncomeAria: "Revenus", trendExpensesAria: "DÃ©penses",
-                    savingsImproved: "Votre solde net a augmentÃ© de {amount} par rapport Ã  la pÃ©riode prÃ©cÃ©dente.",
-                    savingsReduced: "Votre solde net a diminuÃ© de {amount} par rapport Ã  la pÃ©riode prÃ©cÃ©dente.",
-                    savingsSame: "Votre solde net est stable par rapport Ã  la pÃ©riode prÃ©cÃ©dente.",
+                    monthSelector: "Choisir le mois", transactionType: "Type d’opération", budgetProgress: "Pourcentage du budget utilisé",
+                    trendTitle: "Statistiques", categoryChartTitle: "Dépenses par catégorie", comparisonTitle: "Revenus et dépenses",
+                    trendSubtitle: "6 derniers mois", trendIncome: "Revenus", trendExpenses: "Dépenses", trendPeriod: "Période",
+                    trendWeek: "Semaine", trendMonth: "Mois", trendYear: "Année", trendWeekRange: "7 derniers jours",
+                    trendMonthRange: "6 derniers mois", trendYearRange: "Cette année", categoryChartEmpty: "Ajoutez des dépenses pour voir leur répartition par catégorie.",
+                    trendIncomeAria: "Revenus", trendExpensesAria: "Dépenses",
+                    savingsImproved: "Votre solde net a augmenté de {amount} par rapport à la période précédente.",
+                    savingsReduced: "Votre solde net a diminué de {amount} par rapport à la période précédente.",
+                    savingsSame: "Votre solde net est stable par rapport à la période précédente.",
                     notificationsTitle: "Notifications", notificationsEmpty: "Aucune notification pour le moment.",
                     notificationsButton: "Notifications", markNotificationsRead: "Tout marquer comme lu", clearNotifications: "Tout effacer",
-                    notificationSaveError: "Impossible dâ€™enregistrer les notifications.",
-                    budgetNotificationTitle: "Alerte budget", savingsNotificationTitle: "Alerte Ã©pargne",
-                    notificationContribution: "{amount} ajoutÃ© Ã  lâ€™objectif Â« {goal} Â».", notificationGoalReached: "Lâ€™objectif Â« {goal} Â» est atteint !",
-                    savingsTreeTitle: "Mon arbre dâ€™Ã©pargne", savingsTreeCaption: "Chaque Ã©pargne fait grandir votre arbre.",
-                    savingsTreeEmpty: "CrÃ©ez un objectif pour planter votre premiÃ¨re graine.", savingsTreeStage0: "Commencez Ã  Ã©pargner pour faire grandir votre arbre.",
-                    savingsTreeStage1: "Votre graine commence Ã  pousser !",
-                    savingsTreeStage2: "Votre jeune arbre grandit.", savingsTreeStage3: "Chaque Ã©pargne renforce votre arbre.",
+                    notificationSaveError: "Impossible d’enregistrer les notifications.",
+                    budgetNotificationTitle: "Alerte budget", savingsNotificationTitle: "Alerte épargne",
+                    notificationContribution: "{amount} ajouté à l’objectif « {goal} ».", notificationGoalReached: "L’objectif « {goal} » est atteint !",
+                    savingsTreeTitle: "Mon arbre d’épargne", savingsTreeCaption: "Chaque épargne fait grandir votre arbre.",
+                    savingsTreeEmpty: "Créez un objectif pour planter votre première graine.", savingsTreeStage0: "Commencez à épargner pour faire grandir votre arbre.",
+                    savingsTreeStage1: "Votre graine commence à pousser !",
+                    savingsTreeStage2: "Votre jeune arbre grandit.", savingsTreeStage3: "Chaque épargne renforce votre arbre.",
                     savingsTreeStage4: "Encore un peu et votre objectif sera atteint !", savingsTreeStage5: "Votre arbre a grandi et votre objectif est atteint !",
-                    savingsTreeProgress: "Progression de lâ€™arbre dâ€™Ã©pargne",
-                    goalsTitle: "Objectifs dâ€™Ã©pargne", goalsSubtitle: "Suivez votre progression vers vos objectifs", addGoal: "Ajouter un objectif", goalEmpty: "Aucun objectif dâ€™Ã©pargne. CrÃ©ez votre premier objectif !",
-                    goalModal: "Nouvel objectif dâ€™Ã©pargne", goalName: "Nom de lâ€™objectif", goalNamePlaceholder: "Ex. : vacances, ordinateur...", goalTarget: "Montant Ã  Ã©pargner",
-                    goalTargetPlaceholder: "Ex. : 10000", saveGoal: "Enregistrer lâ€™objectif", contribute: "Ajouter Ã  lâ€™Ã©pargne", contributionAmount: "Montant Ã©pargnÃ©",
-                    saveContribution: "Enregistrer lâ€™Ã©pargne", addContribution: "Ajouter une Ã©pargne", deleteGoal: "Supprimer lâ€™objectif", goalCompleted: "Objectif atteint !", goalProgress: "Progression",
-                    goalInvalid: "Saisissez un nom et un montant valides.", goalSaved: "Objectif dâ€™Ã©pargne enregistrÃ©.", goalDeleted: "Objectif supprimÃ©.",
-                    contributionInvalid: "Saisissez un montant valide.", contributionTooHigh: "Le montant dÃ©passe la somme restante pour atteindre lâ€™objectif.",
-                    contributionSaved: "Ã‰pargne enregistrÃ©e.", budgetWarning: "Attention : vous avez atteint 80 % de votre budget mensuel.",
-                    budgetExceededAlert: "Attention : votre budget mensuel est atteint ou dÃ©passÃ© !",
-                    moneyTipTitle: "Conseil pour vous", moneyTipStart: "Ajoutez vos opÃ©rations pour recevoir un conseil adaptÃ© Ã  vos dÃ©penses.",
-                    moneyTipOverBudget: "Votre budget mensuel est dÃ©passÃ©. VÃ©rifiez vos prochaines dÃ©penses et reportez celles qui ne sont pas indispensables.",
-                    moneyTipNearBudget: "Vous avez utilisÃ© {percent} % de votre budget. Surveillez les dÃ©penses du reste du mois.",
-                    moneyTipBalance: "Vos dÃ©penses dÃ©passent les revenus enregistrÃ©s. VÃ©rifiez vos opÃ©rations pour repÃ©rer les Ã©conomies possibles.",
-                    moneyTipSetBudget: "Vous nâ€™avez pas encore dÃ©fini de budget mensuel. Fixez-en un pour mieux suivre vos dÃ©penses.",
-                    moneyTipCategory: "La catÃ©gorie la plus dÃ©pensiÃ¨re est Â« {category} Â» avec {percent} % de vos dÃ©penses. Voyez si vous pouvez la rÃ©duire.",
-                    moneyTipSave: "Vos revenus dÃ©passent vos dÃ©penses enregistrÃ©es. Pensez Ã  consacrer une partie de la diffÃ©rence Ã  un objectif dâ€™Ã©pargne.",
-                    dailyChallengeTitle: "DÃ©fi Ã©pargne du jour", dailyChallengeCaption: "Essayez de mettre cette somme de cÃ´tÃ© aujourdâ€™hui.",
-                    dailyChallengeStreak: "ðŸ”¥ {count} jours dâ€™affilÃ©e", dailyChallengeButton: "DÃ©fi du jour accompli !",
-                    dailyChallengeDone: "Bravo ! DÃ©fi du jour accompli. Ã€ demain ! ðŸŽ‰",
-                    subtitle: "Suivez vos revenus et dÃ©penses et planifiez votre mois sereinement.", balance: "Solde net", income: "Revenus totaux", expenses: "DÃ©penses totales",
-                    budgetTitle: "Budget mensuel des dÃ©penses", budgetDefault: "DÃ©finissez votre budget pour mieux maÃ®triser vos dÃ©penses.",
-                    budgetNotSet: "Non dÃ©fini", budgetSet: "DÃ©finir le budget", budgetChange: "Modifier le budget",
-                    budgetUsed: "Vous avez utilisÃ© {percent} % de votre budget.", budgetRemaining: "Il vous reste {amount}", budgetOver: "Budget dÃ©passÃ© de {amount}",
-                    startBudget: "Commencez par dÃ©finir votre budget mensuel.", transactions: "DerniÃ¨res opÃ©rations", transactionCountOne: "{count} opÃ©ration ce mois-ci", transactionCountMany: "{count} opÃ©rations ce mois-ci",
-                    filterLabel: "Filtrer les opÃ©rations", filterAll: "Toutes les opÃ©rations", filterExpenses: "DÃ©penses", filterIncome: "Revenus",
-                    categoriesTitle: "OÃ¹ va votre argent ?", categoriesSubtitle: "RÃ©partition par catÃ©gorie", emptyFilter: "Aucune opÃ©ration pour ce filtre.",
-                    emptyTransactions: "Aucune opÃ©ration pour le moment. Ajoutez votre premiÃ¨re dÃ©pense ou revenu.", emptyCategories: "Les catÃ©gories apparaÃ®tront aprÃ¨s lâ€™ajout de dÃ©penses.",
-                    privacy: "Les donnÃ©es invitÃ© restent sur cet appareil ; un compte les synchronise avec le serveur.", transactionModal: "Ajouter une opÃ©ration", close: "Fermer", expense: "DÃ©pense", incomeType: "Revenu",
-                    description: "Description", descriptionPlaceholder: "Ex. : cafÃ©, salaire...", amount: "Montant ({currency})", category: "CatÃ©gorie", date: "Date",
-                    saveTransaction: "Enregistrer lâ€™opÃ©ration", budgetModal: "Budget mensuel", budgetCopy: "Saisissez le montant maximal Ã  dÃ©penser ce mois-ci.",
+                    savingsTreeProgress: "Progression de l’arbre d’épargne",
+                    goalsTitle: "Objectifs d’épargne", goalsSubtitle: "Suivez votre progression vers vos objectifs", addGoal: "Ajouter un objectif", goalEmpty: "Aucun objectif d’épargne. Créez votre premier objectif !",
+                    goalModal: "Nouvel objectif d’épargne", goalName: "Nom de l’objectif", goalNamePlaceholder: "Ex. : vacances, ordinateur...", goalTarget: "Montant à épargner",
+                    goalTargetPlaceholder: "Ex. : 10000", saveGoal: "Enregistrer l’objectif", contribute: "Ajouter à l’épargne", contributionAmount: "Montant épargné",
+                    saveContribution: "Enregistrer l’épargne", addContribution: "Ajouter une épargne", deleteGoal: "Supprimer l’objectif", goalCompleted: "Objectif atteint !", goalProgress: "Progression",
+                    goalInvalid: "Saisissez un nom et un montant valides.", goalSaved: "Objectif d’épargne enregistré.", goalDeleted: "Objectif supprimé.",
+                    contributionInvalid: "Saisissez un montant valide.", contributionTooHigh: "Le montant dépasse la somme restante pour atteindre l’objectif.",
+                    contributionSaved: "Épargne enregistrée.", budgetWarning: "Attention : vous avez atteint 80 % de votre budget mensuel.",
+                    budgetExceededAlert: "Attention : votre budget mensuel est atteint ou dépassé !",
+                    moneyTipTitle: "Conseil pour vous", moneyTipStart: "Ajoutez vos opérations pour recevoir un conseil adapté à vos dépenses.",
+                    moneyTipOverBudget: "Votre budget mensuel est dépassé. Vérifiez vos prochaines dépenses et reportez celles qui ne sont pas indispensables.",
+                    moneyTipNearBudget: "Vous avez utilisé {percent} % de votre budget. Surveillez les dépenses du reste du mois.",
+                    moneyTipBalance: "Vos dépenses dépassent les revenus enregistrés. Vérifiez vos opérations pour repérer les économies possibles.",
+                    moneyTipSetBudget: "Vous n’avez pas encore défini de budget mensuel. Fixez-en un pour mieux suivre vos dépenses.",
+                    moneyTipCategory: "La catégorie la plus dépensière est « {category} » avec {percent} % de vos dépenses. Voyez si vous pouvez la réduire.",
+                    moneyTipSave: "Vos revenus dépassent vos dépenses enregistrées. Pensez à consacrer une partie de la différence à un objectif d’épargne.",
+                    dailyChallengeTitle: "Défi épargne du jour", dailyChallengeCaption: "Essayez de mettre cette somme de côté aujourd’hui.",
+                    dailyChallengeStreak: "🔥 {count} jours d’affilée", dailyChallengeButton: "Défi du jour accompli !",
+                    dailyChallengeDone: "Bravo ! Défi du jour accompli. À demain ! 🎉",
+                    subtitle: "Suivez vos revenus et dépenses et planifiez votre mois sereinement.", balance: "Solde net", income: "Revenus totaux", expenses: "Dépenses totales",
+                    budgetTitle: "Budget mensuel des dépenses", budgetDefault: "Définissez votre budget pour mieux maîtriser vos dépenses.",
+                    budgetNotSet: "Non défini", budgetSet: "Définir le budget", budgetChange: "Modifier le budget",
+                    budgetUsed: "Vous avez utilisé {percent} % de votre budget.", budgetRemaining: "Il vous reste {amount}", budgetOver: "Budget dépassé de {amount}",
+                    startBudget: "Commencez par définir votre budget mensuel.", transactions: "Dernières opérations", transactionCountOne: "{count} opération ce mois-ci", transactionCountMany: "{count} opérations ce mois-ci",
+                    filterLabel: "Filtrer les opérations", filterAll: "Toutes les opérations", filterExpenses: "Dépenses", filterIncome: "Revenus",
+                    categoriesTitle: "Où va votre argent ?", categoriesSubtitle: "Répartition par catégorie", emptyFilter: "Aucune opération pour ce filtre.",
+                    emptyTransactions: "Aucune opération pour le moment. Ajoutez votre première dépense ou revenu.", emptyCategories: "Les catégories apparaîtront après l’ajout de dépenses.",
+                    privacy: "Les données invité restent sur cet appareil ; un compte les synchronise avec le serveur.", transactionModal: "Ajouter une opération", close: "Fermer", expense: "Dépense", incomeType: "Revenu",
+                    description: "Description", descriptionPlaceholder: "Ex. : café, salaire...", amount: "Montant ({currency})", category: "Catégorie", date: "Date",
+                    saveTransaction: "Enregistrer l’opération", budgetModal: "Budget mensuel", budgetCopy: "Saisissez le montant maximal à dépenser ce mois-ci.",
                     budgetInput: "Budget ({currency})", budgetPlaceholder: "Ex. : 3000",
-                    settingsTitle: "ParamÃ¨tres de lâ€™application", helpButton: "Aide", helpTitle: "Comment utiliser Flousi",
-                    helpIntro: "Commencez par enregistrer vos opÃ©rations, puis suivez votre budget et vos objectifs dâ€™Ã©pargne.",
-                    helpTransactions: "Utilisez le bouton + pour ajouter une dÃ©pense ou un revenu, avec sa description, son montant et sa date.",
-                    helpBudgetGoals: "DÃ©finissez votre budget du mois dans la carte Budget, puis crÃ©ez des objectifs dâ€™Ã©pargne et suivez leur progression.",
-                    helpNavigation: "Changez de mois avec les flÃ¨ches. Consultez les statistiques, les opÃ©rations et les objectifs dans les sections ou le menu du bas.",
-                    helpSettings: "Dans les paramÃ¨tres, choisissez la langue, la devise et le thÃ¨me. Utilisez lâ€™application sans compte ou connectez-vous pour synchroniser vos donnÃ©es entre appareils.",
-                    socialChallengesTitle: "DÃ©fis entre amis", socialChallengesDescription: "Lancez un dÃ©fi dâ€™Ã©pargne et suivez vos progrÃ¨s ensemble.",
-                    createChallenge: "CrÃ©er un dÃ©fi", joinChallenge: "Rejoindre", challengeEmpty: "Connectez-vous pour crÃ©er un dÃ©fi ou rejoindre celui dâ€™un ami avec son code.",
-                    challengeEmptySignedIn: "Vous nâ€™avez pas encore de dÃ©fi. CrÃ©ez-en un ou rejoignez celui dâ€™un ami.", challengeYou: "(vous)",
-                    challengeCreateTitle: "CrÃ©er un dÃ©fi dâ€™Ã©pargne", challengeTitle: "Nom du dÃ©fi", challengeTitlePlaceholder: "Ex. : Ã©pargne pour les vacances",
-                    challengeTarget: "Objectif dâ€™Ã©pargne", challengeTargetPlaceholder: "Ex. : 5000", challengeCurrency: "Devise",
+                    settingsTitle: "Paramètres de l’application", helpButton: "Aide", helpTitle: "Comment utiliser Flousi",
+                    helpIntro: "Commencez par enregistrer vos opérations, puis suivez votre budget et vos objectifs d’épargne.",
+                    helpTransactions: "Utilisez le bouton + pour ajouter une dépense ou un revenu, avec sa description, son montant et sa date.",
+                    helpBudgetGoals: "Définissez votre budget du mois dans la carte Budget, puis créez des objectifs d’épargne et suivez leur progression.",
+                    helpNavigation: "Changez de mois avec les flèches. Consultez les statistiques, les opérations et les objectifs dans les sections ou le menu du bas.",
+                    helpSettings: "Dans les paramètres, choisissez la langue, la devise et le thème. Utilisez l’application sans compte ou connectez-vous pour synchroniser vos données entre appareils.",
+                    socialChallengesTitle: "Défis entre amis", socialChallengesDescription: "Lancez un défi d’épargne et suivez vos progrès ensemble.",
+                    createChallenge: "Créer un défi", joinChallenge: "Rejoindre", challengeEmpty: "Connectez-vous pour créer un défi ou rejoindre celui d’un ami avec son code.",
+                    challengeEmptySignedIn: "Vous n’avez pas encore de défi. Créez-en un ou rejoignez celui d’un ami.", challengeYou: "(vous)",
+                    challengeCreateTitle: "Créer un défi d’épargne", challengeTitle: "Nom du défi", challengeTitlePlaceholder: "Ex. : épargne pour les vacances",
+                    challengeTarget: "Objectif d’épargne", challengeTargetPlaceholder: "Ex. : 5000", challengeCurrency: "Devise",
                     challengeDeadline: "Date limite", challengeDisplayName: "Nom visible par vos amis", challengeDisplayNamePlaceholder: "Ex. : Salma",
-                    challengeCreateSubmit: "CrÃ©er le dÃ©fi", challengeJoinTitle: "Rejoindre le dÃ©fi dâ€™un ami", challengeCode: "Code dâ€™invitation",
-                    challengeCodePlaceholder: "Collez le code dâ€™invitation", challengeJoinSubmit: "Rejoindre le dÃ©fi",
-                    challengeUpdate: "Mettre Ã  jour", challengeProgress: "Montant Ã©pargnÃ©", challengeInvite: "Copier le lien dâ€™invitation",
-                    challengeParticipants: "Participants", challengeCreated: "DÃ©fi crÃ©Ã©. Partagez le lien avec vos amis !",
-                    challengeJoined: "Vous avez rejoint le dÃ©fi !", challengeProgressSaved: "Votre progression a Ã©tÃ© mise Ã  jour.",
-                    challengeCopied: "Lien dâ€™invitation copiÃ©.", challengeCopyFailed: "Impossible de copier le lien. RÃ©essayez.",
-                    challengeLoginRequired: "Connectez-vous pour participer aux dÃ©fis entre amis.",
-                    challengeLoadError: "Impossible de charger vos dÃ©fis. VÃ©rifiez la connexion et rÃ©essayez.",
-                    challengeFull: "Ce dÃ©fi a atteint le nombre maximal de participants.",
-                    challengeInvalid: "Saisissez des informations de dÃ©fi valides.", challengeMissingName: "Saisissez le nom qui sera visible par les participants.",
-                    challengeNotFound: "DÃ©fi introuvable. VÃ©rifiez le lien dâ€™invitation.",
-                    language: "Langue de lâ€™application", currency: "Devise",
-                    currencyHelp: "Changer la devise modifie uniquement le code affichÃ© ; les montants enregistrÃ©s ne sont pas convertis.",
-                    sound: "Activer les sons de lâ€™application", testSound: "Tester le son",
+                    challengeCreateSubmit: "Créer le défi", challengeJoinTitle: "Rejoindre le défi d’un ami", challengeCode: "Code d’invitation",
+                    challengeCodePlaceholder: "Collez le code d’invitation", challengeJoinSubmit: "Rejoindre le défi",
+                    challengeUpdate: "Mettre à jour", challengeProgress: "Montant épargné", challengeInvite: "Copier le lien d’invitation",
+                    challengeParticipants: "Participants", challengeCreated: "Défi créé. Partagez le lien avec vos amis !",
+                    challengeJoined: "Vous avez rejoint le défi !", challengeProgressSaved: "Votre progression a été mise à jour.",
+                    challengeCopied: "Lien d’invitation copié.", challengeCopyFailed: "Impossible de copier le lien. Réessayez.",
+                    challengeLoginRequired: "Connectez-vous pour participer aux défis entre amis.",
+                    challengeLoadError: "Impossible de charger vos défis. Vérifiez la connexion et réessayez.",
+                    challengeFull: "Ce défi a atteint le nombre maximal de participants.",
+                    challengeInvalid: "Saisissez des informations de défi valides.", challengeMissingName: "Saisissez le nom qui sera visible par les participants.",
+                    challengeNotFound: "Défi introuvable. Vérifiez le lien d’invitation.",
+                    language: "Langue de l’application", currency: "Devise",
+                    currencyHelp: "Changer la devise modifie uniquement le code affiché ; les montants enregistrés ne sont pas convertis.",
+                    sound: "Activer les sons de l’application", testSound: "Tester le son",
                     switchToDarkMode: "Sombre", switchToLightMode: "Clair",
-                    exportData: "Exporter les donnÃ©es", importData: "Importer et fusionner les donnÃ©es",
-                    dataTransferHelp: "Exportez les donnÃ©es locales, puis importez-les pour les fusionner avec votre compte.",
-                    importDataInvalid: "Le fichier de donnÃ©es est invalide ou contient des donnÃ©es non prises en charge.",
-                    importDataTooLarge: "Le fichier de donnÃ©es est trop volumineux.",
-                    importDataMerged: "DonnÃ©es fusionnÃ©es localement. Connectez-vous ou crÃ©ez un compte pour les synchroniser.",
-                    languageSaved: "Langue enregistrÃ©e.", currencySaved: "Devise enregistrÃ©e.", soundSaved: "PrÃ©fÃ©rences audio enregistrÃ©es.", transactionInvalid: "Saisissez des informations valides pour lâ€™opÃ©ration.",
-                    transactionSaved: "OpÃ©ration enregistrÃ©e.", quickCash: "DÃ©pense rapide", quickSave: "Enregistrer la dÃ©pense", quickNotePlaceholder: "Note (facultatif)", budgetInvalid: "Saisissez un budget valide supÃ©rieur Ã  zÃ©ro.", budgetSaved: "Budget enregistrÃ©.",
-                    storageFailed: "Impossible dâ€™enregistrer les donnÃ©es. VÃ©rifiez lâ€™espace de stockage.", settingsFailed: "Impossible dâ€™enregistrer les paramÃ¨tres.",
-                    audioUnsupported: "Votre navigateur ne prend pas en charge lâ€™audio.", audioFailed: "Impossible de lire le son. RÃ©essayez.",
-                    deleteTransaction: "Supprimer lâ€™opÃ©ration : {description}", categoryFood: "Alimentation", categoryHome: "Maison", categoryTransport: "Transport",
-                    categoryHealth: "SantÃ©", categoryShopping: "Achats", categoryBills: "Factures", categoryFun: "Loisirs", categoryOther: "Autre"
+                    exportData: "Exporter les données", importData: "Importer et fusionner les données",
+                    dataTransferHelp: "Exportez les données locales, puis importez-les pour les fusionner avec votre compte.",
+                    importDataInvalid: "Le fichier de données est invalide ou contient des données non prises en charge.",
+                    importDataTooLarge: "Le fichier de données est trop volumineux.",
+                    importDataMerged: "Données fusionnées localement. Connectez-vous ou créez un compte pour les synchroniser.",
+                    languageSaved: "Langue enregistrée.", currencySaved: "Devise enregistrée.", soundSaved: "Préférences audio enregistrées.", transactionInvalid: "Saisissez des informations valides pour l’opération.",
+                    transactionSaved: "Opération enregistrée.", quickCash: "Dépense rapide", quickSave: "Enregistrer la dépense", quickNotePlaceholder: "Note (facultatif)", budgetInvalid: "Saisissez un budget valide supérieur à zéro.", budgetSaved: "Budget enregistré.",
+                    storageFailed: "Impossible d’enregistrer les données. Vérifiez l’espace de stockage.", settingsFailed: "Impossible d’enregistrer les paramètres.",
+                    audioUnsupported: "Votre navigateur ne prend pas en charge l’audio.", audioFailed: "Impossible de lire le son. Réessayez.",
+                    deleteTransaction: "Supprimer l’opération : {description}", categoryFood: "Alimentation", categoryHome: "Maison", categoryTransport: "Transport",
+                    categoryHealth: "Santé", categoryShopping: "Achats", categoryBills: "Factures", categoryFun: "Loisirs", categoryOther: "Autre"
                 },
                 en: {
                     brandCaption: "Your money, clear and under control", introTitle: "Welcome to Flousi", introCaption: "Your money, clear and under control",
-                    introStart: "Start your experienceã€€â™«",
+                    introStart: "Start your experience　♫",
                     loginTitle: "Welcome back", loginCaption: "Sign in to keep track of your money.", loginEmail: "Email address",
                     loginPassword: "Password", showPassword: "Show", hidePassword: "Hide",
                     loginNotice: "Sign in or create an account to sync your data with the Flousi server.",
@@ -249,7 +249,7 @@
                     signOut: "Sign out", passwordTooShort: "Your password must be at least 10 characters long.",
                     syncFailed: "Could not save account changes. They remain on this device; check the server and try again.",
                     continueAsGuest: "Continue without an account", backToWelcome: "Back to welcome",
-                    settings: "âš™ Settings", addTransaction: "Add transaction", welcome: "Hello! Hereâ€™s an overview of your money",
+                    settings: "⚙ Settings", addTransaction: "Add transaction", welcome: "Hello! Here’s an overview of your money",
                     navHome: "Home", navTransactions: "Activity", navTrends: "Trends", navGoals: "Goals", mainNavigation: "Main navigation",
                     mobileWelcome: "Welcome",
                     monthSelector: "Choose month", transactionType: "Transaction type", budgetProgress: "Budget used",
@@ -261,11 +261,11 @@
                     savingsImproved: "Your net savings increased by {amount} compared with the previous period.",
                     savingsReduced: "Your net savings decreased by {amount} compared with the previous period.",
                     savingsSame: "Your net savings are unchanged from the previous period.",
-                    notificationsTitle: "Notifications", notificationsEmpty: "Youâ€™re all caught up.",
+                    notificationsTitle: "Notifications", notificationsEmpty: "You’re all caught up.",
                     notificationsButton: "Notifications", markNotificationsRead: "Mark all as read", clearNotifications: "Clear all",
                     notificationSaveError: "Could not save notifications.",
                     budgetNotificationTitle: "Budget alert", savingsNotificationTitle: "Savings update",
-                    notificationContribution: "{amount} added to â€œ{goal}â€.", notificationGoalReached: "You reached your â€œ{goal}â€ savings goal!",
+                    notificationContribution: "{amount} added to “{goal}”.", notificationGoalReached: "You reached your “{goal}” savings goal!",
                     savingsTreeTitle: "My savings tree", savingsTreeCaption: "Every contribution helps your tree grow.",
                     savingsTreeEmpty: "Create a savings goal to plant your first seed.", savingsTreeStage0: "Start saving to help your tree grow.",
                     savingsTreeStage1: "Your seed is starting to grow!",
@@ -278,22 +278,22 @@
                     saveContribution: "Save contribution", addContribution: "Add savings", deleteGoal: "Delete goal", goalCompleted: "Goal reached!", goalProgress: "Progress",
                     goalInvalid: "Enter a valid goal name and target amount.", goalSaved: "Savings goal saved.", goalDeleted: "Savings goal deleted.",
                     contributionInvalid: "Enter a valid savings amount.", contributionTooHigh: "That amount is more than the remaining goal balance.",
-                    contributionSaved: "Savings contribution saved.", budgetWarning: "Budget alert: youâ€™ve reached 80% of your monthly budget.",
-                    budgetExceededAlert: "Budget alert: youâ€™ve reached or exceeded your monthly budget!",
+                    contributionSaved: "Savings contribution saved.", budgetWarning: "Budget alert: you’ve reached 80% of your monthly budget.",
+                    budgetExceededAlert: "Budget alert: you’ve reached or exceeded your monthly budget!",
                     moneyTipTitle: "A tip for you", moneyTipStart: "Add transactions to get a tip based on your spending.",
-                    moneyTipOverBudget: "Youâ€™re over your monthly budget. Review upcoming expenses and consider postponing non-essentials.",
-                    moneyTipNearBudget: "Youâ€™ve used {percent}% of your budget. Keep an eye on spending for the rest of the month.",
+                    moneyTipOverBudget: "You’re over your monthly budget. Review upcoming expenses and consider postponing non-essentials.",
+                    moneyTipNearBudget: "You’ve used {percent}% of your budget. Keep an eye on spending for the rest of the month.",
                     moneyTipBalance: "Your recorded expenses are higher than your recorded income. Review your transactions to spot possible savings.",
-                    moneyTipSetBudget: "You havenâ€™t set a monthly budget yet. Set one to keep track of how much you can spend.",
-                    moneyTipCategory: "Your highest-spending category is {category} at {percent}% of your expenses. See if thereâ€™s room to cut back.",
+                    moneyTipSetBudget: "You haven’t set a monthly budget yet. Set one to keep track of how much you can spend.",
+                    moneyTipCategory: "Your highest-spending category is {category} at {percent}% of your expenses. See if there’s room to cut back.",
                     moneyTipSave: "Your recorded income is higher than your expenses. Consider putting some of the difference toward a savings goal.",
-                    dailyChallengeTitle: "Todayâ€™s savings challenge", dailyChallengeCaption: "Try setting this amount aside today.",
-                    dailyChallengeStreak: "ðŸ”¥ {count} days in a row", dailyChallengeButton: "I did todayâ€™s challenge!",
-                    dailyChallengeDone: "Nice work! Todayâ€™s challenge is done. See you tomorrow! ðŸŽ‰",
+                    dailyChallengeTitle: "Today’s savings challenge", dailyChallengeCaption: "Try setting this amount aside today.",
+                    dailyChallengeStreak: "🔥 {count} days in a row", dailyChallengeButton: "I did today’s challenge!",
+                    dailyChallengeDone: "Nice work! Today’s challenge is done. See you tomorrow! 🎉",
                     subtitle: "Track your income and expenses and plan your month with ease.", balance: "Net balance", income: "Total income", expenses: "Total expenses",
                     budgetTitle: "Monthly spending budget", budgetDefault: "Set a budget to stay in control of your spending.",
                     budgetNotSet: "Not set", budgetSet: "Set budget", budgetChange: "Edit budget",
-                    budgetUsed: "Youâ€™ve used {percent}% of your budget.", budgetRemaining: "{amount} remaining", budgetOver: "Over budget by {amount}",
+                    budgetUsed: "You’ve used {percent}% of your budget.", budgetRemaining: "{amount} remaining", budgetOver: "Over budget by {amount}",
                     startBudget: "Start by setting your monthly budget.", transactions: "Recent transactions", transactionCountOne: "{count} transaction this month", transactionCountMany: "{count} transactions this month",
                     filterLabel: "Filter transactions", filterAll: "All transactions", filterExpenses: "Expenses", filterIncome: "Income",
                     categoriesTitle: "Where does your money go?", categoriesSubtitle: "Spending by category", emptyFilter: "No transactions match this filter.",
@@ -310,11 +310,11 @@
                     helpSettings: "In Settings, choose your language, currency, and theme. Use the app without an account or sign in to sync your data across devices.",
                     socialChallengesTitle: "Challenges with friends", socialChallengesDescription: "Set a savings challenge and track progress together.",
                     createChallenge: "Create challenge", joinChallenge: "Join challenge", challengeEmpty: "Sign in to create a challenge or join a friend with their invite code.",
-                    challengeEmptySignedIn: "You donâ€™t have any challenges yet. Create one or join a friendâ€™s.", challengeYou: "(you)",
+                    challengeEmptySignedIn: "You don’t have any challenges yet. Create one or join a friend’s.", challengeYou: "(you)",
                     challengeCreateTitle: "Create a savings challenge", challengeTitle: "Challenge name", challengeTitlePlaceholder: "e.g. Save for a trip",
                     challengeTarget: "Savings target", challengeTargetPlaceholder: "e.g. 5000", challengeCurrency: "Currency",
                     challengeDeadline: "Deadline", challengeDisplayName: "Name your friends will see", challengeDisplayNamePlaceholder: "e.g. Sam",
-                    challengeCreateSubmit: "Create challenge", challengeJoinTitle: "Join a friendâ€™s challenge", challengeCode: "Invite code",
+                    challengeCreateSubmit: "Create challenge", challengeJoinTitle: "Join a friend’s challenge", challengeCode: "Invite code",
                     challengeCodePlaceholder: "Paste the invite code", challengeJoinSubmit: "Join challenge",
                     challengeUpdate: "Update progress", challengeProgress: "Amount saved", challengeInvite: "Copy invite link",
                     challengeParticipants: "Participants", challengeCreated: "Challenge created. Share the link with your friends!",
@@ -343,13 +343,13 @@
                 }
             };
             const categoryKeys = {
-                "Ø§Ù„Ù…Ø§ÙƒÙ„Ø©": "categoryFood", "Ø§Ù„Ø¯Ø§Ø±": "categoryHome", "Ø§Ù„Ù†Ù‚Ù„": "categoryTransport", "Ø§Ù„ØµØ­Ø©": "categoryHealth",
-                "Ø§Ù„ØªØ³ÙˆÙ‚": "categoryShopping", "Ø§Ù„ÙÙˆØ§ØªÙŠØ±": "categoryBills", "Ø§Ù„ØªØ±ÙÙŠÙ‡": "categoryFun", "Ø£Ø®Ø±Ù‰": "categoryOther", "Ø§Ù„Ø¯Ø®Ù„": "incomeType"
+                "الماكلة": "categoryFood", "الدار": "categoryHome", "النقل": "categoryTransport", "الصحة": "categoryHealth",
+                "التسوق": "categoryShopping", "الفواتير": "categoryBills", "الترفيه": "categoryFun", "أخرى": "categoryOther", "الدخل": "incomeType"
             };
             const categories = {
-                "Ø§Ù„Ù…Ø§ÙƒÙ„Ø©": "ðŸ²", "Ø§Ù„Ø¯Ø§Ø±": "ðŸ ", "Ø§Ù„Ù†Ù‚Ù„": "ðŸš•", "Ø§Ù„ØµØ­Ø©": "ðŸ’Š",
-                "Ø§Ù„ØªØ³ÙˆÙ‚": "ðŸ›ï¸", "Ø§Ù„ÙÙˆØ§ØªÙŠØ±": "ðŸ’¡", "Ø§Ù„ØªØ±ÙÙŠÙ‡": "ðŸŽŸï¸", "Ø£Ø®Ø±Ù‰": "ðŸ“¦",
-                "Ø§Ù„Ø¯Ø®Ù„": "ðŸ’µ"
+                "الماكلة": "🍲", "الدار": "🏠", "النقل": "🚕", "الصحة": "💊",
+                "التسوق": "🛍️", "الفواتير": "💡", "الترفيه": "🎟️", "أخرى": "📦",
+                "الدخل": "💵"
             };
             let settings = loadSettings();
             let language = settings.language;
@@ -385,7 +385,7 @@
                         sounds: saved.sounds !== false
                     };
                 } catch (error) {
-                    console.error("ØªØ¹Ø°Ø± ØªØ­Ù…ÙŠÙ„ Ø¥Ø¹Ø¯Ø§Ø¯Ø§Øª Ø§Ù„ØªØ·Ø¨ÙŠÙ‚:", error);
+                    console.error("تعذر تحميل إعدادات التطبيق:", error);
                     return { language: "ar", currency: "MAD", darkMode: false, sounds: true };
                 }
             }
@@ -394,7 +394,7 @@ function saveSettings() {
                     localStorage.setItem(SETTINGS_KEY, JSON.stringify(settings));
                     return true;
                 } catch (error) {
-                    console.error("ØªØ¹Ø°Ø± Ø­ÙØ¸ Ø¥Ø¹Ø¯Ø§Ø¯Ø§Øª Ø§Ù„ØªØ·Ø¨ÙŠÙ‚:", error);
+                    console.error("تعذر حفظ إعدادات التطبيق:", error);
                     showToast(t("settingsFailed"));
                     return false;
                 }
@@ -416,7 +416,7 @@ function saveSettings() {
                 document.querySelector('meta[name="theme-color"]').content = darkMode ? "#121b16" : "#f3f7f1";
                 const toggle = document.getElementById("toggleTheme");
                 const label = t(darkMode ? "switchToLightMode" : "switchToDarkMode");
-                document.getElementById("themeToggleIcon").textContent = darkMode ? "â˜€" : "â˜¾";
+                document.getElementById("themeToggleIcon").textContent = darkMode ? "☀" : "☾";
                 document.getElementById("themeToggleLabel").textContent = label;
                 toggle.setAttribute("aria-label", label);
                 toggle.setAttribute("aria-pressed", String(darkMode));
@@ -426,7 +426,7 @@ function saveSettings() {
                 const locale = language === "ar" ? "ar-MA" : language === "fr" ? "fr-MA" : "en-US";
                 document.documentElement.lang = locale;
                 document.documentElement.dir = language === "ar" ? "rtl" : "ltr";
-                document.title = language === "ar" ? "ÙÙ„ÙˆØ³ÙŠ â€” Ù…Ù†Ø¸Ù‘Ù… Ø§Ù„Ù…ÙŠØ²Ø§Ù†ÙŠØ©" : language === "fr" ? "Flousi â€” Budget" : "Flousi â€” Budget planner";
+                document.title = language === "ar" ? "فلوسي — منظّم الميزانية" : language === "fr" ? "Flousi — Budget" : "Flousi — Budget planner";
                 formatter = new Intl.NumberFormat(locale, { maximumFractionDigits: 2 });
                 monthFormatter = new Intl.DateTimeFormat(locale, { month: "long", year: "numeric" });
                 const textById = {
@@ -530,8 +530,8 @@ function saveSettings() {
                 document.querySelector("#goalName").placeholder = t("goalNamePlaceholder");
                 document.querySelector("#goalTarget").placeholder = t("goalTargetPlaceholder");
                 document.querySelectorAll("[data-close]").forEach(button => button.setAttribute("aria-label", t("close")));
-                document.getElementById("previousMonth").setAttribute("aria-label", language === "ar" ? "Ø§Ù„Ø´Ù‡Ø± Ø§Ù„Ø³Ø§Ø¨Ù‚" : language === "fr" ? "Mois prÃ©cÃ©dent" : "Previous month");
-                document.getElementById("nextMonth").setAttribute("aria-label", language === "ar" ? "Ø§Ù„Ø´Ù‡Ø± Ø§Ù„ØªØ§Ù„ÙŠ" : language === "fr" ? "Mois suivant" : "Next month");
+                document.getElementById("previousMonth").setAttribute("aria-label", language === "ar" ? "الشهر السابق" : language === "fr" ? "Mois précédent" : "Previous month");
+                document.getElementById("nextMonth").setAttribute("aria-label", language === "ar" ? "الشهر التالي" : language === "fr" ? "Mois suivant" : "Next month");
                 document.getElementById("categoryChartEmpty").textContent = t("categoryChartEmpty");
                 const intro = document.getElementById("introScreen");
                 if (intro) {
@@ -540,7 +540,7 @@ function saveSettings() {
                 document.getElementById("soundToggle").checked = settings.sounds;
                 document.getElementById("languageSelect").value = language;
                 document.getElementById("currencySelect").value = settings.currency;
-                document.getElementById("trendChart").setAttribute("aria-label", t("trendTitle") + " â€” " + t("trendSubtitle"));
+                document.getElementById("trendChart").setAttribute("aria-label", t("trendTitle") + " — " + t("trendSubtitle"));
                 updateAccountMode();
                 updateAccountSettings();
                 render();
@@ -621,7 +621,7 @@ function saveSettings() {
                     const saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || "{}");
                     return normalizedData(saved);
                 } catch (error) {
-                    console.error("ØªØ¹Ø°Ø± ØªØ­Ù…ÙŠÙ„ Ø§Ù„Ø¨ÙŠØ§Ù†Ø§Øª Ø§Ù„Ù…Ø­ÙÙˆØ¸Ø©:", error);
+                    console.error("تعذر تحميل البيانات المحفوظة:", error);
                     return { transactions: [], budgets: {}, goals: [], budgetAlerts: [], dailyChallenges: [] };
                 }
             }
@@ -647,7 +647,7 @@ function saveSettings() {
                     if (sync && authToken) queueRemoteSync();
                     return true;
                 } catch (error) {
-                    console.error("ØªØ¹Ø°Ø± Ø­ÙØ¸ Ø§Ù„Ø¨ÙŠØ§Ù†Ø§Øª:", error);
+                    console.error("تعذر حفظ البيانات:", error);
                     showToast(t("storageFailed"));
                     return false;
                 }
@@ -712,7 +712,7 @@ function saveSettings() {
                         localStorage.setItem(ACCOUNT_EMAIL_KEY, result.email);
                         localStorage.setItem(SYNCED_DATA_KEY, JSON.stringify(result.data));
                     } catch (error) {
-                        console.error("ØªØ¹Ø°Ø± Ø­ÙØ¸ Ø¬Ù„Ø³Ø© Ø§Ù„Ø­Ø³Ø§Ø¨:", error);
+                        console.error("تعذر حفظ جلسة الحساب:", error);
                         feedback.textContent = t("storageFailed");
                         return;
                     }
@@ -730,7 +730,7 @@ function saveSettings() {
                     loadSocialChallenges();
                     showToast(t(registering ? "accountCreated" : "accountSignedIn"));
                 } catch (error) {
-                    console.error("ØªØ¹Ø°Ø± ØªØ³Ø¬ÙŠÙ„ Ø§Ù„Ø¯Ø®ÙˆÙ„ Ø¥Ù„Ù‰ Flousi:", error);
+                    console.error("تعذر تسجيل الدخول إلى Flousi:", error);
                     feedback.textContent = error.status ? error.message : t("apiUnavailable");
                     feedback.hidden = false;
                 } finally {
@@ -753,7 +753,7 @@ function saveSettings() {
                             hasPendingChanges = JSON.stringify(cachedData) !==
                                 JSON.stringify(normalizedData(JSON.parse(lastSynced)));
                         } catch (error) {
-                            console.error("ØªØ¹Ø°Ø± ØªØ­Ù…ÙŠÙ„ Ù†Ø³Ø®Ø© Ø§Ù„Ù…Ø²Ø§Ù…Ù†Ø© Ø§Ù„Ù…Ø­Ù„ÙŠØ©:", error);
+                            console.error("تعذر تحميل نسخة المزامنة المحلية:", error);
                             hasPendingChanges = true;
                         }
                     }
@@ -773,7 +773,7 @@ function saveSettings() {
                     finishIntro();
                     loadSocialChallenges();
                 } catch (error) {
-                    console.error("ØªØ¹Ø°Ø± Ø§Ø³ØªØ¹Ø§Ø¯Ø© Ø­Ø³Ø§Ø¨ Flousi:", error);
+                    console.error("تعذر استعادة حساب Flousi:", error);
                     if (error.status === 401) {
                         authToken = "";
                         accountEmail = "";
@@ -805,7 +805,7 @@ function saveSettings() {
                     localStorage.removeItem(GUEST_DATA_KEY);
                     localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
                 } catch (error) {
-                    console.error("ØªØ¹Ø°Ø± Ø§Ø³ØªØ¹Ø§Ø¯Ø© Ø¨ÙŠØ§Ù†Ø§Øª Ø§Ù„Ø¶ÙŠÙ:", error);
+                    console.error("تعذر استعادة بيانات الضيف:", error);
                     data = { transactions: [], budgets: {}, goals: [], budgetAlerts: [], dailyChallenges: [] };
                     showToast(t("storageFailed"));
                 }
@@ -820,7 +820,7 @@ function saveSettings() {
                     localStorage.removeItem(ACCOUNT_EMAIL_KEY);
                     localStorage.removeItem(SYNCED_DATA_KEY);
                 } catch (error) {
-                    console.error("ØªØ¹Ø°Ø± Ø¥Ù†Ù‡Ø§Ø¡ Ø¬Ù„Ø³Ø© Ø§Ù„Ø­Ø³Ø§Ø¨:", error);
+                    console.error("تعذر إنهاء جلسة الحساب:", error);
                     showToast(t("storageFailed"));
                     return;
                 }
@@ -955,13 +955,13 @@ function saveSettings() {
                         try {
                             localStorage.setItem(SYNCED_DATA_KEY, snapshot);
                         } catch (error) {
-                            console.error("ØªØ¹Ø°Ø± Ø­ÙØ¸ Ù†Ø³Ø®Ø© Ø§Ù„Ù…Ø²Ø§Ù…Ù†Ø© Ø§Ù„Ù…Ø­Ù„ÙŠØ©:", error);
+                            console.error("تعذر حفظ نسخة المزامنة المحلية:", error);
                             showToast(t("storageFailed"));
                         }
                         syncedRevision = revision;
                         return true;
                     } catch (error) {
-                        console.error("ØªØ¹Ø°Ø±Øª Ù…Ø²Ø§Ù…Ù†Ø© Ø¨ÙŠØ§Ù†Ø§Øª Flousi:", error);
+                        console.error("تعذرت مزامنة بيانات Flousi:", error);
                         showToast(t("syncFailed"));
                         return false;
                     }
@@ -979,12 +979,12 @@ function saveSettings() {
             }
 
             function formatMoney(amount) {
-                const unit = language === "ar" ? "Ø¯.Ù…." : "MAD";
+                const unit = currencyUnit();
                 return formatter.format(amount) + " " + unit;
             }
 
             function currencyUnit() {
-                return settings.currency === "MAD" && language === "ar" ? "Ø¯.Ù…." : settings.currency;
+                return settings.currency === "MAD" && language === "ar" ? "د.م." : settings.currency;
             }
 
             function localDateValue(date) {
@@ -1030,11 +1030,11 @@ function saveSettings() {
                             oscillator.stop(noteStart + 0.44);
                         });
                     }).catch(error => {
-                        console.error("ØªØ¹Ø°Ø± ØªØ´ØºÙŠÙ„ Ù†ØºÙ…Ø© Ø§Ù„ØªØ±Ø­ÙŠØ¨:", error);
+                        console.error("تعذر تشغيل نغمة الترحيب:", error);
                         showToast(t("audioFailed"));
                     });
                 } catch (error) {
-                    console.error("ØªØ¹Ø°Ø± ØªØ´ØºÙŠÙ„ Ù†ØºÙ…Ø© Ø§Ù„ØªØ±Ø­ÙŠØ¨:", error);
+                    console.error("تعذر تشغيل نغمة الترحيب:", error);
                     showToast(t("audioFailed"));
                 }
             }
@@ -1074,11 +1074,11 @@ function saveSettings() {
                             oscillator.stop(noteStart + 0.24);
                         });
                     }).catch(error => {
-                        console.error("ØªØ¹Ø°Ø± ØªØ´ØºÙŠÙ„ ØµÙˆØª Ø§Ù„ØªØ·Ø¨ÙŠÙ‚:", error);
+                        console.error("تعذر تشغيل صوت التطبيق:", error);
                         if (force) showToast(t("audioFailed"));
                     });
                 } catch (error) {
-                    console.error("ØªØ¹Ø°Ø± ØªØ´ØºÙŠÙ„ ØµÙˆØª Ø§Ù„ØªØ·Ø¨ÙŠÙ‚:", error);
+                    console.error("تعذر تشغيل صوت التطبيق:", error);
                     if (force) showToast(t("audioFailed"));
                 }
             }
@@ -1126,7 +1126,7 @@ function saveSettings() {
                 if (filtered.length === 0) {
                     const empty = document.createElement("div");
                     empty.className = "empty-state";
-                    empty.innerHTML = '<span aria-hidden="true">ðŸ§¾</span>';
+                    empty.innerHTML = '<span aria-hidden="true">🧾</span>';
                     empty.append(document.createTextNode(t(transactions.length ? "emptyFilter" : "emptyTransactions")));
                     list.append(empty);
                 } else {
@@ -1212,7 +1212,7 @@ function saveSettings() {
                     const metadata = document.createElement("p");
                     metadata.className = "social-challenge-meta";
                     metadata.textContent = t("challengeTarget") + ": " +
-                        formatChallengeMoney(challenge.target, challenge.currency) + " Â· " +
+                        formatChallengeMoney(challenge.target, challenge.currency) + " · " +
                         t("challengeDeadline") + ": " +
                         dateFormatter.format(new Date(challenge.deadline + "T00:00:00"));
 
@@ -1234,7 +1234,7 @@ function saveSettings() {
                             const track = document.createElement("div");
                             track.className = "social-challenge-progress";
                             track.setAttribute("role", "progressbar");
-                            track.setAttribute("aria-label", participant.name + " â€” " + t("challengeProgress"));
+                            track.setAttribute("aria-label", participant.name + " — " + t("challengeProgress"));
                             track.setAttribute("aria-valuemin", "0");
                             track.setAttribute("aria-valuemax", "100");
                             const percent = Math.min(100, Math.round(participant.progress / challenge.target * 100));
@@ -1316,7 +1316,7 @@ function saveSettings() {
                     const track = document.createElement("div");
                     track.className = "goal-track";
                     track.setAttribute("role", "progressbar");
-                    track.setAttribute("aria-label", goal.name + " â€” " + t("goalProgress"));
+                    track.setAttribute("aria-label", goal.name + " — " + t("goalProgress"));
                     track.setAttribute("aria-valuemin", "0");
                     track.setAttribute("aria-valuemax", "100");
                     track.setAttribute("aria-valuenow", String(percent));
@@ -1368,7 +1368,7 @@ function saveSettings() {
             }
 
             function openContribution(goal) {
-                document.getElementById("contributionGoalName").textContent = goal.name + " â€” " + t("budgetRemaining", { amount: formatMoney(goal.target - goal.saved) });
+                document.getElementById("contributionGoalName").textContent = goal.name + " — " + t("budgetRemaining", { amount: formatMoney(goal.target - goal.saved) });
                 document.getElementById("contributionAmount").value = "";
                 document.getElementById("contributionForm").dataset.goalId = goal.id;
                 openModal("contributionModal");
@@ -1479,7 +1479,7 @@ function saveSettings() {
                 const rangeLabel = trendPeriod === "week" ? "trendWeekRange" : trendPeriod === "year" ? "trendYearRange" : "trendMonthRange";
                 document.getElementById("trendSubtitle").textContent = t(rangeLabel);
                 const chart = document.getElementById("trendChart");
-                chart.setAttribute("aria-label", t("comparisonTitle") + " â€” " + t(rangeLabel));
+                chart.setAttribute("aria-label", t("comparisonTitle") + " — " + t(rangeLabel));
                 chart.replaceChildren();
                 const maxValue = Math.max(0, ...buckets.flatMap(item => [item.income, item.expenses]));
                 buckets.forEach(item => {
@@ -1493,7 +1493,7 @@ function saveSettings() {
                         bar.className = "trend-bar " + key;
                         const height = maxValue ? item[key] / maxValue * 100 : 0;
                         bar.style.height = height + "%";
-                        bar.title = t(labelKey) + " Â· " + item.title + ": " + formatMoney(item[key]);
+                        bar.title = t(labelKey) + " · " + item.title + ": " + formatMoney(item[key]);
                         pair.append(bar);
                     });
                     const label = document.createElement("span");
@@ -1512,7 +1512,7 @@ function saveSettings() {
                 const topCategories = categoriesBySpend.slice(0, 5);
                 if (categoriesBySpend.length > 5) {
                     const otherAmount = categoriesBySpend.slice(5).reduce((sum, [, amount]) => sum + amount, 0);
-                    topCategories.push(["Ø£Ø®Ø±Ù‰", otherAmount]);
+                    topCategories.push(["أخرى", otherAmount]);
                 }
                 let angle = 0;
                 const stops = [];
@@ -1567,7 +1567,7 @@ function saveSettings() {
                 row.className = "transaction";
                 const icon = document.createElement("div");
                 icon.className = "transaction-icon";
-                icon.textContent = categories[item.category] || categories["Ø£Ø®Ø±Ù‰"];
+                icon.textContent = categories[item.category] || categories["أخرى"];
                 icon.setAttribute("aria-hidden", "true");
                 const details = document.createElement("div");
                 const title = document.createElement("p");
@@ -1576,15 +1576,15 @@ function saveSettings() {
                 const meta = document.createElement("p");
                 meta.className = "transaction-meta";
                 const locale = language === "ar" ? "ar-MA" : language === "fr" ? "fr-MA" : "en-US";
-                meta.textContent = t(categoryKeys[item.category] || "categoryOther") + " Â· " + new Intl.DateTimeFormat(locale, { day: "numeric", month: "short" }).format(new Date(item.date + "T12:00:00"));
+                meta.textContent = t(categoryKeys[item.category] || "categoryOther") + " · " + new Intl.DateTimeFormat(locale, { day: "numeric", month: "short" }).format(new Date(item.date + "T12:00:00"));
                 details.append(title, meta);
                 const amount = document.createElement("span");
                 amount.className = "transaction-amount" + (item.type === "income" ? " income" : "");
-                amount.textContent = (item.type === "income" ? "+ " : "âˆ’ ") + formatMoney(item.amount);
+                amount.textContent = (item.type === "income" ? "+ " : "− ") + formatMoney(item.amount);
                 const remove = document.createElement("button");
                 remove.className = "delete-button";
                 remove.type = "button";
-                remove.textContent = "Ã—";
+                remove.textContent = "×";
                 remove.setAttribute("aria-label", t("deleteTransaction", { description: item.description }));
                 remove.addEventListener("click", () => deleteTransaction(item.id));
                 row.append(icon, details, amount, remove);
@@ -1613,7 +1613,7 @@ function saveSettings() {
                     const label = document.createElement("div");
                     label.className = "category-label";
                     const name = document.createElement("span");
-                    name.textContent = (categories[category] || categories["Ø£Ø®Ø±Ù‰"]) + "  " + t(categoryKeys[category] || "categoryOther");
+                    name.textContent = (categories[category] || categories["أخرى"]) + "  " + t(categoryKeys[category] || "categoryOther");
                     const amount = document.createElement("span");
                     amount.textContent = formatMoney(total);
                     label.append(name, amount);
@@ -1663,7 +1663,7 @@ function saveSettings() {
                                     (typeof item.amount === "number" && Number.isFinite(item.amount) && item.amount > 0))))
                     ).slice(0, 100);
                 } catch (error) {
-                    console.error("ØªØ¹Ø°Ø± ØªØ­Ù…ÙŠÙ„ Ø§Ù„Ø¥Ø´Ø¹Ø§Ø±Ø§Øª:", error);
+                    console.error("تعذر تحميل الإشعارات:", error);
                     return [];
                 }
             }
@@ -1673,7 +1673,7 @@ function saveSettings() {
                     localStorage.setItem(notificationStorageKey(), JSON.stringify(notifications));
                     return true;
                 } catch (error) {
-                    console.error("ØªØ¹Ø°Ø± Ø­ÙØ¸ Ø§Ù„Ø¥Ø´Ø¹Ø§Ø±Ø§Øª:", error);
+                    console.error("تعذر حفظ الإشعارات:", error);
                     showToast(t("notificationSaveError"));
                     return false;
                 }
@@ -1791,7 +1791,7 @@ function saveSettings() {
             }
 
             const QUICK_LAST_KEY = "flousi-quick-category-v1";
-            const quickCategoryNames = Object.keys(categories).filter(name => name !== "Ø§Ù„Ø¯Ø®Ù„");
+            const quickCategoryNames = Object.keys(categories).filter(name => name !== "الدخل");
             let quickAmount = "";
             let quickCategory = quickCategoryNames[0];
 
@@ -2195,7 +2195,7 @@ function saveSettings() {
                     link.click();
                     setTimeout(() => URL.revokeObjectURL(url), 1000);
                 } catch (error) {
-                    console.error("ØªØ¹Ø°Ø± ØªØµØ¯ÙŠØ± Ø¨ÙŠØ§Ù†Ø§Øª Flousi:", error);
+                    console.error("تعذر تصدير بيانات Flousi:", error);
                     showToast(t("storageFailed"));
                 }
             });
@@ -2218,7 +2218,7 @@ function saveSettings() {
                         : parsed;
                     importedData = validateImportData(dataToImport);
                 } catch (error) {
-                    console.error("ØªØ¹Ø°Ø± Ù‚Ø±Ø§Ø¡Ø© Ù…Ù„Ù Ø¨ÙŠØ§Ù†Ø§Øª Flousi:", error);
+                    console.error("تعذر قراءة ملف بيانات Flousi:", error);
                     showToast(t("importDataInvalid"));
                     return;
                 }
@@ -2266,51 +2266,35 @@ function saveSettings() {
             });
             document.getElementById("transactionForm").addEventListener("submit", event => {
                 event.preventDefault();
+
                 const type = document.getElementById("transactionType").value;
                 const amount = Number(document.getElementById("amount").value);
                 const description = document.getElementById("description").value.trim();
                 const date = document.getElementById("date").value;
+
                 if (!description || !Number.isFinite(amount) || amount <= 0 || amount > 999999999 || !date) {
                     showToast(t("transactionInvalid"));
                     return;
                 }
+
                 const transaction = {
                     id: Date.now().toString(36) + Math.random().toString(36).slice(2),
                     type,
                     description,
                     amount: Math.round(amount * 100) / 100,
-                    category: type === "income" ? "Ø§Ù„Ø¯Ø®Ù„" : document.getElementById("category").value,
+                    category: type === "income" ? "\u0627\u0644\u062f\u062e\u0644" : document.getElementById("category").value,
                     date
                 };
 
                 if (commitTransaction(transaction)) {
                     event.target.reset();
                     document.getElementById("transactionType").value = "expense";
-                    document.querySelectorAll(".type-switch button").forEach(item => item.classList.toggle("active", item.dataset.type === "expense"));
+                    document.querySelectorAll(".type-switch button").forEach(item =>
+                        item.classList.toggle("active", item.dataset.type === "expense")
+                    );
                     document.getElementById("categoryField").hidden = false;
                     document.getElementById("category").required = true;
                     closeModal("transactionModal");
-                }
-
-                    event.target.reset();
-                    document.getElementById("transactionType").value = "expense";
-                    document.querySelectorAll(".type-switch button").forEach(item => item.classList.toggle("active", item.dataset.type === "expense"));
-                    document.getElementById("categoryField").hidden = false;
-                    document.getElementById("category").required = true;
-                    closeModal("transactionModal");
-
-
-
-                if (commitTransaction(transaction)) {
-                    event.target.reset();
-                    document.getElementById("transactionType").value = "expense";
-                    document.querySelectorAll(".type-switch button").forEach(item => item.classList.toggle("active", item.dataset.type === "expense"));
-                    document.getElementById("categoryField").hidden = false;
-                    document.getElementById("category").required = true;
-                    closeModal("transactionModal");
-                }
-
-
                 }
             });
             document.getElementById("budgetForm").addEventListener("submit", event => {
@@ -2411,22 +2395,9 @@ function saveSettings() {
             });
             applyLanguage();
             restoreStoredAccount();
-            if (new URLSearchParams(window.location.search).has("debug")) debugger;
             if ("serviceWorker" in navigator && /^https?:$/.test(window.location.protocol)) {
                 navigator.serviceWorker.register("./sw.js").catch(error => {
-                    console.error("ØªØ¹Ø°Ø± ØªÙØ¹ÙŠÙ„ Ø§Ù„Ø¹Ù…Ù„ Ø¯ÙˆÙ† Ø§ØªØµØ§Ù„:", error);
+                    console.error("تعذر تفعيل العمل دون اتصال:", error);
                 });
             }
         })();
-
-const STATIC_FILES = new Map([
-    ["/", ["index.html", "text/html; charset=utf-8"]],
-    ["/index.html", ["index.html", "text/html; charset=utf-8"]],
-    ["/app.js", ["app.js", "text/javascript; charset=utf-8"]],
-    ["/style.css", ["style.css", "text/css; charset=utf-8"]],
-    ["/logo.svg", ["logo.svg", "image/svg+xml"]],
-    ["/manifest.webmanifest", ["manifest.webmanifest", "application/manifest+json; charset=utf-8"]],
-    ["/sw.js", ["sw.js", "text/javascript; charset=utf-8"]],
-    ["/robots.txt", ["robots.txt", "text/plain; charset=utf-8"]],
-    ["/sitemap.xml", ["sitemap.xml", "application/xml; charset=utf-8"]]
-]);
