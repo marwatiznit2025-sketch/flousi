@@ -1093,6 +1093,12 @@ function saveSettings() {
                 const transactions = visibleTransactions();
                 const income = transactions.filter(item => item.type === "income").reduce((sum, item) => sum + item.amount, 0);
                 const expenses = transactions.filter(item => item.type === "expense").reduce((sum, item) => sum + item.amount, 0);
+                const carriedBalance = data.transactions
+                    .filter(item => item.date.slice(0, 7) < monthKey(selectedMonth))
+                    .reduce((total, item) => {
+                        return total + (item.type === "income" ? item.amount : -item.amount);
+                    }, 0);
+                const netBalance = carriedBalance + income - expenses;
                 document.getElementById("balanceAmount").innerHTML = formatter.format(income - expenses) + " <small>" + currencyUnit() + "</small>";
                 document.getElementById("incomeAmount").innerHTML = formatter.format(income) + " <small>" + currencyUnit() + "</small>";
                 document.getElementById("expenseAmount").innerHTML = formatter.format(expenses) + " <small>" + currencyUnit() + "</small>";
