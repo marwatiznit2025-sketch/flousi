@@ -1,0 +1,17 @@
+
+{
+  "functions": {
+    "server.ts": {
+      "includeFiles": [
+        "index.html",
+        "app.js",
+        "style.css",
+        "logo.svg",
+        "manifest.webmanifest",
+        "sw.js",
+        "robots.txt",
+        "sitemap.xml"
+      ]
+    }
+  }
+}
