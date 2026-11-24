@@ -7,7 +7,7 @@ declare const process: {
 declare const require: (id: string) => unknown;
 
 type FlousiServer = {
-  listen(port: number, host: string, callback: () => void): unknown;
+  listen(port: number): unknown;
 };
 
 const flousi = require("./server.js") as {
@@ -18,9 +18,8 @@ const port = Number(process.env.PORT) || 3000;
 
 flousi.createServer()
   .then((server) => {
-    server.listen(port, "0.0.0.0", () => {
-      console.log("Flousi server is running on port " + port);
-    });
+    server.listen(port);
+    console.log("Flousi server is running on port " + port);
   })
   .catch((error) => {
     console.error("Could not start Flousi:", error);
